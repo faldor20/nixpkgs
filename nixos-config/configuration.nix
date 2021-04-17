@@ -190,7 +190,6 @@ font-awesome
     fira-code-symbols
     mplus-outline-fonts
     dina-font
-    proggyfonts
     jetbrains-mono
   ];
   # Some programs need SUID wrappers, can be configured further or are

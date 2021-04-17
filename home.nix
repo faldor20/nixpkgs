@@ -15,6 +15,7 @@ in
     ./kitty/kitty.nix
     ./neovim/neovim.nix
     ./sway/sway.nix
+    ./git/git.nix
   ];
   nixpkgs.overlays = [
     (self: super: {
@@ -27,23 +28,42 @@ in
     sqlite
     htop
     gnome3.nautilus
+    dolphin
+    wev
+    jmtpfs
     #====tools:====
-    ranger
-    sparkleshare
+    unstable.sparkleshare
     catfish
     docker
     wireshark
+    gnome3.seahorse
     # sparkleshare_autostart
     # images:
     gimp
     inkscape
+    darktable
     #==== development====
+    httpie
+    git-lfs
     gitkraken
     unstable.libvmaf
     sshfs
-    unstable.rustup
+
+    dotnetPackages.Paket
+   # gcc
+    #binutils
+    #clang
+    #sccache
+    #libudev
+    #pkg-config
+    #udev
+    #unstable.rustup
     unstable.dotnet-sdk_5
     #sccache
+    cachix
+    nim
+
+    #julia
     # ====EDITORS====
     
     unstable.vscode
@@ -61,6 +81,7 @@ in
     vlc
     mpd
     pavucontrol
+    playerctl
     # mpc_cli
     # ====communications====
     teams
@@ -70,6 +91,8 @@ in
     qgnomeplatform
     qtstyleplugin-kvantum-qt4
     libsForQt5.qtstyleplugin-kvantum
+    #=======laptop=====
+    brightnessctl
   ];
   # for development in nix:
   services.lorri.enable = true;
@@ -117,6 +140,7 @@ in
       }
     '';
   };
+
 
   services.gpg-agent = {
     enable = true;

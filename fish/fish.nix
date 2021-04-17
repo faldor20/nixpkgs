@@ -26,10 +26,11 @@ programs.fish={
     shellInit =
     "
 
-     set QT_QPA_PLATFORMTHEME gnome
+    set QT_QPA_PLATFORMTHEME gnome
     set PATH ~/.dotnet/tools $PATH
     set PATH ~/bin $PATH
     set PATH ~/.cargo/bin $PATH
+    set NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH 
 ";
 };
 }
