@@ -20,6 +20,7 @@ vscodeInsiders = (unstable.vscode.override { isInsiders = true; }).overrideAttrs
                          sha256 = "1qlb8dpd0nk1vgf5sd3kykqz0cc6yv6rnhv5vqbc0wlx5x6ym1q8";
                        };
                      });
+aspellD = pkgs.aspellWithDicts (ps : with ps; [ en ]);
 in
 {
   #Install instructions:
@@ -49,6 +50,7 @@ in
       url = https://github.com/nix-community/emacs-overlay/archive/30595e2d5a9fed7d668ea8b54763b728d83a7a7b.tar.gz;
     }))
   ];
+
   home.packages = with pkgs; [
     #====system====
     fortune
@@ -58,6 +60,8 @@ in
     dolphin
     wev
     jmtpfs
+    #======spelling=======
+    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     #====tools:====
     unstable.sparkleshare
     slurp
@@ -78,7 +82,7 @@ in
     gitkraken
     unstable.libvmaf
     sshfs
-
+    steam-run
     dotnetPackages.Paket
     gcc
     #binutils
@@ -91,13 +95,15 @@ in
     unstable.rust-analyzer
     unstable.dotnet-sdk_5
     #sccache
-    nim
+    unstable.nim
+    unstable.nimlsp
 
     unstable.julia
     unstable.python3
     unstable.pipenv
     unstable.python38Packages.pip
     unstable.nodePackages.pyright
+    unstable.nodePackages.yarn
     # ====EDITORS====
     
     #unstable.vscode
@@ -129,8 +135,8 @@ in
     libsForQt5.qtstyleplugin-kvantum
     #=======laptop=====
     brightnessctl
-    #emacsPgtkGcc
-    emacs
+    emacsPgtkGcc
+    #emacs
     firefox-wayland
     vivaldi
   ];
