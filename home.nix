@@ -37,15 +37,18 @@ in
   imports = [
     ./fish/fish.nix
     ./kitty/kitty.nix
-    ./neovim/neovim.nix
     ./sway/sway.nix
     ./git/git.nix
   ];
+#    ./neovim/neovim.nix
   nixpkgs.overlays = [
     (self: super: {
       ffmpeg2 = super.ffmpeg-full.override { libvmaf = true; };
     })
 
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/emacs-overlay/archive/30595e2d5a9fed7d668ea8b54763b728d83a7a7b.tar.gz;
     }))
@@ -76,6 +79,7 @@ in
     darktable
     mypaint
     krita
+    feh
     #==== development====
     httpie
     git-lfs
@@ -98,16 +102,19 @@ in
     unstable.nim
     unstable.nimlsp
 
-    unstable.julia
+    julia-stable
     unstable.python3
     unstable.pipenv
     unstable.python38Packages.pip
+    unstable.python38Packages.python-language-server
     unstable.nodePackages.pyright
     unstable.nodePackages.yarn
+    ffmpeg
     # ====EDITORS====
     
     #unstable.vscode
     vscodeInsiders
+    neovim-nightly
     vim
     #====WRITING====
      unstable.obsidian
@@ -118,15 +125,19 @@ in
     niv
     #====Basic software====
     ark
+    tixati
     gnumeric
     vlc
-    mpd
+    mpv
+    #mpd
     pavucontrol
     playerctl
     qutebrowser
+    lastpass-cli
     # mpc_cli
     # ====communications====
     teams
+    unstable.discord
     #====highly specific utilities====
     fritzing
     #====theming====
@@ -135,8 +146,9 @@ in
     libsForQt5.qtstyleplugin-kvantum
     #=======laptop=====
     brightnessctl
-    emacsPgtkGcc
-    #emacs
+    #emacsPgtkGcc
+    emacs
+    pianobooster
     firefox-wayland
     vivaldi
   ];
@@ -179,7 +191,7 @@ in
     size = 128;
   };
   services.mpd = {
-    enable = true;
+    enable = false;
     dataDir= "/home/eli/.mpd/data";
     musicDirectory = "/home/eli/Music";
     extraConfig = ''

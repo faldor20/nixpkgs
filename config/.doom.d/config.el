@@ -235,9 +235,10 @@ If REC is non-nil then do recursive search."
 
 ;;=== small utility stuff===
 ;;save undo history
-
-
-
+(setq-default indent-tabs-mode t)
+(setq indent-tabs-mode t)
+(after! org
+  (setq indent-tabs-mode t))
 ;;==========autocomplete========
 ;;instant autocompetions
 (setq company-idle-delay 0)

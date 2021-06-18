@@ -12,7 +12,7 @@
   programs.neovim = {
     enable = true;
     package=pkgs.neovim-nightly;
-    #extraConfig= (builtins.readFile ./init.vim);
+    extraConfig= "";
 #    plugins= with plgs.vimplugins;
  #     [nvim-lspconfig
  #     completion-nvim]

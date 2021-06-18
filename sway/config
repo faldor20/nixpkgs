@@ -32,11 +32,11 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi -S drun -I -m -G
-
+set $wallpaper ~/Downloads/studio-ghibli.jpg
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Downloads/studio-ghibli.jpg fill
+output * bg $wallpaper fill
 #
 # Example configuration:
 #
@@ -49,9 +49,9 @@ output eDP-1 scale 1
 #  Example configuration:
 
  exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
+          timeout 300 'swaylock -f -i  $wallpaper' \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -f -i $wallpaper'
 
 #This will lock your screen after 300 seconds of inactivity, then turn off
 #your displays after another 300 seconds, and turn your screens back on when
