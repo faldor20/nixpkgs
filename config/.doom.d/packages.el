@@ -55,3 +55,4 @@
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! gruvbox-theme)
+(package! literate-calc-mode)

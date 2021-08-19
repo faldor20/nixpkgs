@@ -35,7 +35,8 @@ programs.fish={
     set XDG_SESSION_TYPE wayland
     set MOZ_ENABLE_WAYLAND 1
 
-    set NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH 
+    set NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
+    source /home/eli/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 ";
 };
 }

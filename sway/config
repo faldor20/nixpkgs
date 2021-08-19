@@ -8,6 +8,9 @@
 ## programs to start alngside sway
 #
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-pomodoro --no-default-window
+exec (gnome-pomodoro)
+exec (sleep 4;gnome-pomodoro --start)
 # here we mount all the network drives
 #exec mount /mnt/smb/bfs
 #exec mount /mnt/smb/common
@@ -16,7 +19,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #notification manager
 exec mako
 #
-
+for_window [app_id="gnome-pomodoro"] floating enable
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -71,6 +74,8 @@ output eDP-1 scale 1
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+
+#======-----laptop----=====
    input "2:14:ETPS/2_Elantech_Touchpad" {
        dwt enabled
        tap enabled
@@ -79,6 +84,14 @@ output eDP-1 scale 1
        pointer_accel 0.5
        middle_emulation disabled
    }
+#====-----sreen rotation-----====
+input 1386:20637:Wacom_Pen_and_multitouch_sensor_Finger map_to_output eDP-1
+input 1386:20637:Wacom_Pen_and_multitouch_sensor_Pen map_to_output eDP-1
+
+
+
+
+
 
 
 ### Key bindings
@@ -116,10 +129,10 @@ output eDP-1 scale 1
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    #bindsym $mod+Left focus left
+    #bindsym $mod+Down focus down
+    #bindsym $mod+Up focus up
+    #bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -127,10 +140,10 @@ output eDP-1 scale 1
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    #bindsym $mod+Shift+Left move left
+    #bindsym $mod+Shift+Down move down
+    #bindsym $mod+Shift+Up move up
+    #bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -220,6 +233,8 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+
+
 ## Handling shutdown and the like
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -249,6 +264,18 @@ bindsym XF86Search exec bemenu-run
 # brightness
 bindsym --locked XF86MonBrightnessUp exec brightnessctl -e6 s +7%
 bindsym --locked XF86MonBrightnessDown exec brightnessctl -e5 s 7%-
+
+# ======other custom bindings======
+# screenshot both to clipbaord and to pictures folder
+bindsym $mod+p exec grimshot copy area
+bindsym $mod+Shift+p exec grimshot save area
+
+#rotate screen
+bindsym $mod+Up output eDP-1 transform 180
+bindsym $mod+Right output eDP-1 transform 270
+bindsym $mod+Left output eDP-1 transform 90
+bindsym $mod+Down output eDP-1 transform 0
+
 
 #
 # Status Bar:

@@ -1,5 +1,39 @@
 source $HOME/.config/nvim/plugSetup.vim
 
+" Persistent undo
+if has('persistent_undo')
+        let vimDir= expand("~/.vim")
+  if !isdirectory(vimDir)
+        call mkdir(vimDir)
+  endif
+  " Just make sure you don't run 'sudo vim' right out of the gate and make
+  " ~/.vim/undos owned by root.root (should probably use sudoedit anyhow)
+  let swap_base = expand("~/.vim/swap")
+  if !isdirectory(swap_base)
+    call mkdir(swap_base)
+  endif
+  let userDir = expand("~/.vim/swap/$USER")
+  if !isdirectory(userDir)
+    call mkdir(userDir)
+  endif
+
+  let undoDir = expand("~/.vim/swap/$USER/undo")
+  if !isdirectory(undoDir)
+    call mkdir(undoDir)
+  endif
+  
+  let backupDir = expand("~/.vim/swap/$USER/backup")
+  if !isdirectory(backupDir)
+    call mkdir(backupDir)
+  endif
+  set undodir=~/.vim/swap/$USER/undo
+  set undofile
+  set backupdir=~/.vim/swap/$USER/backup
+  set backup
+endif
+
+
+
 set nocompatible
 
 if has('termguicolors')
@@ -57,6 +91,9 @@ let mapleader = " " " map leader to Space
 autocmd BufNewFile,BufRead *.fs,*.fsx,*.fsi set filetype=fsharp
 "-------fuzzy finder------
 " Find files using Telescope command-line sugar.
+lua require'telescope'.load_extension('project')
+nnoremap <leader>fp <cmd>Telescope project<cr>
+nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -68,5 +105,13 @@ nnoremap <leader>tr :NvimTreeRefresh<CR>
 nnoremap <leader>tn :NvimTreeFindFile<CR>
 " NvimTreeOpen and NvimTreeClose are also available if you need them
 "lspSettings:
+"-------vim roooter'------
+"patters for finding the project root
+let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh','*.fsproj','*.csproj',"cargo.toml"]
+
+
+lua require('hardline').setup {}
+"-----undoTree----
+nnoremap <F5> :UndotreeToggle<CR>
 "
 autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }

@@ -29,7 +29,7 @@ Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
+Plug 'tpope/vim-surround'
 "LSP:
 Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
@@ -49,6 +49,12 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-project.nvim'
+"----utility
+"sets the root of vim to be th project root
+Plug 'airblade/vim-rooter'
+Plug 'ojroques/nvim-hardline'
+Plug 'mbbill/undotree'
 "---
 "file browser
 Plug 'kyazdani42/nvim-web-devicons' " for file icons

@@ -16,7 +16,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/SparkleShare/github.com/Personal/" )
+(setq org-directory "/home/eli/Notes/study/" )
 (setq org-roam-directory org-directory)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -85,7 +85,6 @@
 ;;Autosave org buffers::
 (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 ;;===============org roam ========================
-(setq org-roam-link-auto-replace nil)
 ;;manually set subdirectty for notes:
 (defun +org-notes-location () "./org/roam")
 ;;if a selectable subdiri s desired change "org0- notes-subdir" in the function below to "+org-notes-subdir"

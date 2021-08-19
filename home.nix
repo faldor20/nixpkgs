@@ -1,28 +1,27 @@
 { config, pkgs, systemd, ... }:
 let
 
-  unstable = import <nixos-unstable> { overlays=[
+  unstable = import <nixos-unstable> {
+    overlays = [ (import ./logseq.nix)
+                 (import ./pkgs/default.nix) ];
 
-    (import (builtins.fetchTarball {
-      url = https://github.com/mjlbach/emacs-overlay/archive/feature/flakes.tar.gz;
-    }))
-  ];
-
-                                       config = { allowUnfree = true; }; };
+    config = { allowUnfree = true; };
+  };
   #sparkleshare_autostart = (pkgs.makeAutostartItem { name = "sparkleshare"; package = pkgs.sparkleshare; srcPrefix = "org.kde.";  });
-vscodeInsiders = (unstable.vscode.override { isInsiders = true; }).overrideAttrs(oldAttrs: rec {
-                       name = "vscode-insiders-${version}";
-                       version = "1620235808";
+  # vscodeInsiders = (unstable.vscode.override { isInsiders = true; }).overrideAttrs(oldAttrs: rec {
+  #                        name = "vscode-insiders-${version}";
+  #                        version = "1620235808";
 
-                       src = pkgs.fetchurl {
-                         name = "VSCode_latest_linux-x64.tar.gz";
-                         url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-                         sha256 = "1qlb8dpd0nk1vgf5sd3kykqz0cc6yv6rnhv5vqbc0wlx5x6ym1q8";
-                       };
-                     });
-aspellD = pkgs.aspellWithDicts (ps : with ps; [ en ]);
-in
-{
+  #                        src = pkgs.fetchurl {
+  #                          name = "VSCode_latest_linux-x64.tar.gz";
+  #                          url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+  #                          sha256 = "1qlb8dpd0nk1vgf5sd3kykqz0cc6yv6rnhv5vqbc0wlx5x6ym1q8";
+  #                        };
+  #                      });
+  #
+
+  aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
+in {
   #Install instructions:
   #Pre install
   #
@@ -39,39 +38,64 @@ in
     ./kitty/kitty.nix
     ./sway/sway.nix
     ./git/git.nix
+    ./general/email.nix
   ];
-#    ./neovim/neovim.nix
+  #    ./neovim/neovim.nix
   nixpkgs.overlays = [
-    (self: super: {
-      ffmpeg2 = super.ffmpeg-full.override { libvmaf = true; };
-    })
+    (self: super: { ffmpeg2 = super.ffmpeg-full.override { libvmaf = true; }; })
 
     (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+      url =
+        "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
     }))
     (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/30595e2d5a9fed7d668ea8b54763b728d83a7a7b.tar.gz;
+      url =
+        "https://github.com/nix-community/emacs-overlay/archive/5c20a170b2e025b3a6309ee8ad38eb98cd62008d.tar.gz";
     }))
   ];
 
   home.packages = with pkgs; [
     #====system====
+    #monitors
+    nmon
+    bpytop
+
+
+    unzip
     fortune
     sqlite
     htop
     gnome3.nautilus
+    cinnamon.nemo
     dolphin
     wev
     jmtpfs
+    st
+    gnome.networkmanagerapplet
+    powershell
+    #======Nix Specific======
+    nix-tree
     #======spelling=======
     (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
     #====tools:====
+    #--screenshot
+    sway-contrib.grimshot # allows taking screeenshots within sway
+    #pdf
+    zathura
+    mupdf
+    qpdf
+
     unstable.sparkleshare
+    gnome.gnome-system-monitor
+    unstable.zoom-us
     slurp
+    pandoc
     catfish
+    ncdu
     docker
     wireshark
     gnome3.seahorse
+    gnome3.dconf-editor
     # sparkleshare_autostart
     # images:
     gimp
@@ -80,6 +104,19 @@ in
     mypaint
     krita
     feh
+    anki
+    texlive.combined.scheme-small
+    #====Organization====
+    #---calenmdar--
+    minetime
+    #---email
+    mailspring
+    evolution
+    roundcube
+
+    aerc
+    #---timers---
+    gnome.pomodoro
     #==== development====
     httpie
     git-lfs
@@ -89,6 +126,20 @@ in
     steam-run
     dotnetPackages.Paket
     gcc
+    #=====ocaml=====
+    opam
+    ocaml
+    gnumake
+    gcc
+    pkg-config
+    openssl
+    m4
+    udev
+    libev
+    stdenv.cc
+    stdenv.cc.bintools
+    #unstable.nodePackages.esy
+    #----ocaml-----
     #binutils
     #clang
     #sccache
@@ -101,23 +152,33 @@ in
     #sccache
     unstable.nim
     unstable.nimlsp
+clojure
+    jdk11
+leiningen
+    clojure-lsp
 
     julia-stable
     unstable.python3
     unstable.pipenv
     unstable.python38Packages.pip
     unstable.python38Packages.python-language-server
+    unstable.nodejs
     unstable.nodePackages.pyright
     unstable.nodePackages.yarn
     ffmpeg
     # ====EDITORS====
-    
-    #unstable.vscode
-    vscodeInsiders
+
+    unstable.vscode
+    jetbrains.idea-community
+    #vscodeInsiders
     neovim-nightly
     vim
     #====WRITING====
-     unstable.obsidian
+    unstable.obsidian
+    unstable.logseq
+    unstable.remnote
+    typora
+    xournalpp
     #====TOOLS for work:=====
     remmina
     # ====this is for managing nix-shell dependancies:====
@@ -127,30 +188,40 @@ in
     ark
     tixati
     gnumeric
+    visidata
+    qutebrowser
+    # mpc_cli
+    lastpass-cli
+    #--Media---
     vlc
     mpv
     #mpd
     pavucontrol
     playerctl
-    qutebrowser
-    lastpass-cli
-    # mpc_cli
+    spotify-tui
     # ====communications====
     teams
     unstable.discord
     #====highly specific utilities====
-    fritzing
+    #kinlde and ebooks
+    calibre
+    #fritzing
     #====theming====
     qgnomeplatform
     qtstyleplugin-kvantum-qt4
     libsForQt5.qtstyleplugin-kvantum
     #=======laptop=====
     brightnessctl
-    #emacsPgtkGcc
-    emacs
+    wirelesstools # needed for wofi wifi script
+
+    emacsPgtkGcc
+    #emacs
     pianobooster
     firefox-wayland
-    vivaldi
+    google-chrome
+    #vivaldi
+    #=====UNI=====
+    octaveFull
   ];
   # for development in nix:
   services.lorri.enable = true;
@@ -174,45 +245,81 @@ in
       name = "oomox-gruvbox-dark";
       package = unstable.gruvbox-dark-icons-gtk;
     };
-    theme =
-      {
-        name = "gruvbox-dark";
-        package = unstable.gruvbox-dark-gtk;
-      };
+    theme = {
+      name = "gruvbox-dark";
+      package = unstable.gruvbox-dark-gtk;
+    };
     # {
     # name = "Ant-Dracula";
     # package = pkgs.ant-dracula-theme;
     # };
   };
-  dconf.enable = true;
+  dconf={
+    enable = true;
+  };
+
   xsession.pointerCursor = {
     name = "Vanilla-DMZ";
     package = pkgs.vanilla-dmz;
     size = 128;
   };
-  services.mpd = {
-    enable = false;
-    dataDir= "/home/eli/.mpd/data";
-    musicDirectory = "/home/eli/Music";
-    extraConfig = ''
-      audio_output {
-        type "pulse" # MPD must use Pulseaudio
-        name "Pulseaudio" # Whatever you want
-        server "127.0.0.1" # MPD must connect to the local sound server
-      }
-    '';
+  services = {
+    mpd = {
+      enable = false;
+      dataDir = "/home/eli/.mpd/data";
+      musicDirectory = "/home/eli/Music";
+      extraConfig = ''
+        audio_output {
+          type "pulse" # MPD must use Pulseaudio
+          name "Pulseaudio" # Whatever you want
+          server "127.0.0.1" # MPD must connect to the local sound server
+        }
+      '';
+    };
+    spotifyd = { enable = true; };
+    udiskie = {
+      enable = true;
+      notify = false;
+    };
+    emacs={
+    enable=true;
+    package=pkgs.emacsPgtkGcc;
+    client={enable=true;};
+    };
   };
-
-
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
+  services.network-manager-applet = { enable = true; };
+  systemd.user = {
+    services = {
+      notes-syncer = {
+        Unit = { Description = "git syncer for notes and stuff"; };
+        Service = {
+          Type = "simple";
+          ExecStart = "/home/eli/bin/scripts/Git-Syncers/notes.sh";
+        };
+      };
+    };
+    timers = {
+      notes-syncer = {
+        Unit = { Description = "git syncer Timer"; };
+        Timer = {
+          OnBootSec = "1min";
+          OnUnitActiveSec = "15min";
+          Unit = "notes-syncer";
+        };
+        Install = { WantedBy = [ "timers.target" ]; };
+      };
+    };
+  };
   home.sessionVariables = {
-    QT_SCALE_FACTOR=1.25;
-    GDK_DPI_SCALE=1.25;
+    QT_SCALE_FACTOR = 1.25;
+    GDK_DPI_SCALE = 1.25;
     QT_QPA_PLATFORMTHEME = "gnome";
+    "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
   };
 
 }
