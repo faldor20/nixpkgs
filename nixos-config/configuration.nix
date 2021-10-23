@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   unstable = import <nixos-unstable> {
@@ -104,6 +104,7 @@ in {
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
+  networking.nameservers=["185.228.168.9" "1.1.1.1"];
   #networking.interfaces.wlp4s0.useDHCP = true;
 
   # Configure network proxy if necessary
@@ -119,10 +120,20 @@ in {
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
-
   services.xserver.displayManager.sddm.enable = true;
   #services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.pantheon.enable = true;
+  services.xserver.windowManager.i3={
+     enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+     ];
+  };
+
+virtualisation.libvirtd.enable=true;
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -204,6 +215,7 @@ services.pipewire = {
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [
+      "libvirtd"
       "wheel"
       "docker"
       "video"
@@ -254,11 +266,11 @@ services.pipewire = {
     #
     tlp
     powertop
+gnomeExtensions.gsconnect
 
     #
     #---endlaptop
   ];
-  #systemd.packages=[pkgs.sparkleshare];
   #docker
   virtualisation.docker.enable = true;
   #======FONTS=======
@@ -284,12 +296,48 @@ services.pipewire = {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  #======laptop=========
+  #=========================================laptop=========
   # services.clight={
   #  enable=true;
   #};
+	#
+	#
+	#
+
+  boot.initrd.kernelModules = [ "i915" "thinkpad_acpi" ];
+#enables framebuffer compression which slightly speeds up intel Igpu
+boot.kernelPrams=["i915.enable_fbc=1"]
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.opengl.enable=true;
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiIntel
+    vaapiVdpau
+    libvdpau-va-gl
+    intel-media-driver
+  ];
+
+
+
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+#stop throttling so damn much:
+
+services.throttled.enable=true;
+services.thinkfan={
+  enable=true;
+  levels=[
+      [0  0   53]
+      [1  47  55]
+      [2  49  57]
+      [3  50  58]
+      [6  52  59]
+      [7  55  68]
+      ["level auto" 60 32767]
+  ];
+};
  services.tlp = {
       enable = true;
       # extraConfig = ''
@@ -316,13 +364,13 @@ services.pipewire = {
         # DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
 
         # Set battery charge thresholds for main battery (BAT0) and auxiliary/Ultrabay battery (BAT1). Values are given as a percentage of the full capacity. A value of 0 is translated to the hardware defaults 96/100%.
-#        START_CHARGE_THRESH_BAT0=70;
-    #    STOP_CHARGE_THRESH_BAT0=90;
+        START_CHARGE_THRESH_BAT0=70;
+        STOP_CHARGE_THRESH_BAT0=80;
 
         # Control battery feature drivers:
-     #   NATACPI_ENABLE=1;
-     #   TPACPI_ENABLE=1;
-     #   TPSMAPI_ENABLE=1;
+        NATACPI_ENABLE=1;
+        TPACPI_ENABLE=1;
+        TPSMAPI_ENABLE=1;
 
         # Defines the disk devices the following parameters are effective for. Multiple devices are separated with blanks.
         DISK_DEVICES="nvme0n1";
@@ -449,7 +497,6 @@ services.pipewire = {
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
