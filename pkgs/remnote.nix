@@ -23,8 +23,13 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/bin $out/share/${pname} $out/share/applications
+
     cp -a ${appimageContents}/{locales,resources,usr} $out/share/${pname}
     cp -a ${appimageContents}/remnote.desktop $out/share/applications/${pname}.desktop
+
+
+    install -m 444 -D resources/app.asar $out/share/${pname}/app.asar
+
     substituteInPlace $out/share/applications/${pname}.desktop \
       --replace 'Exec=AppRun --no-sandbox %U' 'Exec=${pname}' \
       --replace 'Icon=remnote' Icon=$out/share/${pname}/usr/share/icons/hicolor/512x512/apps/remnote.png

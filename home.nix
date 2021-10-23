@@ -2,23 +2,12 @@
 let
 
   unstable = import <nixos-unstable> {
-    overlays = [ (import ./logseq.nix)
+    overlays = [
+      (import ./logseq.nix)
                  (import ./pkgs/default.nix) ];
 
     config = { allowUnfree = true; };
   };
-  #sparkleshare_autostart = (pkgs.makeAutostartItem { name = "sparkleshare"; package = pkgs.sparkleshare; srcPrefix = "org.kde.";  });
-  # vscodeInsiders = (unstable.vscode.override { isInsiders = true; }).overrideAttrs(oldAttrs: rec {
-  #                        name = "vscode-insiders-${version}";
-  #                        version = "1620235808";
-
-  #                        src = pkgs.fetchurl {
-  #                          name = "VSCode_latest_linux-x64.tar.gz";
-  #                          url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-  #                          sha256 = "1qlb8dpd0nk1vgf5sd3kykqz0cc6yv6rnhv5vqbc0wlx5x6ym1q8";
-  #                        };
-  #                      });
-  #
 
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
 in {
@@ -55,6 +44,9 @@ in {
   ];
 
   home.packages = with pkgs; [
+    (unstable.winetricks.override { wine = unstable.wineWowPackages.staging; })
+unstable.wineWowPackages.staging
+    gnome.file-roller
     #====system====
     #monitors
     nmon
@@ -67,12 +59,14 @@ in {
     htop
     gnome3.nautilus
     cinnamon.nemo
+gnomeExtensions.gsconnect
     dolphin
     wev
     jmtpfs
     st
     gnome.networkmanagerapplet
     powershell
+    partition-manager
     #======Nix Specific======
     nix-tree
     #======spelling=======
@@ -84,23 +78,35 @@ in {
     zathura
     mupdf
     qpdf
+    evince
 
-    unstable.sparkleshare
+    libreoffice
+    #==calculators===
+    qalculate-gtk
+    speedcrunch
+    geogebra6
+
     gnome.gnome-system-monitor
     unstable.zoom-us
     slurp
     pandoc
     catfish
     ncdu
+
     docker
+    vagrant
+
+    virt-manager
+
     wireshark
     gnome3.seahorse
     gnome3.dconf-editor
-    # sparkleshare_autostart
     # images:
     gimp
     inkscape
-    darktable
+    unstable.darktable
+    #unstable.digikam
+    unstable.geeqie
     mypaint
     krita
     feh
@@ -111,6 +117,7 @@ in {
     minetime
     #---email
     mailspring
+    gnome3.geary
     evolution
     roundcube
 
@@ -125,20 +132,25 @@ in {
     sshfs
     steam-run
     dotnetPackages.Paket
-    gcc
+    #gcc
+    #
+
+    unstable.swift
+    unstable.clang
+
     #=====ocaml=====
-    opam
+    unstable.opam
     ocaml
-    gnumake
-    gcc
-    pkg-config
-    openssl
-    m4
-    udev
-    libev
-    stdenv.cc
-    stdenv.cc.bintools
-    #unstable.nodePackages.esy
+    #gnumake
+    #gcc
+    #pkg-config
+    #openssl
+    #m4
+    #udev
+    #libev
+    #stdenv.cc
+    #stdenv.cc.bintools
+    unstable.nodePackages.esy
     #----ocaml-----
     #binutils
     #clang
@@ -146,39 +158,47 @@ in {
     #libudev
     #pkg-config
     #udev
+    #
+
     unstable.rustup
     unstable.rust-analyzer
     unstable.dotnet-sdk_5
     #sccache
-    unstable.nim
-    unstable.nimlsp
-clojure
-    jdk11
-leiningen
-    clojure-lsp
+    #unstable.nim
+    #unstable.nimlsp
 
-    julia-stable
+    #clojure
+    #jdk11
+    #leiningen
+    #clojure-lsp
+    #
+    chromedriver
+    
+    #julia-stable
     unstable.python3
-    unstable.pipenv
+    #unstable.pipenv
     unstable.python38Packages.pip
-    unstable.python38Packages.python-language-server
-    unstable.nodejs
-    unstable.nodePackages.pyright
-    unstable.nodePackages.yarn
+    #unstable.python38Packages.python-language-server
+    #unstable.nodejs
+    #unstable.nodePackages.pyright
+    #unstable.nodePackages.yarn
+    electron
     ffmpeg
     # ====EDITORS====
 
     unstable.vscode
-    jetbrains.idea-community
     #vscodeInsiders
     neovim-nightly
     vim
+    unstable.helix
     #====WRITING====
     unstable.obsidian
+    ghostwriter
+    unstable.obs-studio
     unstable.logseq
-    unstable.remnote
+    #unstable.remnote
     typora
-    xournalpp
+    unstable.xournalpp
     #====TOOLS for work:=====
     remmina
     # ====this is for managing nix-shell dependancies:====
@@ -187,6 +207,7 @@ leiningen
     #====Basic software====
     ark
     tixati
+    qbittorrent
     gnumeric
     visidata
     qutebrowser
@@ -218,7 +239,7 @@ leiningen
     #emacs
     pianobooster
     firefox-wayland
-    google-chrome
+    unstable.google-chrome
     #vivaldi
     #=====UNI=====
     octaveFull
@@ -246,8 +267,8 @@ leiningen
       package = unstable.gruvbox-dark-icons-gtk;
     };
     theme = {
-      name = "gruvbox-dark";
-      package = unstable.gruvbox-dark-gtk;
+      name = "vimix-dark";
+      package = unstable.vimix-gtk-themes;
     };
     # {
     # name = "Ant-Dracula";
@@ -264,6 +285,11 @@ leiningen
     size = 128;
   };
   services = {
+
+    kdeconnect={
+    enable=true;
+    indicator=true;};
+
     mpd = {
       enable = false;
       dataDir = "/home/eli/.mpd/data";
@@ -293,6 +319,7 @@ leiningen
     enableSshSupport = true;
   };
   services.network-manager-applet = { enable = true; };
+
   systemd.user = {
     services = {
       notes-syncer = {
@@ -316,7 +343,9 @@ leiningen
     };
   };
   home.sessionVariables = {
-    QT_SCALE_FACTOR = 1.25;
+    WLR_DRM_NO_MODIFIERS = 1;
+ #   QT_SCALE_FACTOR = 1.25;
+    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     GDK_DPI_SCALE = 1.25;
     QT_QPA_PLATFORMTHEME = "gnome";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
