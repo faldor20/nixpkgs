@@ -44,11 +44,12 @@ in {
   ];
 
   home.packages = with pkgs; [
-    (unstable.winetricks.override { wine = unstable.wineWowPackages.staging; })
-unstable.wineWowPackages.staging
+ #   (unstable.winetricks.override { wine = unstable.wineWowPackages.staging; })
+#unstable.wineWowPackages.staging
     gnome.file-roller
     #====system====
     #monitors
+    x11_ssh_askpass
     nmon
     bpytop
 
@@ -87,7 +88,7 @@ gnomeExtensions.gsconnect
     geogebra6
 
     gnome.gnome-system-monitor
-    unstable.zoom-us
+    zoom-us
     slurp
     pandoc
     catfish
@@ -118,8 +119,6 @@ gnomeExtensions.gsconnect
     #---email
     mailspring
     gnome3.geary
-    evolution
-    roundcube
 
     aerc
     #---timers---
@@ -128,29 +127,29 @@ gnomeExtensions.gsconnect
     httpie
     git-lfs
     gitkraken
-    unstable.libvmaf
+    #unstable.libvmaf
     sshfs
     steam-run
     dotnetPackages.Paket
     #gcc
     #
 
-    unstable.swift
-    unstable.clang
+ #   unstable.swift
+    #unstable.clang
 
     #=====ocaml=====
-    unstable.opam
-    ocaml
+    #unstable.opam
+    #ocaml
     #gnumake
     #gcc
     #pkg-config
-    #openssl
+    openssl
     #m4
     #udev
     #libev
     #stdenv.cc
     #stdenv.cc.bintools
-    unstable.nodePackages.esy
+   # unstable.nodePackages.esy
     #----ocaml-----
     #binutils
     #clang
@@ -159,10 +158,16 @@ gnomeExtensions.gsconnect
     #pkg-config
     #udev
     #
+    #---=====R====----
+    #
+    rstudio
+    R
+    rPackages.languageserver
+    #
 
-    unstable.rustup
-    unstable.rust-analyzer
-    unstable.dotnet-sdk_5
+    #unstable.rustup
+    #unstable.rust-analyzer
+    unstable.dotnet-sdk_6
     #sccache
     #unstable.nim
     #unstable.nimlsp
@@ -175,14 +180,14 @@ gnomeExtensions.gsconnect
     chromedriver
     
     #julia-stable
-    unstable.python3
+    python3
     #unstable.pipenv
-    unstable.python38Packages.pip
+    python38Packages.pip
     #unstable.python38Packages.python-language-server
     #unstable.nodejs
     #unstable.nodePackages.pyright
     #unstable.nodePackages.yarn
-    electron
+    #electron
     ffmpeg
     # ====EDITORS====
 
@@ -192,9 +197,9 @@ gnomeExtensions.gsconnect
     vim
     unstable.helix
     #====WRITING====
-    unstable.obsidian
+    #unstable.obsidian
     ghostwriter
-    unstable.obs-studio
+    #unstable.obs-studio
     unstable.logseq
     #unstable.remnote
     typora
@@ -239,10 +244,18 @@ gnomeExtensions.gsconnect
     #emacs
     pianobooster
     firefox-wayland
-    unstable.google-chrome
+    google-chrome
     #vivaldi
     #=====UNI=====
     octaveFull
+    #=====---GAMES---====
+    #
+    #
+    #
+    unstable.mindustry
+
+
+
   ];
   # for development in nix:
   services.lorri.enable = true;
