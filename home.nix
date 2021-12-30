@@ -1,15 +1,17 @@
 { config, pkgs, systemd, ... }:
 let
-
   unstable = import <nixos-unstable> {
     overlays = [
-      (import ./logseq.nix)
+      #(import ./logseq.nix)
                  (import ./pkgs/default.nix) ];
 
     config = { allowUnfree = true; };
   };
 
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
+buildDotnet = with unstable.dotnetCorePackages; combinePackages [
+    sdk_6_0
+  ];
 in {
   #Install instructions:
   #Pre install
@@ -44,8 +46,9 @@ in {
   ];
 
   home.packages = with pkgs; [
-    (unstable.winetricks.override { wine = unstable.wineWowPackages.staging; })
-unstable.wineWowPackages.staging
+    (winetricks.override { wine = wineWowPackages.staging; })
+    wineWowPackages.staging
+    playonlinux
     gnome.file-roller
     #====system====
     #monitors
@@ -59,14 +62,15 @@ unstable.wineWowPackages.staging
     htop
     gnome3.nautilus
     cinnamon.nemo
-gnomeExtensions.gsconnect
+   # gnomeExtensions.gsconnect
+    gsettings-desktop-schemas
     dolphin
     wev
     jmtpfs
     st
     gnome.networkmanagerapplet
     powershell
-    partition-manager
+    #partition-manager
     #======Nix Specific======
     nix-tree
     #======spelling=======
@@ -76,50 +80,51 @@ gnomeExtensions.gsconnect
     sway-contrib.grimshot # allows taking screeenshots within sway
     #pdf
     zathura
-    mupdf
-    qpdf
+   # mupdf
+   # qpdf
     evince
 
-    libreoffice
+    #libreoffice
     #==calculators===
-    qalculate-gtk
+    #qalculate-gtk
     speedcrunch
-    geogebra6
+    #geogebra6
 
     gnome.gnome-system-monitor
-    unstable.zoom-us
+    #unstable.zoom-us
     slurp
     pandoc
     catfish
     ncdu
 
     docker
-    vagrant
+    docker-compose
+    #vagrant
 
-    virt-manager
+    #virt-manager
 
-    wireshark
+    #wireshark
     gnome3.seahorse
     gnome3.dconf-editor
     # images:
-    gimp
-    inkscape
+    #gimp
+    #inkscape
     unstable.darktable
-    #unstable.digikam
-    unstable.geeqie
-    mypaint
-    krita
+    unstable.digikam
+    rawtherapee
+    geeqie
+    nomacs
+    #mypaint
+    #krita
     feh
     anki
     texlive.combined.scheme-small
     #====Organization====
     #---calenmdar--
-    minetime
+    #minetime
     #---email
     mailspring
     gnome3.geary
-    evolution
-    roundcube
 
     aerc
     #---timers---
@@ -135,12 +140,12 @@ gnomeExtensions.gsconnect
     #gcc
     #
 
-    unstable.swift
-    unstable.clang
+    #unstable.swift
+    #unstable.clang
 
     #=====ocaml=====
-    unstable.opam
-    ocaml
+    #unstable.opam
+    #ocaml
     #gnumake
     #gcc
     #pkg-config
@@ -156,13 +161,18 @@ gnomeExtensions.gsconnect
     #clang
     #sccache
     #libudev
-    #pkg-config
     #udev
     #
-
-    unstable.rustup
-    unstable.rust-analyzer
-    unstable.dotnet-sdk_5
+    pkg-config
+  unstable.rustup
+  unstable.rust-analyzer
+    #unstable.dotnet-sdk_5
+    #unstable.dotnet-sdk_6
+    buildDotnet
+    unstable.mono
+    openssl.dev
+    openssl.out
+    openssl
     #sccache
     #unstable.nim
     #unstable.nimlsp
@@ -182,7 +192,7 @@ gnomeExtensions.gsconnect
     #unstable.nodejs
     #unstable.nodePackages.pyright
     #unstable.nodePackages.yarn
-    electron
+    #electron
     ffmpeg
     # ====EDITORS====
 
@@ -190,14 +200,14 @@ gnomeExtensions.gsconnect
     #vscodeInsiders
     neovim-nightly
     vim
-    unstable.helix
+    #unstable.helix
     #====WRITING====
     unstable.obsidian
     ghostwriter
-    unstable.obs-studio
+    #unstable.obs-studio
     unstable.logseq
     #unstable.remnote
-    typora
+    #typora
     unstable.xournalpp
     #====TOOLS for work:=====
     remmina
@@ -225,7 +235,7 @@ gnomeExtensions.gsconnect
     unstable.discord
     #====highly specific utilities====
     #kinlde and ebooks
-    calibre
+    #calibre
     #fritzing
     #====theming====
     qgnomeplatform
@@ -235,14 +245,24 @@ gnomeExtensions.gsconnect
     brightnessctl
     wirelesstools # needed for wofi wifi script
 
-    emacsPgtkGcc
+    #emacsPgtkGcc
     #emacs
-    pianobooster
+    #pianobooster
     firefox-wayland
     unstable.google-chrome
     #vivaldi
     #=====UNI=====
     octaveFull
+
+
+
+    corectrl
+    ldmtool
+
+    lutris
+    
+    
+
   ];
   # for development in nix:
   services.lorri.enable = true;
@@ -291,7 +311,6 @@ gnomeExtensions.gsconnect
     indicator=true;};
 
     mpd = {
-      enable = false;
       dataDir = "/home/eli/.mpd/data";
       musicDirectory = "/home/eli/Music";
       extraConfig = ''
@@ -307,11 +326,11 @@ gnomeExtensions.gsconnect
       enable = true;
       notify = false;
     };
-    emacs={
-    enable=true;
-    package=pkgs.emacsPgtkGcc;
-    client={enable=true;};
-    };
+    #emacs={
+    #enable=true;
+    #package=pkgs.emacsPgtkGcc;
+    #client={enable=true;};
+    #};
   };
   services.gpg-agent = {
     enable = true;
@@ -343,10 +362,12 @@ gnomeExtensions.gsconnect
     };
   };
   home.sessionVariables = {
+    XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
     WLR_DRM_NO_MODIFIERS = 1;
  #   QT_SCALE_FACTOR = 1.25;
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-    GDK_DPI_SCALE = 1.25;
+#    GDK_DPI_SCALE = 1.25;
+    OCL_ICD_VENDORS="`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
     QT_QPA_PLATFORMTHEME = "gnome";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
   };
