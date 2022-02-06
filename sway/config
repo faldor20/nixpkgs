@@ -242,7 +242,7 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
      bindsym l exec --no-startup-id i3exit lock, mode "default"
      bindsym e exec swaymsg exit
-     bindsym s exec systemctl suspend
+     bindsym s exec systemctl suspend-then-hibernate
      bindsym h exec systemctl hibernate
      bindsym r exec systemctl reboot
      bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"

@@ -53,6 +53,7 @@ in {
     gnome.file-roller
     #====system====
     #monitors
+    x11_ssh_askpass
     nmon
     bpytop
 
@@ -138,15 +139,15 @@ in {
     httpie
     git-lfs
     gitkraken
-    unstable.libvmaf
+    #unstable.libvmaf
     sshfs
     steam-run
     dotnetPackages.Paket
     gcc
     gnumake
 
-    #unstable.swift
-    #unstable.clang
+ #   unstable.swift
+    unstable.clang
 
     #=====ocaml=====
     #unstable.opam
@@ -154,13 +155,13 @@ in {
     #gnumake
     #gcc
     #pkg-config
-    #openssl
+    openssl
     #m4
     #udev
     #libev
     #stdenv.cc
     #stdenv.cc.bintools
-    unstable.nodePackages.esy
+   # unstable.nodePackages.esy
     #----ocaml-----
     #binutils
     #clang
@@ -191,9 +192,9 @@ in {
     #chromedriver
     
     #julia-stable
-    unstable.python3
+    python3
     #unstable.pipenv
-    unstable.python38Packages.pip
+    python38Packages.pip
     #unstable.python38Packages.python-language-server
     #unstable.nodejs
     #unstable.nodePackages.pyright

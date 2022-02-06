@@ -16,7 +16,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Notes/Personal/pages/org-roam" )
+(setq org-directory "/home/eli/Notes/personal/pages" )
 (setq org-roam-directory org-directory)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -159,6 +159,21 @@ If REC is non-nil then do recursive search."
 (map! :after org-roam-mode
       :map org-roam-mode-map
       :i "C-S-i" 'org-roam-insert-immediate)
+;;---org roam UI----
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 
 ;;======editor=======
@@ -233,7 +248,7 @@ If REC is non-nil then do recursive search."
 ;;=== small utility stuff===
 ;;save undo history
 (setq-default indent-tabs-mode t)
-(setq indent-tabs-mode t)
+(setq indent-tabs-mdiffde t)
 (after! org
   (setq indent-tabs-mode t))
 ;;==========autocomplete========
