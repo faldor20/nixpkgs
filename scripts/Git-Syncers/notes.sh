@@ -1,8 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-cd ~/Notes/study
-~/bin/scripts/git-sync/git-sync
+cd $SCRIPT_DIR||exit
+cd ../  
 
-cd ~/Notes/personal
-~/bin/scripts/git-sync/git-sync
+syncer="$PWD/git-sync.sh"
+
+cd ~/Notes/study&&$syncer
+
+cd ~/Notes/personal&&$syncer
+echo "finished syncing"
 

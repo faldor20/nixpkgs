@@ -13,6 +13,7 @@ buildDotnet = with unstable.dotnetCorePackages; combinePackages [
     sdk_6_0
     sdk_5_0
   ];
+  local=./.;
 in {
   #Install instructions:
   #Pre install
@@ -143,7 +144,7 @@ in {
     sshfs
     steam-run
     dotnetPackages.Paket
-    gcc
+    #gcc
     gnumake
 
  #   unstable.swift
@@ -221,6 +222,8 @@ in {
     # ====this is for managing nix-shell dependancies:====
     direnv
     niv
+    rnix-lsp
+    nixpkgs-fmt
     #====Basic software====
     ark
     #tixati
@@ -356,7 +359,7 @@ in {
         Unit = { Description = "git syncer for notes and stuff"; };
         Service = {
           Type = "simple";
-          ExecStart = "/home/eli/bin/scripts/Git-Syncers/notes.sh";
+          ExecStart = builtins.toString(local+"/scripts/Git-Syncers/notes.sh");
         };
       };
     };
