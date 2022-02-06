@@ -6,8 +6,10 @@ cd ../
 
 syncer="$PWD/git-sync.sh"
 
-cd ~/Notes/study&&$syncer
+# adding -n and -s make it ad new files and turns on sync
 
-cd ~/Notes/personal&&$syncer
+cd ~/Notes/study&&$syncer -n -s
+
+cd ~/Notes/personal&&$syncer -n -s
 echo "finished syncing"
 
