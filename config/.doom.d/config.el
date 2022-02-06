@@ -87,13 +87,13 @@
 ;;===============org roam ========================
 ;;manually set subdirectty for notes:
 (defun +org-notes-location () "./org/roam")
-;;if a selectable subdiri s desired change "org0- notes-subdir" in the function below to "+org-notes-subdir"
-;;(setq org-roam-graph-executable "neato")
-(setq org-roam-capture-templates
-        '(("d" "default" plain "%?"
-           :target (file+head "${slug}.org"
-		     "#+title: ${title}\n#+TIME-STAMP: <>\n\n" )
-           :unnarrowed t)))
+;; if a selectable subdiri s desired change "org0- notes-subdir" in the function below to "+org-notes-subdir"
+;; (setq org-roam-graph-executable "neato")
+;; (setq org-roam-capture-templates
+;;         '(("d" "default" plain "%?"
+;;            :target (file+head "${slug}.org"
+;; 		     "#+title: ${title}\n#+TIME-STAMP: <>\n\n" )
+;;            :unnarrowed t)))
 
 (defun +org-notes-subdir ()
   "Select notes subdirectory."
@@ -168,7 +168,7 @@ If REC is non-nil then do recursive search."
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
+    :hook (after-init . org-roam-ui-mode)
     :config
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
@@ -266,3 +266,33 @@ If REC is non-nil then do recursive search."
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+;;#===org-roam devle====
+;; (use-package delve
+;;   :bind
+;;   ;; the main entry point, offering a list of all stored collections
+;;   ;; and of all open Delve buffers:
+;;   (("<f12>" . delve))
+;;   :config
+;;   ;; set meaningful tag names for the dashboard query
+;;   (setq delve-dashboard-tags '("Tag1" "Tag2"))
+;;  ;; turn on delve-minor-mode when org roam file is opened:
+;;   (delve-global-minor-mode))
+;; ;
+					;#===dendroam -org===
+(use-package! dendroam
+  :after org-roam)
+(setq org-roam-node-display-template "${hierarchy}:${title}")
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+         "%?"
+         :if-new (file+head "${slug}.org"
+                            "#+title: ${hierarchy-title}\n")
+         :immediate-finish t
+         :unnarrowed t)))
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :if-new (file+head "journal.daily.%<%Y.%m.%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))

@@ -58,3 +58,9 @@
 (package! tree-sitter-langs)
 (package! gruvbox-theme)
 (package! literate-calc-mode)
+
+
+(package! delve  :recipe (:host github :repo "publicimageltd/delve"))
+(package! lister)
+(package! dendroam
+  :recipe (:host github :repo "vicrdguez/dendroam" :branch "main"))
