@@ -14,6 +14,7 @@ buildDotnet = with unstable.dotnetCorePackages; combinePackages [
     sdk_5_0
   ];
   local=./.;
+  hostName = builtins.readFile ./nixos-config/Host;
 in {
   #Install instructions:
   #Pre install
@@ -32,6 +33,7 @@ in {
     ./sway/sway.nix
     ./git/git.nix
     ./general/email.nix
+    ./Hosts/${hostName}/default.nix
   ];
   #    ./neovim/neovim.nix
   nixpkgs.overlays = [
@@ -48,9 +50,7 @@ in {
   ];
 
   home.packages = with pkgs; [
-    #(winetricks.override { wine = wineWowPackages.staging; })
-    wineWowPackages.staging
-    playonlinux
+
     gnome.file-roller
     #====system====
     #monitors
@@ -64,6 +64,7 @@ in {
     sqlite
     htop
     gnome3.nautilus
+
     cinnamon.nemo
    # gnomeExtensions.gsconnect
     gsettings-desktop-schemas
@@ -72,7 +73,6 @@ in {
     jmtpfs
     st
     gnome.networkmanagerapplet
-    powershell
     #partition-manager
     #======Nix Specific======
     nix-tree
@@ -113,18 +113,8 @@ in {
 
     gnome3.seahorse
     gnome3.dconf-editor
-    # images:
-    #gimp
-    #inkscape
-    unstable.darktable
-    #unstable.digikam
-    #rawtherapee
-    geeqie
-    nomacs
-    #mypaint
-    #krita
-    feh
-    anki
+
+
     #texlive.combined.scheme-small
     #====Organization====
     #---calenmdar--
@@ -137,62 +127,11 @@ in {
     #---timers---
     gnome.pomodoro
     #==== development====
-    httpie
-    git-lfs
-    gitkraken
     #unstable.libvmaf
     sshfs
+
     steam-run
-    dotnetPackages.Paket
-    #gcc
-    gnumake
 
- #   unstable.swift
-    unstable.clang
-
-    #=====ocaml=====
-    #unstable.opam
-    #ocaml
-    #gnumake
-    #gcc
-    #pkg-config
-    openssl
-    #m4
-    #udev
-    #libev
-    #stdenv.cc
-    #stdenv.cc.bintools
-   # unstable.nodePackages.esy
-    #----ocaml-----
-    #binutils
-    #clang
-    #sccache
-    #libudev
-    #udev
-    #
-    pkg-config
-  unstable.rustup
-  unstable.rust-analyzer
-    #unstable.dotnet-sdk_5
-    #unstable.dotnet-sdk_6
-    buildDotnet
-    unstable.mono
-    
-    openssl.dev
-    openssl.out
-    openssl
-    #sccache
-    #unstable.nim
-    #unstable.nimlsp
-
-    #clojure
-    #jdk11
-    #leiningen
-    #clojure-lsp
-    #
-    #chromedriver
-    
-    #julia-stable
     python3
     #unstable.pipenv
     python38Packages.pip
@@ -219,6 +158,7 @@ in {
     #unstable.xournalpp
     #====TOOLS for work:=====
     #remmina
+
     # ====this is for managing nix-shell dependancies:====
     direnv
     niv
@@ -226,6 +166,8 @@ in {
     nixpkgs-fmt
     #====Basic software====
     ark
+
+    feh
     #tixati
     qbittorrent
     gnumeric
@@ -247,15 +189,12 @@ in {
     #kinlde and ebooks
     calibre
 
-    
+
     #fritzing
     #====theming====
     qgnomeplatform
     qtstyleplugin-kvantum-qt4
     libsForQt5.qtstyleplugin-kvantum
-    #=======laptop=====
-    brightnessctl
-    wirelesstools # needed for wofi wifi script
 
     #emacsPgtkGcc
     #emacs
@@ -265,15 +204,10 @@ in {
     #vivaldi
     #=====UNI=====
     #octaveFull
-
-
-
     corectrl
     ldmtool
-
     #lutris
-    
-    
+
 
   ];
   # for development in nix:
