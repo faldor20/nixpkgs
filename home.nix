@@ -100,6 +100,7 @@ gnomeExtensions.gsconnect
     virt-manager
 
     wireshark
+    minicom
     gnome3.seahorse
     gnome3.dconf-editor
     # images:
@@ -135,7 +136,7 @@ gnomeExtensions.gsconnect
     #
 
  #   unstable.swift
-    #unstable.clang
+    unstable.clang
 
     #=====ocaml=====
     #unstable.opam

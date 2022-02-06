@@ -16,7 +16,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "/home/eli/Notes/study/" )
+(setq org-directory "/home/eli/Notes/personal/pages" )
 (setq org-roam-directory org-directory)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -90,11 +90,9 @@
 ;;if a selectable subdiri s desired change "org0- notes-subdir" in the function below to "+org-notes-subdir"
 ;;(setq org-roam-graph-executable "neato")
 (setq org-roam-capture-templates
-        '(("d" "default" plain
-           #'org-roam-capture--get-point
-           "%?"
-           :file-name "%(+org-notes-location)/${slug}"
-           :head "#+TITLE: ${title}\n#+TIME-STAMP: <>\n\n"
+        '(("d" "default" plain "%?"
+           :target ( file+head "%(+org-notes-location)/${slug}.org"
+	   		"#+TITLE: ${title}\n#+TIME-STAMP: <>\n\n")
            :unnarrowed t)))
 
 (defun +org-notes-subdir ()
@@ -161,6 +159,21 @@ If REC is non-nil then do recursive search."
 (map! :after org-roam-mode
       :map org-roam-mode-map
       :i "C-S-i" 'org-roam-insert-immediate)
+;;---org roam UI----
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 
 ;;======editor=======

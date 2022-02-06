@@ -23,7 +23,8 @@
        ( company +childframe )           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       ;;ivy               ; a search engine for love and life
+       vertico           ; the search engine of the future
 
        :ui
        deft              ; notational velocity for Emacs
@@ -150,7 +151,7 @@
        (org
         +pretty
         +dragndrop
-        +roam)               ; organize your plain life in plain text
+        +roam2)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

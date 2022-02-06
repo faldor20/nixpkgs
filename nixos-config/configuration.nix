@@ -30,6 +30,15 @@ let
   };
 
 in {
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+   };
+
+
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
@@ -39,6 +48,17 @@ in {
   services.geoclue2.enable = true;
 
   services.gvfs.enable = true;
+
+
+
+  fileSystems."/mnt/shares/desktop"={
+device = "192.168.1.2:/share/main";
+    fsType="nfs";
+      options =["rw,user,exec,mode=7777,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"];
+  };
+
+
+
   # fileSystems."/mnt/bfs1" = {
   #      device = "//10.141.206.27/Transfers";
   #      fsType = "cifs";
@@ -103,8 +123,10 @@ in {
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
+  networking.interfaces.enp0s31f6.useDHCP = false;
   networking.nameservers=["185.228.168.9" "1.1.1.1"];
+  #systemd.services.systemd-udev-settle.enable = false;
+ # systemd.services.NetworkManager-wait-online.enable = false;
   #networking.interfaces.wlp4s0.useDHCP = true;
 
   # Configure network proxy if necessary
@@ -167,6 +189,7 @@ libappindicator # needed for tray icons
   services.interception-tools.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint];
 
   # Enable sound.
  # sound.enable = true;
@@ -296,6 +319,18 @@ gnomeExtensions.gsconnect
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+# =========Fixes for linux issues=========
+  boot.kernel.sysctl={
+    #This is to fix issues reading and wirting to slow drives. data loss, stalling and no progress. linus torvald says the defualts are stupid these are better
+    "vm.dirty_background_bytes" = 16777216;
+   "vm.dirty_bytes" = 50331648;
+  };
+
+
+
+
+
   #=========================================laptop=========
   # services.clight={
   #  enable=true;
@@ -304,11 +339,17 @@ gnomeExtensions.gsconnect
 	#
 	#
 
+
+
+
+
+
   boot.initrd.kernelModules = [ "i915" "thinkpad_acpi" ];
+  #initrd.availableKernelModules=["thinkpad_acpi"];
 #enables framebuffer compression which slightly speeds up intel Igpu
-boot.kernelPrams=["i915.enable_fbc=1"]
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+boot.kernelParams=["i915.enable_fbc=1"];
+  hardware.cpu.intel.updateMicrocode=true;
+  hardware.enableRedistributableFirmware=true;
   hardware.opengl.enable=true;
   hardware.opengl.extraPackages = with pkgs; [
     vaapiIntel
@@ -463,12 +504,18 @@ services.thinkfan={
       };
     };
   services.logind.lidSwitch = "suspend-then-hibernate";
-  systemd.sleep.extraConfig = "HibernationDelaySec=1000";
+	services.logind.extraConfig=''
+  IdleAction=suspend-then-hibernate
+  IdleActionSec=10min
+	'';
+  systemd.sleep.extraConfig = ''
+  HibernateDelaySec=900 #15 minutes
+'';
   systemd.timers.suspend-on-low-battery = {
     wantedBy = [ "multi-user.target" ];
     timerConfig = {
-      OnUnitActiveSec = "120";
-      OnBootSec= "120";
+      OnUnitActiveSec = "1020";
+      OnBootSec= "1020";
     };
   };
   systemd.services.suspend-on-low-battery =
