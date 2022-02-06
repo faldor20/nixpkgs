@@ -319,6 +319,11 @@ in {
     size = 128;
   };
   services = {
+    wlsunset={
+      enable=true;
+      latitude="-27.47";
+      longitude="153.02";
+    };
 
     kdeconnect={
     enable=true;
