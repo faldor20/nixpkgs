@@ -16,7 +16,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "/home/eli/Notes/study/" )
+(setq org-directory "~/Notes/Personal/pages/org-roam" )
 (setq org-roam-directory org-directory)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -90,11 +90,9 @@
 ;;if a selectable subdiri s desired change "org0- notes-subdir" in the function below to "+org-notes-subdir"
 ;;(setq org-roam-graph-executable "neato")
 (setq org-roam-capture-templates
-        '(("d" "default" plain
-           #'org-roam-capture--get-point
-           "%?"
-           :file-name "%(+org-notes-location)/${slug}"
-           :head "#+TITLE: ${title}\n#+TIME-STAMP: <>\n\n"
+        '(("d" "default" plain "%?"
+           :target (file+head "${slug}.org"
+		     "#+title: ${title}\n#+TIME-STAMP: <>\n\n" )
            :unnarrowed t)))
 
 (defun +org-notes-subdir ()

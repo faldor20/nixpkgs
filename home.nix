@@ -2,7 +2,7 @@
 let
   unstable = import <nixos-unstable> {
     overlays = [
-      #(import ./logseq.nix)
+      (import ./logseq.nix)
                  (import ./pkgs/default.nix) ];
 
     config = { allowUnfree = true; };
@@ -11,6 +11,7 @@ let
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
 buildDotnet = with unstable.dotnetCorePackages; combinePackages [
     sdk_6_0
+    sdk_5_0
   ];
 in {
   #Install instructions:
@@ -41,12 +42,12 @@ in {
     }))
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/emacs-overlay/archive/5c20a170b2e025b3a6309ee8ad38eb98cd62008d.tar.gz";
+        "https://github.com/nix-community/emacs-overlay/archive/1b89e8a7a9ce1185140103ab35b5bf48704cc6d7.tar.gz";
     }))
   ];
 
   home.packages = with pkgs; [
-    (winetricks.override { wine = wineWowPackages.staging; })
+    #(winetricks.override { wine = wineWowPackages.staging; })
     wineWowPackages.staging
     playonlinux
     gnome.file-roller
@@ -104,21 +105,25 @@ in {
     #virt-manager
 
     #wireshark
+    minicom
+    tio
+    cutecom
+
     gnome3.seahorse
     gnome3.dconf-editor
     # images:
     #gimp
     #inkscape
     unstable.darktable
-    unstable.digikam
-    rawtherapee
+    #unstable.digikam
+    #rawtherapee
     geeqie
     nomacs
     #mypaint
     #krita
     feh
     anki
-    texlive.combined.scheme-small
+    #texlive.combined.scheme-small
     #====Organization====
     #---calenmdar--
     #minetime
@@ -137,8 +142,8 @@ in {
     sshfs
     steam-run
     dotnetPackages.Paket
-    #gcc
-    #
+    gcc
+    gnumake
 
     #unstable.swift
     #unstable.clang
@@ -170,6 +175,7 @@ in {
     #unstable.dotnet-sdk_6
     buildDotnet
     unstable.mono
+    
     openssl.dev
     openssl.out
     openssl
@@ -182,7 +188,7 @@ in {
     #leiningen
     #clojure-lsp
     #
-    chromedriver
+    #chromedriver
     
     #julia-stable
     unstable.python3
@@ -202,25 +208,25 @@ in {
     vim
     #unstable.helix
     #====WRITING====
-    unstable.obsidian
+    #unstable.obsidian
     ghostwriter
     #unstable.obs-studio
     unstable.logseq
     #unstable.remnote
     #typora
-    unstable.xournalpp
+    #unstable.xournalpp
     #====TOOLS for work:=====
-    remmina
+    #remmina
     # ====this is for managing nix-shell dependancies:====
     direnv
     niv
     #====Basic software====
     ark
-    tixati
+    #tixati
     qbittorrent
     gnumeric
     visidata
-    qutebrowser
+    #qutebrowser
     # mpc_cli
     lastpass-cli
     #--Media---
@@ -229,13 +235,15 @@ in {
     #mpd
     pavucontrol
     playerctl
-    spotify-tui
+    #spotify-tui
     # ====communications====
-    teams
+    #teams
     unstable.discord
     #====highly specific utilities====
     #kinlde and ebooks
-    #calibre
+    calibre
+
+    
     #fritzing
     #====theming====
     qgnomeplatform
@@ -249,17 +257,17 @@ in {
     #emacs
     #pianobooster
     firefox-wayland
-    unstable.google-chrome
+    #unstable.google-chrome
     #vivaldi
     #=====UNI=====
-    octaveFull
+    #octaveFull
 
 
 
     corectrl
     ldmtool
 
-    lutris
+    #lutris
     
     
 
@@ -268,7 +276,9 @@ in {
   services.lorri.enable = true;
 
   programs = {
-    #emacs.enable = true;
+    emacs=
+    { enable = true;
+      package=pkgs.emacsPgtkGcc;};
     fish.enable = true;
     ncmpcpp = {
       enable = true;
@@ -326,11 +336,11 @@ in {
       enable = true;
       notify = false;
     };
-    #emacs={
-    #enable=true;
-    #package=pkgs.emacsPgtkGcc;
-    #client={enable=true;};
-    #};
+    emacs={
+    enable=true;
+    package=pkgs.emacsPgtkGcc;
+    client={enable=true;};
+    };
   };
   services.gpg-agent = {
     enable = true;

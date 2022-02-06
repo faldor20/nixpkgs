@@ -2,41 +2,80 @@
 
   {
     logseq = super.logseq.overrideAttrs (old: rec {
-      pname = "logseq";
-      version = "0.4.2";
+ pname = "logseq";
+  version = "0.5.4";
 
-      src = super.fetchurl {
-        url = "https://github.com/logseq/logseq/releases/download/${version}/logseq-linux-x64-${version}.AppImage";
-        sha256 = "0yf9d83gwlipswjrj07wj3s51lr2pji48xvcw1xllzj61dqx4h04";
-        name = "${pname}-${version}.AppImage";
-      };
+  src = super.fetchurl {
+    url = "https://github.com/logseq/logseq/releases/download/${version}/logseq-linux-x64-${version}.AppImage";
+    sha256 = "PGrx2JBYmp5vQ8jLpOfiT1T1+SNeRt0W5oHUjHNKuBE=";
+    name = "${pname}-${version}.AppImage";
+  };
 
-      appimageContents = super.appimageTools.extract {
-        name = "${pname}-${version}";
-        inherit src;
-      };
+  appimageContents = super.appimageTools.extract {
+    name = "${pname}-${version}";
+    inherit src;
+  };
 
-      dontUnpack = true;
-      dontConfigure = true;
-      dontBuild = true;
+  dontUnpack = true;
+  dontConfigure = true;
+  dontBuild = true;
 
-      nativeBuildInputs = [ self.makeWrapper ];
+  nativeBuildInputs = [ self.makeWrapper ];
 
-      installPhase = ''
+  installPhase = ''
     runHook preInstall
+
     mkdir -p $out/bin $out/share/${pname} $out/share/applications
     cp -a ${appimageContents}/{locales,resources} $out/share/${pname}
     cp -a ${appimageContents}/Logseq.desktop $out/share/applications/${pname}.desktop
+
     substituteInPlace $out/share/applications/${pname}.desktop \
       --replace Exec=Logseq Exec=${pname} \
       --replace Icon=Logseq Icon=$out/share/${pname}/resources/app/icons/logseq.png
+
     runHook postInstall
   '';
 
-      postFixup = ''
-    makeWrapper ${super.electron_13}/bin/electron $out/bin/${pname} \
+  postFixup = ''
+    makeWrapper ${super.electron}/bin/electron $out/bin/${pname} \
       --add-flags $out/share/${pname}/resources/app
   '';
+
+#      pname = "logseq";
+#      version = "0.5.4";
+#
+#      src = super.fetchurl {
+#        url = "https://github.com/logseq/logseq/releases/download/${version}/logseq-linux-x64-${version}.AppImage";
+#        sha256 = "sha256-PGrx2JBYmp5vQ8jLpOfiT1T1+SNeRt0W5oHUjHNKuBE=";
+#        name = "${pname}-${version}.AppImage";
+#      };
+#
+#      appimageContents = super.appimageTools.extract {
+#        name = "${pname}-${version}";
+#        inherit src;
+#      };
+#
+#      dontUnpack = true;
+#      dontConfigure = true;
+#      dontBuild = true;
+#
+#      nativeBuildInputs = [ self.makeWrapper ];
+#
+#      installPhase = ''
+#    runHook preInstall
+#    mkdir -p $out/bin $out/share/${pname} $out/share/applications
+#    cp -a ${appimageContents}/{locales,resources} $out/share/${pname}
+#    cp -a ${appimageContents}/Logseq.desktop $out/share/applications/${pname}.desktop
+#    substituteInPlace $out/share/applications/${pname}.desktop \
+#      --replace Exec=Logseq Exec=${pname} \
+#      --replace Icon=Logseq Icon=$out/share/${pname}/resources/app/icons/logseq.png
+#    runHook postInstall
+#  '';
+#
+#      postFixup = ''
+#    makeWrapper ${super.electron_13}/bin/electron $out/bin/${pname} \
+#      --add-flags $out/share/${pname}/resources/app
+#  '';
 
 #      version = "0.3.8";
 #      pname = "logseq";
