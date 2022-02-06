@@ -15,18 +15,23 @@ run(){
         sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration-backup.nix
     fi
 
-    export NIX_CONF_DIR=${nixHost?}
-    echo "conf is at $NIX_CONF_DIR"
-    nixos-rebuild boot
-    
+    export NIX_HOST="$nixHost"
+    echo "$NIX_HOST"
+    (echo -n "$nixHost")>$SCRIPT_DIR/nixos-config/Host
+    export NIX_PATH="nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=$SCRIPT_DIR/nixos-config/Common/common.nix:/nix/var/nix/profiles/per-user/root/channels"
+    echo "$NIX_PATH"
+    #export NIX_CONFIG=""
+    echo "conf is at $SCRIPT_DIR/nixos-config/Common/common.nix"
+    nixos-rebuild switch --show-trace
+
     exit 0
 }
 
 #Gets the paths and makes sure they all actually exist
 NIX_P=$(echo $SCRIPT_DIR/nixos-config/Hosts | xargs find 2> /dev/null)
 
-select file in $NIX_P 
-do 
- echo "selected $file"
+select path in  $SCRIPT_DIR/nixos-config/Hosts/*; do
+ file=${path##*/}
+ echo "Selected $file"
  run $file
 done

@@ -9,9 +9,22 @@ let
     overlays = [];
     config = { allowUnfree = true; };
   };
+  hostName= builtins.readFile ../Host ;
+  nix-hostsPath= ../Hosts ;
+  thisPath=./.;
+  hostConfig= nix-hostsPath+"/${hostName}/default.nix";
+  in {
 
-in {
+    environment.variables={
+      NIX_HOST= hostName;
+    };
     nix={
+      autoOptimiseStore = true;
+      nixPath = [
+        "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+        "nixos-config=${thisPath+"/common.nix"}"
+        "/nix/var/nix/profiles/per-user/root/channels"
+      ];
     package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -20,6 +33,7 @@ in {
 
   imports = [ # Include the results of the hardware scan.
     ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
+    hostConfig
   ];
 
   nix.trustedUsers = [ "root" "eli" ];

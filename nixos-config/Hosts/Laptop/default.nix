@@ -4,13 +4,12 @@ let
     config.allowUnfree = true;
   };
   setupName="Laptop";
+  ownPath=./. + "/default.nix";
 in
 {
-  
   imports=
   [
-    ../../Common/common.nix
-    ../../hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   fileSystems."/mnt/shares/desktop"={
