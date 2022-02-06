@@ -1,0 +1,1 @@
+/home/eli/.config/nixpkgs/config/.doom.d

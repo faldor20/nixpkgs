@@ -1,0 +1,12 @@
+#!/usr/bin/env oil
+while (true){
+
+var hour= $(date '+%H')
+echo $hour
+var min = $(date '+%M')
+if (hour > 21 ){ 
+shutdown 0
+}
+sleep 600
+}
+}
