@@ -1,4 +1,4 @@
-{ config, pkgs, systemd, ... }:
+{ config, pkgs, lib,systemd, ... }:
 let
   unstable = import <nixos-unstable> {
     overlays = [
@@ -9,12 +9,9 @@ let
   };
 
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
-buildDotnet = with unstable.dotnetCorePackages; combinePackages [
-    sdk_6_0
-    sdk_5_0
-  ];
   local=./.;
-  hostName = builtins.readFile ./nixos-config/Host;
+
+  hostName =  lib.strings.stringAsChars (x: if (x == "\n"||x==" "||x=="\r"||x=="\t") then "" else x) (lib.strings.fileContents (./nixos-config/Host));
 in {
   #Install instructions:
   #Pre install
@@ -33,7 +30,7 @@ in {
     ./sway/sway.nix
     ./git/git.nix
     ./general/email.nix
-    ./Hosts/${hostName}/default.nix
+    "${local}/Hosts/${hostName}/default.nix"
   ];
   #    ./neovim/neovim.nix
   nixpkgs.overlays = [
@@ -43,10 +40,10 @@ in {
       url =
         "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
     }))
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/emacs-overlay/archive/1b89e8a7a9ce1185140103ab35b5bf48704cc6d7.tar.gz";
-    }))
+    # (import (builtins.fetchTarball {
+    #   url =
+    #     "https://github.com/nix-community/emacs-overlay/archive/d09809f107cdecb1546cfdff2fd70a81a76c5d8d.tar.gz";
+    # }))
   ];
 
   home.packages = with pkgs; [
@@ -214,9 +211,9 @@ in {
   services.lorri.enable = true;
 
   programs = {
-    emacs=
-    { enable = true;
-      package=pkgs.emacsPgtkGcc;};
+    # emacs=
+    # { enable = true;
+    #   package=pkgs.emacsPgtkGcc;};
     fish.enable = true;
     ncmpcpp = {
       enable = true;
@@ -279,11 +276,11 @@ in {
       enable = true;
       notify = false;
     };
-    emacs={
-    enable=true;
-    package=pkgs.emacsPgtkGcc;
-    client={enable=true;};
-    };
+    # emacs={
+    # enable=true;
+    # package=pkgs.emacsPgtkGcc;
+    # client={enable=true;};
+    # };
   };
   services.gpg-agent = {
     enable = true;

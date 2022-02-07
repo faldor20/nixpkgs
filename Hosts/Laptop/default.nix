@@ -12,6 +12,8 @@ let
   };
   components=../../Components;
 in {
+
+  nixpkgs.config.allowUnfree = true;
   imports=[
     "${components}/uni.nix"
     "${components}/dev.nix"
@@ -19,5 +21,8 @@ in {
   home.packages = with pkgs; [
     brightnessctl
     wirelesstools # needed for wofi wifi script
+    octaveFull
+
+
   ];
 }

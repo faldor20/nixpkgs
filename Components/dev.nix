@@ -8,10 +8,12 @@ let
   };
 
 buildDotnet = with unstable.dotnetCorePackages; combinePackages [
-    sdk_6_0
+    #sdk_6_0
     sdk_5_0
   ];
 in {
+
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
 
     gitkraken
@@ -21,7 +23,6 @@ in {
     git-lfs
 
 
-    dotnetPackages.Paket
     #gcc
     gnumake
 
@@ -66,8 +67,10 @@ in {
     pkg-config
     unstable.rustup
     unstable.rust-analyzer
+
     #unstable.dotnet-sdk_5
     #unstable.dotnet-sdk_6
+    dotnetPackages.Paket
     buildDotnet
     unstable.mono
 

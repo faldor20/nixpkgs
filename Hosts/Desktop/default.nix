@@ -13,6 +13,8 @@ let
 
   components=../../Components;
 in {
+
+  nixpkgs.config.allowUnfree = true;
   imports=[
     "${components}/dev.nix"
   ];

@@ -11,7 +11,7 @@ let
     ];
     config = { allowUnfree = true; };
   };
-  hostName = builtins.readFile ../Host;
+  hostName =  lib.strings.stringAsChars (x: if (x == "\n"||x==" "||x=="\r"||x=="\t") then "" else x) (lib.strings.fileContents (../Host));
   nix-hostsPath = ../Hosts;
   thisPath = ./.;
   commonPath = builtins.toString (thisPath + "/common.nix");
@@ -26,9 +26,11 @@ let
     "iohk"
     ]; */
 
+home-man=(import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz}/nixos");
 in
 {
 
+  system.autoUpgrade.channel = "https://nixos.org/channels/nixos-21.11/";
   environment.variables = {
     NIX_HOST = hostName;
   };
@@ -46,11 +48,13 @@ in
   };
 
   imports = [
+    home-man
     # Include the results of the hardware scan.
     ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
     hostConfig
   ];
 
+ # home-manager.users.eli = import ../../home.nix;
   nix.trustedUsers = [ "root" "eli" ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;

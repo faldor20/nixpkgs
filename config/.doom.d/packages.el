@@ -64,3 +64,5 @@
 (package! lister)
 (package! dendroam
   :recipe (:host github :repo "vicrdguez/dendroam" :branch "main"))
+(package! vdiff)
+(package! vdiff-magit)
