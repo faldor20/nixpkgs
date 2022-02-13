@@ -3,6 +3,10 @@ let
   unstable = import <nixos-unstable> {
     overlays = [
       (import ./logseq.nix)
+(import (builtins.fetchTarball {
+       url =
+         "https://github.com/nix-community/emacs-overlay/archive/7a5bce1e455eb52f5bdaff575424f20dec439886.tar.gz";
+     }))
                  (import ./pkgs/default.nix) ];
 
     config = { allowUnfree = true; };
@@ -40,10 +44,7 @@ in {
       url =
         "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
     }))
-    # (import (builtins.fetchTarball {
-    #   url =
-    #     "https://github.com/nix-community/emacs-overlay/archive/d09809f107cdecb1546cfdff2fd70a81a76c5d8d.tar.gz";
-    # }))
+     
   ];
 
   home.packages = with pkgs; [
@@ -192,9 +193,7 @@ in {
     qgnomeplatform
     qtstyleplugin-kvantum-qt4
     libsForQt5.qtstyleplugin-kvantum
-
-    #emacsPgtkGcc
-    #emacs
+ 
     #pianobooster
     firefox-wayland
     #unstable.google-chrome
@@ -211,9 +210,9 @@ in {
   services.lorri.enable = true;
 
   programs = {
-    # emacs=
-    # { enable = true;
-    #   package=pkgs.emacsPgtkGcc;};
+      emacs=
+     { enable = true;
+       package=unstable.emacsPgtkGcc;}; 
     fish.enable = true;
     ncmpcpp = {
       enable = true;
@@ -276,11 +275,11 @@ in {
       enable = true;
       notify = false;
     };
-    # emacs={
-    # enable=true;
-    # package=pkgs.emacsPgtkGcc;
-    # client={enable=true;};
-    # };
+     emacs={
+     enable=true;
+     package=unstable.emacsPgtkGcc;
+     client={enable=true;};
+     }; 
   };
   services.gpg-agent = {
     enable = true;
