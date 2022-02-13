@@ -118,8 +118,10 @@ in
 
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Set your time zone.
-  time.timeZone = "Australia/Brisbane";
-
+  time={
+    timeZone = "Australia/Brisbane";
+    hardwareClockInLocalTime=true;
+  };
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
@@ -328,6 +330,15 @@ in
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  services.logind.lidSwitch = "suspend-then-hibernate";
+	services.logind.extraConfig=''
+IdleAction=suspend-then-hibernate
+IdleActionSec=10min
+	'';
+  systemd.sleep.extraConfig = ''
+HibernateDelaySec=900s
+'';
 
   # =========Fixes for linux issues=========
   boot.kernel.sysctl = {

@@ -205,14 +205,8 @@ services.thinkfan={
       #'';
       };
     };
-  services.logind.lidSwitch = "suspend-then-hibernate";
-	services.logind.extraConfig=''
-  IdleAction=suspend-then-hibernate
-  IdleActionSec=10min
-	'';
-  systemd.sleep.extraConfig = ''
-  HibernateDelaySec=900 #15 minutes
-'';
+ 
+
   systemd.timers.suspend-on-low-battery = {
     wantedBy = [ "multi-user.target" ];
     timerConfig = {
