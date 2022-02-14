@@ -7,10 +7,11 @@ let
     config = { allowUnfree = true; };
   };
 
-buildDotnet = with unstable.dotnetCorePackages; combinePackages [
-    #sdk_6_0
-    sdk_5_0
-  ];
+#buildDotnet = with unstable.dotnetCorePackages; combinePackages [
+#    sdk_6_0
+#    sdk_5_0
+#    aspnetcore_6_0
+#];
 in {
 
   nixpkgs.config.allowUnfree = true;
@@ -71,7 +72,8 @@ in {
     #unstable.dotnet-sdk_5
     #unstable.dotnet-sdk_6
     dotnetPackages.Paket
-    buildDotnet
+   # buildDotnet
+    dotnet-sdk
     unstable.mono
 
     openssl.dev
