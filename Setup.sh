@@ -11,6 +11,11 @@ run(){
     ln -s "$SCRIPT_DIR/config/nvim" ~/.config/nvim
     ln -s "$SCRIPT_DIR/config/.doom.d" ~/.doom.d
     ln -s "$SCRIPT_DIR/waybar" ~/.config/waybar
+    #must make an mpd data directory
+    mkdir ~/.mpd
+    mkdir ~/.mpd/data
+    mkdir ~/.mpd/data/playlists
+
     if test -f "/etc/nixos/configuration.nix"; then
         sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration-backup.nix
     fi
