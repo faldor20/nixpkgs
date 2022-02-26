@@ -281,7 +281,8 @@ If REC is non-nil then do recursive search."
 ;; ;
 					;#===dendroam -org===
 (use-package! dendroam
-  :after org-roam)
+  :after org-roam
+  :config)
 (setq org-roam-node-display-template "${hierarchy}:${title}")
 (setq org-roam-capture-templates
       '(("d" "default" plain
@@ -296,6 +297,15 @@ If REC is non-nil then do recursive search."
          "* %?"
          :if-new (file+head "journal.daily.%<%Y.%m.%d>.org"
                             "#+title: %<%Y-%m-%d>\n"))))
+;;If you want to show the current file hierarchy as an initial inpu
+;;when running the find command, you can use this function and then bind it to a key combination of your choice
+
+
+(defun dendroam-node-find-initial-input ()
+  (interactive)
+  (org-roam-node-find nil (if (buffer-file-name)
+                         (file-name-base (buffer-file-name))
+                         "")))
 
 ;;====VDIFF===
 (use-package! vdiff
@@ -327,3 +337,11 @@ If REC is non-nil then do recursive search."
   ;; Only use two buffers (working file and index) for vdiff-magit-stage
   ;; (setq vdiff-magit-stage-is-2way nil))
 )
+
+
+
+(use-package! evil-colemak-basics
+  :after evil
+  :init
+  (setq evil-colemak-basics-layout-mod `mod-dh) :config
+  (global-evil-colemak-basics-mode))

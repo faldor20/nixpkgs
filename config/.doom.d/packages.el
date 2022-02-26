@@ -66,3 +66,4 @@
   :recipe (:host github :repo "vicrdguez/dendroam" :branch "main"))
 (package! vdiff)
 (package! vdiff-magit)
+(package! evil-colemak-basics)

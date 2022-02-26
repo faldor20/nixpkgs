@@ -136,11 +136,19 @@ in
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
+  #i18n.defaultLocale = "en_US.UTF-8";
+
+  console = {
+     #useXkbConfig=true;
+     keyMap="colemak";
+   };
+services.xserver.layout = "us";
+ services.xserver.xkbVariant = "colemak";
+    # services.xserver = {
+    #   autoRepeatDelay = 200;
+    #   autoRepeatInterval = 25;
+    #   layout = "colemak/colemak";
+    # };
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
