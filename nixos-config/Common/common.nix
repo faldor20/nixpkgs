@@ -139,11 +139,11 @@ in
   #i18n.defaultLocale = "en_US.UTF-8";
 
   console = {
-     #useXkbConfig=true;
-     keyMap="colemak";
+     useXkbConfig=true;
+    # keyMap="colemak";
    };
 services.xserver.layout = "us";
- services.xserver.xkbVariant = "colemak";
+ services.xserver.xkbVariant = "colemak_dh";
     # services.xserver = {
     #   autoRepeatDelay = 200;
     #   autoRepeatInterval = 25;
