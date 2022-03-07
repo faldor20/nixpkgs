@@ -203,8 +203,6 @@ in {
     corectrl
     ldmtool
     #lutris
-
-
   ];
   # for development in nix:
   services.lorri.enable = true;
