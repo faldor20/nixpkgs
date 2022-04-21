@@ -25,10 +25,10 @@ for_window [app_id="gnome-pomodoro"] floating enable
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left n
-set $down e
-set $up i
-set $right o
+set $left h
+set $down j
+set $up k
+set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
@@ -80,6 +80,20 @@ output eDP-1 pos 5120,0 scale 1
 	    xkb_variant  colemak_dh
 	    xkb_options  grp:win_space_toggle
 
+}
+
+input "20555:4096:Eli_Eli_split_Keyboard"  {
+	    xkb_layout  us
+	    xkb_variant ""
+}
+input "20555:4096:Eli_Eli_split"  {
+	    xkb_layout  us
+	    xkb_variant ""
+
+}
+input "20555:4096:Eli_Eli_split_Consumer_Contro"  {
+	    xkb_layout  us
+	    xkb_variant ""
 }
 
 #======-----laptop----=====
@@ -190,7 +204,7 @@ input 1386:20637:Wacom_Pen_and_multitouch_sensor_Pen map_to_output eDP-1
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+t layout toggle split
+    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -256,7 +270,7 @@ mode "$mode_system" {
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
- bindsym $mod+shift+g mode "$mode_system"
+ bindsym $mod+shift+e mode "$mode_system"
 
 #multimedia keys
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -286,8 +300,8 @@ bindsym $mod+Down output eDP-1 transform 0
 bindsym $mod+z exec export QT_SCALE_FACTOR=1.25 && GDK_DPI_SCALE=1.25
 bindsym $mod+SHift+z exec export QT_SCALE_FACTOR=1 && GDK_DPI_SCALE=1
 #inhibit idle
-bindsym $mod+Shift+u  for_window [app_id="firefox"] inhibit_idle fullscreen
-bindsym $mod+u  for_window [app_id="firefox"] inhibit_idle none
+bindsym $mod+Shift+i  for_window [app_id="firefox"] inhibit_idle fullscreen
+bindsym $mod+i  for_window [app_id="firefox"] inhibit_idle none
 
 set $mode_screens mon1(1) mon2(2) mon3 (3) all(a)
 

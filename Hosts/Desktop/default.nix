@@ -17,7 +17,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   imports=[
     "${components}/dev.nix"
-    "${components}/CAD.nix"
+#    "${components}/CAD.nix"
   ];
   home.packages = with pkgs; [
 
