@@ -256,6 +256,11 @@ services.xserver.layout = "us";
       }
     '';
   };
+  # udev rules for connection of vial.
+ services.udev.extraRules = ''
+   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+  '';
+
   # Enable touchpad support (enabled default in most desktopManager).
   #services.xserver.libinput.enable = true;
 
