@@ -25,17 +25,17 @@ for_window [app_id="gnome-pomodoro"] floating enable
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+set $left n
+set $down e
+set $up i
+set $right o
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi -S drun -I -m -G
-set $wallpaper ~/Downloads/studio-ghibli.jpg
+set $wallpaper ~/Downloads/wallpaper.png
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -49,6 +49,10 @@ output * bg $wallpaper fill
 output HDMI-A-2 pos 0,0
 output DP-1 pos 2560,0
 output eDP-1 pos 5120,0 scale 1
+output eDP-1 pos 5120,0 scale 1
+output DP-2 scale 1.5
+output DP-3 adaptive_sync on, mode 3440x1440@144.000Hz
+
 #used to be 1.25
 ## Idle configuration
 #  Example configuration:
@@ -204,7 +208,7 @@ input 1386:20637:Wacom_Pen_and_multitouch_sensor_Pen map_to_output eDP-1
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+l layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -270,7 +274,7 @@ mode "$mode_system" {
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
- bindsym $mod+shift+e mode "$mode_system"
+ bindsym $mod+shift+g mode "$mode_system"
 
 #multimedia keys
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -300,8 +304,8 @@ bindsym $mod+Down output eDP-1 transform 0
 bindsym $mod+z exec export QT_SCALE_FACTOR=1.25 && GDK_DPI_SCALE=1.25
 bindsym $mod+SHift+z exec export QT_SCALE_FACTOR=1 && GDK_DPI_SCALE=1
 #inhibit idle
-bindsym $mod+Shift+i  for_window [app_id="firefox"] inhibit_idle fullscreen
-bindsym $mod+i  for_window [app_id="firefox"] inhibit_idle none
+bindsym $mod+Shift+u  for_window [app_id="firefox"] inhibit_idle fullscreen
+bindsym $mod+u  for_window [app_id="firefox"] inhibit_idle none
 
 set $mode_screens mon1(1) mon2(2) mon3 (3) all(a)
 

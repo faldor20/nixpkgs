@@ -110,7 +110,11 @@ in {
     cutecom
 
     gnome3.seahorse
+
     gnome3.dconf-editor
+
+
+    unstable.vial
 
 
     #texlive.combined.scheme-small
@@ -316,6 +320,7 @@ in {
 #    GDK_DPI_SCALE = 1.25;
     OCL_ICD_VENDORS="`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
     QT_QPA_PLATFORMTHEME = "gnome";
+    NIXOS_OZONE_WL = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
   };
 

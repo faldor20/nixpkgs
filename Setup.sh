@@ -7,19 +7,15 @@ run(){
             echo "Please run this script as root"
             exit 1
     fi
-    #This links the neovim config in here to te neovim config out there
-    ln -s "$SCRIPT_DIR/config/nvim" ~/.config/nvim
-    ln -s "$SCRIPT_DIR/config/.doom.d" ~/.doom.d
-    ln -s "$SCRIPT_DIR/waybar" ~/.config/waybar
-    #must make an mpd data directory
-    mkdir ~/.mpd
-    mkdir ~/.mpd/data
-    mkdir ~/.mpd/data/playlists
 
     if test -f "/etc/nixos/configuration.nix"; then
         sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration-backup.nix
     fi
 
+    echo 'Adding nixos unstable and updating, this could take a fair while'
+    nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+    nix-channel --update -v
+    
     export NIX_HOST="$nixHost"
     echo "$NIX_HOST"
     (echo -n "$nixHost")>$SCRIPT_DIR/nixos-config/Host
@@ -27,7 +23,7 @@ run(){
     echo "$NIX_PATH"
     #export NIX_CONFIG=""
     echo "conf is at $SCRIPT_DIR/nixos-config/Common/common.nix"
-    nixos-rebuild switch --show-trace
+    nixos-rebuild switch --show-trace 2>&1 | tee buildlog.log
 
     exit 0
 }

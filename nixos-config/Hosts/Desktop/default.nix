@@ -13,41 +13,42 @@ let
 
 in {
   imports = [ # Include the results of the hardware scan.
-  ./hardware-configuration.nix
+  /etc/nixos/hardware-configuration.nix
+  ./drives.nix
   #    ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
   ];
 
-  fileSystems."/mnt/Media"={
- 	device= "/dev/disk/by-uuid/88CCA3E2CCA3C930";
-  fsType = "ntfs"; 
-  options = [ "rw" "uid=100"];
+ # fileSystems."/mnt/Media"={
+ #	device= "/dev/disk/by-uuid/88CCA3E2CCA3C930";
+ # fsType = "ntfs"; 
+ # options = [ "rw" "uid=100"];
 
 
-  };
-  fileSystems."/mnt/Downloads"={
-  	device="/dev/disk/by-uuid/EEB6ED84B6ED4E21";
-    fsType = "ntfs";
-    options = [ "rw" "uid=100"];
-  };
-  #  fileSystems."/mnt/Windows"={
-    #       device="/dev/disk/by-uuid/0EE09F38E09F254D";
-    #
-    #  fsType = "ntfs";
-    #      options = [ "rw" "uid=100"];
-    # 	};
-    fileSystems."/mnt/GamesStorage"={
-      device=	"/dev/disk/by-uuid/A06E5D526E5D2278";
-      fsType = "ntfs";
-      options = [ "rw" "uid=100"];
-    };
+ # };
+ # fileSystems."/mnt/Downloads"={
+ # 	device="/dev/disk/by-uuid/EEB6ED84B6ED4E21";
+ #   fsType = "ntfs";
+ #   options = [ "rw" "uid=100"];
+ # };
+ # #  fileSystems."/mnt/Windows"={
+ #   #       device="/dev/disk/by-uuid/0EE09F38E09F254D";
+ #   #
+ #   #  fsType = "ntfs";
+ #   #      options = [ "rw" "uid=100"];
+ #   # 	};
+ #   fileSystems."/mnt/GamesStorage"={
+ #     device=	"/dev/disk/by-uuid/A06E5D526E5D2278";
+ #     fsType = "ntfs";
+ #     options = [ "rw" "uid=100"];
+ #   };
 
 
-    services.nfs.server={
-      enable=true;
-      exports=''
-	      /share/main *(rw,nohide,no_subtree_check)
-	    '';
-    };
+ #   services.nfs.server={
+ #     enable=true;
+ #     exports=''
+ #             /share/main *(rw,nohide,no_subtree_check)
+ #           '';
+ #   };
 
 
     #boot.supportedFilesystems = [ "ntfs" ];
@@ -69,6 +70,7 @@ in {
     #===================================DESKTOP===================================================
       #
       #
+      boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.initrd.kernelModules = [ "amdgpu" ];
       hardware.opengl.extraPackages = with unstable; [
         rocm-opencl-icd
@@ -81,18 +83,16 @@ in {
       hardware.opengl.driSupport32Bit = true;
 
 
-      #setup swapfile on btrfs
-      systemd.services = {
-        create-swapfile = {
-          serviceConfig.Type = "oneshot";
-          wantedBy = [ "swap-swapfile.swap" ];
-          script = ''
-            ${pkgs.coreutils}/bin/truncate -s 0 /swap/swapfile
-            ${pkgs.e2fsprogs}/bin/chattr +C /swap/swapfile
-            ${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile compression none
-          '';
-        };
-      };
-
-
+#      #setup swapfile on btrfs
+#      systemd.services = {
+#        create-swapfile = {
+#          serviceConfig.Type = "oneshot";
+#          wantedBy = [ "swap-swapfile.swap" ];
+#          script = ''
+#            ${pkgs.coreutils}/bin/truncate -s 0 /swap/swapfile
+#            ${pkgs.e2fsprogs}/bin/chattr +C /swap/swapfile
+#            ${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile compression none
+#          '';
+#        };
+#      };
 }

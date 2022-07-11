@@ -1,0 +1,712 @@
+building Nix...
+building the system configuration...
+these derivations will be built:
+  /nix/store/ykg96hd6s833piyprhk9p40mmylbzqr8-system-path.drv
+  /nix/store/25pk9nbdzfkvyxfrm2wg7whs5d321kxw-dbus-1.drv
+  /nix/store/318rigj6gn4cz71wr53zv8215cfb0nqh-system-generators.drv
+  /nix/store/3zgxgvqwlxzwpa2f3r3nv7cds20i64gd-system-shutdown.drv
+  /nix/store/7h0pqvwaz8nnqgxj26lcrmzas1n7ks1k-unit-polkit.service.drv
+  /nix/store/hrfr261cp2k21yk69mibxnn9anb8jgya-stage-2-init.sh.drv
+  /nix/store/jlvzncx800rvmlww1ffcjp76nv9jml1b-unit-dbus.service.drv
+  /nix/store/zs5bfchh2wy0f61snfbbzna2by98j05n-linux-5.10.115-modules-shrunk.drv
+  /nix/store/ywafd6ma71v35rfx9jhjqk0hj6am8m5c-stage-1-init.sh.drv
+  /nix/store/jnw55fkyb27fkjbdg29vy1vlizbgkw6q-initrd-linux-5.10.115.drv
+  /nix/store/mwsx0vl46hpv7x34pnz6gj7bbhzsk7pi-user-units.drv
+  /nix/store/mxhgfgbvg675z83s2y6fhq3616llkdw4-unit-dbus.service.drv
+  /nix/store/ns9aksdm1hmhmyxfnh8j42mzwavxx792-unit-systemd-fsck-.service.drv
+  /nix/store/y2ycjzhgm4rx2bvi47lsy2jr5cnndszc-system-units.drv
+  /nix/store/ychaq4xhzbkyz5xm67n9kp0jphd33mb5-etc.drv
+  /nix/store/zbk2f8qgw2kqjck2rzc97dgsp72kwnqw-users-groups.json.drv
+  /nix/store/qxczj2yi9fnfcx1n0s8yfnf5isl7bgcb-nixos-system-eli-nixos-21.11.337609.685d243d971.drv
+building '/nix/store/hrfr261cp2k21yk69mibxnn9anb8jgya-stage-2-init.sh.drv'...
+building '/nix/store/ykg96hd6s833piyprhk9p40mmylbzqr8-system-path.drv'...
+building '/nix/store/zbk2f8qgw2kqjck2rzc97dgsp72kwnqw-users-groups.json.drv'...
+building '/nix/store/318rigj6gn4cz71wr53zv8215cfb0nqh-system-generators.drv'...
+building '/nix/store/3zgxgvqwlxzwpa2f3r3nv7cds20i64gd-system-shutdown.drv'...
+building '/nix/store/zs5bfchh2wy0f61snfbbzna2by98j05n-linux-5.10.115-modules-shrunk.drv'...
+kernel version is 5.10.115
+root module: nvme
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crct10dif-pclmul.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_generic.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/crc-t10dif.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/block/t10-pi.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/nvme/host/nvme-core.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/nvme/host/nvme.ko.xz
+root module: xhci_pci
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-hcd.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-pci-renesas.ko.xz
+warning: creating dangling symlink `/nix/store/n1434spq25gq8yghyp8lka3xr1qy8jm9-system-path//bin/unix_chkpwd' -> `/nix/store/2qr128b9s8ygaml1dblrw9fwb28716qx-linux-pam-1.5.1/bin/unix_chkpwd' -> `/run/wrappers/bin/unix_chkpwd'
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-pci.ko.xz
+warning: creating dangling symlink `/nix/store/n1434spq25gq8yghyp8lka3xr1qy8jm9-system-path//sbin/unix_chkpwd' -> `/nix/store/2qr128b9s8ygaml1dblrw9fwb28716qx-linux-pam-1.5.1/sbin/unix_chkpwd' -> `/run/wrappers/bin/unix_chkpwd'
+warning: collision between `/nix/store/ib1q213vl89qkgk3njz5frcf2vmab6ng-xwayland-21.1.3/lib/xorg/protocol.txt' and `/nix/store/8rvmyymchjwdzqnhcaqklqjrdnmf59v0-xorg-server-1.20.13/lib/xorg/protocol.txt'
+warning: collision between `/nix/store/ib1q213vl89qkgk3njz5frcf2vmab6ng-xwayland-21.1.3/share/man/man1/Xserver.1.gz' and `/nix/store/8rvmyymchjwdzqnhcaqklqjrdnmf59v0-xorg-server-1.20.13/share/man/man1/Xserver.1.gz'
+root module: ahci
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libahci.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/ahci.ko.xz
+root module: usbhid
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/usbhid/usbhid.ko.xz
+root module: usb_storage
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/storage/usb-storage.ko.xz
+root module: sd_mod
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crct10dif-pclmul.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_generic.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/crc-t10dif.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/block/t10-pi.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/sd_mod.ko.xz
+root module: md_mod
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/md-mod.ko.xz
+root module: raid0
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/md-mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/raid0.ko.xz
+root module: raid1
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/md-mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/raid1.ko.xz
+root module: raid10
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/md-mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/raid10.ko.xz
+root module: raid456
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crc32c-intel.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crc32c_generic.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/libcrc32c.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/raid6/raid6_pq.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/xor.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/md-mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/async_tx/async_tx.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/async_tx/async_xor.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/async_tx/async_pq.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/async_tx/async_memcpy.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/async_tx/async_raid6_recov.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/raid456.ko.xz
+root module: ext2
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/fs/mbcache.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/fs/ext2/ext2.ko.xz
+root module: ext4
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/fs/jbd2/jbd2.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/fs/mbcache.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/crc16.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crc32c-intel.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crc32c_generic.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/fs/ext4/ext4.ko.xz
+root module: crc32c
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crc32c-intel.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crc32c_generic.ko.xz
+root module: xxhash_generic
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/xxhash_generic.ko.xz
+root module: blake2b_generic
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/blake2b_generic.ko.xz
+root module: sha256_generic
+  builtin dependency: sha256_generic
+  builtin dependency: sha256_generic
+created 7661 symlinks in user environment
+root module: ahci
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libahci.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/ahci.ko.xz
+root module: sata_nv
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/sata_nv.ko.xz
+root module: sata_via
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/sata_via.ko.xz
+root module: sata_sis
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/pata_sis.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/sata_sis.ko.xz
+root module: sata_uli
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/sata_uli.ko.xz
+gtk-update-icon-cache: Cache file created successfully.
+root module: ata_piix
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/ata_piix.ko.xz
+root module: pata_marvell
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/libata.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/ata/pata_marvell.ko.xz
+root module: sd_mod
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crct10dif-pclmul.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crct10dif_generic.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/crc-t10dif.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/block/t10-pi.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/sd_mod.ko.xz
+root module: sr_mod
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/cdrom/cdrom.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/scsi_mod.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/scsi/sr_mod.ko.xz
+root module: mmc_block
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/mmc/core/mmc_core.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/mmc/core/mmc_block.ko.xz
+root module: uhci_hcd
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-hcd.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-pci.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/uhci-hcd.ko.xz
+root module: ehci_hcd
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-hcd.ko.xz
+root module: ehci_pci
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-hcd.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-pci.ko.xz
+root module: ohci_hcd
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ohci-hcd.ko.xz
+root module: ohci_pci
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ohci-hcd.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-hcd.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ehci-pci.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/ohci-pci.ko.xz
+root module: xhci_hcd
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-hcd.ko.xz
+root module: xhci_pci
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-hcd.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-pci-renesas.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-pci.ko.xz
+root module: usbhid
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/usbhid/usbhid.ko.xz
+root module: hid_generic
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-generic.ko.xz
+root module: hid_lenovo
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/leds/led-class.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-lenovo.ko.xz
+root module: hid_apple
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-apple.ko.xz
+root module: hid_roccat
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-roccat.ko.xz
+root module: hid_logitech_hidpp
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-logitech-hidpp.ko.xz
+root module: hid_logitech_dj
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/common/usb-common.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/core/usbcore.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/usbhid/usbhid.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-logitech-dj.ko.xz
+root module: hid_microsoft
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/ff-memless.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid.ko.xz
+building '/nix/store/25pk9nbdzfkvyxfrm2wg7whs5d321kxw-dbus-1.drv'...
+building '/nix/store/7h0pqvwaz8nnqgxj26lcrmzas1n7ks1k-unit-polkit.service.drv'...
+building '/nix/store/ns9aksdm1hmhmyxfnh8j42mzwavxx792-unit-systemd-fsck-.service.drv'...
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/hid/hid-microsoft.ko.xz
+root module: pcips2
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/serio/serio.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/serio/pcips2.ko.xz
+root module: atkbd
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/serio/serio.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/serio/libps2.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/keyboard/atkbd.ko.xz
+root module: i8042
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/serio/serio.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/input/serio/i8042.ko.xz
+root module: rtc_cmos
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/rtc/rtc-cmos.ko.xz
+root module: amdgpu
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/i2c/i2c-core.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/video/backlight/backlight.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/video/fbdev/core/sysimgblt.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/video/fbdev/core/sysfillrect.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/video/fbdev/core/syscopyarea.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/video/fbdev/core/fb_sys_fops.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/i2c/algos/i2c-algo-bit.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/char/agp/agpgart.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/drm.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/drm_kms_helper.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/ttm/ttm.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/scheduler/gpu-sched.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/iommu/amd/iommu_v2.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz
+root module: btrfs
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/arch/x86/crypto/crc32c-intel.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/crc32c_generic.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/libcrc32c.ko.xz
+building '/nix/store/jlvzncx800rvmlww1ffcjp76nv9jml1b-unit-dbus.service.drv'...
+building '/nix/store/mxhgfgbvg675z83s2y6fhq3616llkdw4-unit-dbus.service.drv'...
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/lib/raid6/raid6_pq.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/xor.ko.xz
+  dependency already copied: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/crypto/blake2b_generic.ko.xz
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/fs/btrfs/btrfs.ko.xz
+root module: dm_mod
+  copying dependency: /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/md/dm-mod.ko.xz
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-pci.ko.xz: renesas_usb_fw.mem
+WARNING: missing firmware renesas_usb_fw.mem for module /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/usb/host/xhci-pci.ko.xz
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_gpu_info.bin
+building '/nix/store/mwsx0vl46hpv7x34pnz6gj7bbhzsk7pi-user-units.drv'...
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_gpu_info.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_mec.bin
+building '/nix/store/y2ycjzhgm4rx2bvi47lsy2jr5cnndszc-system-units.drv'...
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/si58_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_k_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_k_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_k_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_mc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_sos.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_ta.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_asd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_mec2_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_mec_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_me_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_pfp_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_ce_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_mec2_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_mec_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_me_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_pfp_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_ce_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_mec2_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_mec_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_me_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_pfp_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_ce_2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_kicker_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_rlc_am4.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_mec2_wks.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_mec_wks.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_me_wks.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_pfp_wks.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_ce_wks.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_rlc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_mec2.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_mec.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_me.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_pfp.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_ce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_sdma1.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_sdma.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_mes.bin
+WARNING: missing firmware amdgpu/sienna_cichlid_mes.bin for module /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_mes.bin
+WARNING: missing firmware amdgpu/navi10_mes.bin for module /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_uvd.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_vce.bin
+building '/nix/store/ychaq4xhzbkyz5xm67n9kp0jphd33mb5-etc.drv'...
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/stoney_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/carrizo_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/mullins_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kaveri_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/kabini_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_vce.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven2_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/picasso_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_vcn.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi14_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi10_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/arcturus_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega20_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega12_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_acg_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vega10_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/vegam_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris12_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_k2_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_smc_sk.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris11_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_k2_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_smc_sk.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/polaris10_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/fiji_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tonga_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/topaz_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hawaii_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/bonaire_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/banks_k_2_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/hainan_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/oland_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/verde_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_k_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/pitcairn_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/tahiti_smc.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navi12_dmcu.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/raven_dmcu.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/green_sardine_dmcub.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/navy_flounder_dmcub.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/sienna_cichlid_dmcub.bin
+firmware for /nix/store/sg7ja8qk34s23lsq509pxcj15mb7aj76-linux-5.10.115-modules/lib/modules/5.10.115/kernel/drivers/gpu/drm/amd/amdgpu/amdgpu.ko.xz: amdgpu/renoir_dmcub.bin
+building '/nix/store/ywafd6ma71v35rfx9jhjqk0hj6am8m5c-stage-1-init.sh.drv'...
+checking syntax
+building '/nix/store/jnw55fkyb27fkjbdg29vy1vlizbgkw6q-initrd-linux-5.10.115.drv'...
+143657 blocks
+building '/nix/store/qxczj2yi9fnfcx1n0s8yfnf5isl7bgcb-nixos-system-eli-nixos-21.11.337609.685d243d971.drv'...
+stopping the following units: dhcpcd.service, network-addresses-enp4s0.service, network-setup.service, nscd.service, systemd-modules-load.service, systemd-sysctl.service, systemd-udevd-control.socket, systemd-udevd-kernel.socket, systemd-udevd.service
+NOT restarting the following changed units: systemd-fsck@dev-disk-by\x2duuid-2475\x2d4A6F.service
+activating the configuration...
+reviving group 'geoclue' with GID 997
+reviving group 'rtkit' with GID 996
+reviving group 'sshd' with GID 995
+reviving group 'xrdp' with GID 994
+reviving user 'geoclue' with UID 999
+reviving user 'nm-iodine' with UID 998
+reviving user 'rtkit' with UID 997
+reviving user 'sshd' with UID 996
+reviving user 'xrdp' with UID 995
+setting up /etc...
+removing obsolete symlink ‘/etc/dhcpcd.exit-hook’...
+removing obsolete symlink ‘/etc/systemd/network/40-enp4s0.link’...
+reloading user units for root...
+setting up tmpfiles
+reloading the following units: dbus.service, reload-systemd-vconsole-setup.service
+starting the following units: network-setup.service, nscd.service, systemd-modules-load.service, systemd-sysctl.service, systemd-udevd-control.socket, systemd-udevd-kernel.socket
+the following new units were started: NetworkManager-dispatcher.service, NetworkManager-wait-online.service, NetworkManager.service, alsa-store.service, cups.socket, docker.service, docker.socket, interception-tools.service, libvirt-guests.service, libvirtd-admin.socket, libvirtd-ro.socket, libvirtd.service, libvirtd.socket, machine.slice, mpd.service, sshd.service, sys-devices-virtual-net-docker0.device, sys-devices-virtual-net-virbr0.device, sys-subsystem-net-devices-docker0.device, sys-subsystem-net-devices-virbr0.device, systemd-hostnamed.service, systemd-machined.service, systemd-vconsole-setup.service, var-lib-docker-btrfs.mount, virt-guest-shutdown.target, virtlockd.socket, virtlogd.socket, xrdp-sesman.service, xrdp.service

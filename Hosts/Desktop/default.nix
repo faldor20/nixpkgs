@@ -16,6 +16,7 @@ in {
 
   nixpkgs.config.allowUnfree = true;
   imports=[
+    "${components}/photos.nix"
     "${components}/dev.nix"
 #    "${components}/CAD.nix"
   ];

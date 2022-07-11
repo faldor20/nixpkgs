@@ -16,6 +16,7 @@ in {
   nixpkgs.config.allowUnfree = true;
   imports=[
     "${components}/uni.nix"
+    
     "${components}/dev.nix"
   ];
   home.packages = with pkgs; [

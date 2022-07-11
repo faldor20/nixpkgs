@@ -30,7 +30,7 @@ home-man=(import "${builtins.fetchTarball https://github.com/rycee/home-manager/
 in
 {
 
-  system.autoUpgrade.channel = "https://nixos.org/channels/nixos-21.11/";
+ # system.autoUpgrade.channel = "https://nixos.org/channels/nixos-21.11/";
   environment.variables = {
     NIX_HOST = hostName;
   };
@@ -41,10 +41,10 @@ in
       "nixos-config=${commonPath}"
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+ #   package = pkgs.nixFlakes;
+ #   extraOptions = ''
+ #     experimental-features = nix-command flakes
+ #   '';
   };
 
   imports = [
@@ -54,7 +54,7 @@ in
     hostConfig
   ];
 
- # home-manager.users.eli = import ../../home.nix;
+ home-manager.users.eli = import ../../home.nix;
   nix.trustedUsers = [ "root" "eli" ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
@@ -138,12 +138,12 @@ in
   # Select internationalisation properties.
   #i18n.defaultLocale = "en_US.UTF-8";
 
-  console = {
-     useXkbConfig=true;
+ # console = {
+ #    useXkbConfig=true;
     # keyMap="colemak";
-   };
-services.xserver.layout = "us";
- services.xserver.xkbVariant = "colemak_dh";
+ #  };
+#services.xserver.layout = "us";
+# services.xserver.xkbVariant = "colemak_dh";
     # services.xserver = {
     #   autoRepeatDelay = 200;
     #   autoRepeatInterval = 25;
@@ -197,22 +197,23 @@ services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
   #--This enables caps2esc--
   # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
-  services.interception-tools = {
-    enable = true;
-    plugins = [ pkgs.interception-tools-plugins.caps2esc ];
-    udevmonConfig =''
-        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc  | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-          DEVICE:
-            EVENTS:
-              EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-     '';
+#  services.interception-tools = {
+#    enable = true;
+#    plugins = [ pkgs.interception-tools-plugins.caps2esc ];
+#    udevmonConfig =''
+#        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc  | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+#          DEVICE:
+#            EVENTS:
+#              EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+#     '';
+
 #      ''
 #      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
 #      DEVICE:
 #        EVENTS:
 #          EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
 #    '';
-  };
+#  };
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.gutenprint ];

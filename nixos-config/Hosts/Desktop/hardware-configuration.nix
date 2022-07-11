@@ -8,35 +8,40 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9b238d7f-017c-4b8b-8369-fe60ac7cecbf";
+    { device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
       fsType = "btrfs";
+      options = [ "compress=zstd" "subvol=root" ];
+
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "subvol=home" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" "subvol=nix" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6F3F-4610";
+    { device = "/dev/disk/by-uuid/2475-4A6F";
       fsType = "vfat";
     };
 
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/a4d6b537-91fb-470d-a722-d5890ac42abc"; }
+    ];
 
-
-  fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/9b238d7f-017c-4b8b-8369-fe60ac7cecbf";
-    fsType = "btrfs";
-    options = [ "subvol=swap" "compress=lzo" "noatime" ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
-  };
-
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
-  }];
-
-
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 }
