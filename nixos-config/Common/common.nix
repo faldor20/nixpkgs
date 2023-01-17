@@ -270,6 +270,7 @@ in
     isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [
+      "dialout"
       "libvirtd"
       "wheel"
       "docker"

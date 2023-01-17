@@ -24,6 +24,7 @@ in {
   #need to install cachix and run cachix use mjbach
 
   programs.home-manager.enable = true;
+
   nixpkgs.config = {
     virtualisation.docker.enable = true;
     allowUnfree = true;
@@ -42,7 +43,7 @@ in {
 
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+        "https://github.com/nix-community/neovim-nightly-overlay/archive/28de4ebfc0ed628bfdfea83bd505ab6902a5c138.tar.gz";
     }))
      
   ];
@@ -149,12 +150,13 @@ in {
     #vscodeInsiders
     neovim-nightly
     vim
-    #unstable.helix
+    unstable.helix
     #====WRITING====
     #unstable.obsidian
     ghostwriter
     #unstable.obs-studio
-    unstable.logseq
+    #unstable.logseq
+    #unstable.remnote
     #unstable.remnote
     #typora
     #unstable.xournalpp
@@ -200,7 +202,7 @@ in {
  
     #pianobooster
     firefox-wayland
-    #unstable.google-chrome
+    google-chrome
     #vivaldi
     #=====UNI=====
     #octaveFull
@@ -213,8 +215,9 @@ in {
 
   programs = {
       emacs=
-     { enable = true;
-       package=unstable.emacsPgtkGcc;}; 
+     { enable = false;
+     package=unstable.emacsPgtkGcc;
+   }; 
     fish.enable = true;
     ncmpcpp = {
       enable = true;
@@ -278,7 +281,7 @@ in {
       notify = false;
     };
      emacs={
-     enable=true;
+     enable=false;
      package=unstable.emacsPgtkGcc;
      client={enable=true;};
      }; 
