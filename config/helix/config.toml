@@ -1,0 +1,65 @@
+theme="monokai_pro"
+
+[editor]
+line-number = "relative"
+mouse = false
+auto-save=true
+idle-timeout=50
+#true-color=true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = true
+git-ignore=true
+
+
+[keys.normal]
+n="move_char_left"
+e="move_line_down"
+i="move_line_up"
+o="move_char_right"
+
+h="insert_mode"
+H="insert_at_line_start"
+
+l="open_below"
+L="open_above"
+
+j="move_next_word_end"
+J="move_next_long_word_end"
+
+k="search_next"
+K="search_prev"
+[keys.normal.g]
+n="goto_line_start"
+o="goto_line_end"
+
+[keys.normal.space.w]
+n="jump_view_left"
+e="jump_view_down"
+i="jump_view_up"
+o="jump_view_right"
+[keys.normal.C-w]
+n="jump_view_left"
+e="jump_view_down"
+i="jump_view_up"
+o="jump_view_right"
+
+[keys.insert]
+"A-x" = "normal_mode" # Maps Alt-X to enter normal mode
+
+
+[keys.normal.z]
+e="scroll_down"
+i="scroll_up"
+
+[keys.normal.Z]
+e="scroll_down"
+i="scroll_up"
+
+
+
