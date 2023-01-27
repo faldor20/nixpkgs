@@ -46,14 +46,14 @@
           # Needed for Slack
           allowUnfree = true;
 
-          allowUnfreePredicate = (pkg: true);
+        #  allowUnfreePredicate = (pkg: true);
 
         };
         nixpkgs.config = {
           # Needed for Slack
           allowUnfree = true;
 
-          allowUnfreePredicate = (pkg: true);
+          #allowUnfreePredicate = (pkg: true);
 
         };
       };
@@ -89,7 +89,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;
-            home-manager.users.eli = import ./home-manager/hosts/laptop/default.nix;
+            home-manager.users.eli = import ./home-manager/hosts/desktop/default.nix;
             home-manager.extraSpecialArgs = { inherit nixpkgs unstable; };
           }
         ];

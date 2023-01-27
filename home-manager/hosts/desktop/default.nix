@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ unstable,config, pkgs, lib, ... }:
+{ unstable,config, nixpkgs, lib, ... }:
 
 let
 
@@ -15,7 +15,7 @@ in {
     # "${components}/dev.nix"
 #    "${components}/CAD.nix"
   ];
-  home.packages = with pkgs; [
-    pkgs.helix
+  home.packages = with nixpkgs; [
+    helix
   ];
 }
