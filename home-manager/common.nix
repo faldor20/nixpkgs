@@ -1,4 +1,4 @@
-{ unstable,config, pkgs, lib, systemd, ... }:
+{ unstable, config, pkgs, lib, systemd, ... }:
 let
 
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);

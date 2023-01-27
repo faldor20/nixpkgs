@@ -9,14 +9,13 @@ let
   components=../../Components;
 in {
 
-  #nixpkgs.config.allowUnfree = true;
   imports=[
-    ../../common.nix
-    "${components}/photos.nix"
-    "${components}/dev.nix"
+  #  ../../common.nix
+    # "${components}/photos.nix"
+    # "${components}/dev.nix"
 #    "${components}/CAD.nix"
   ];
   home.packages = with pkgs; [
-
+    pkgs.helix
   ];
 }
