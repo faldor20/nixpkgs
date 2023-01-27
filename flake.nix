@@ -41,8 +41,24 @@
       #   username = "sebastian";
       #   stateVersion = "21.05";
       # };
+    let
+    nixpkgs-config={
+      unstable.config={
+                # Needed for Slack
+        allowUnfree = true;
 
-   {
+        allowUnfreePredicate = (pkg: true);
+
+      };
+      nixpkgs.config={
+                # Needed for Slack
+        allowUnfree = true;
+
+        allowUnfreePredicate = (pkg: true);
+
+      };
+    };
+  in {
       #"laptop" = home-manager.lib.homeManagerConfiguration {
       #   configuration = homeManagerConfFor ./hosts/t14-debian/home.nix;
       #   system = "x86_64-linux";
@@ -53,7 +69,8 @@
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nixos-config/Hosts/Laptop/default.nix
+          nixpkgs-config
+          ./nixos-config/hosts/laptop/default.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;

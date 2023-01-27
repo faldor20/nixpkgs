@@ -1,11 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ unstable, config, pkgs, lib, ... }:
 
 let
-  unstable = import <nixos-unstable> {
-    overlays = [
-    ];
-    config = { allowUnfree = true; };
-  };
 
 #buildDotnet = with unstable.dotnetCorePackages; combinePackages [
 #    sdk_6_0
@@ -14,7 +9,7 @@ let
 #];
 in {
 
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
 
     gitkraken

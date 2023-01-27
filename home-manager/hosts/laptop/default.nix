@@ -5,15 +5,11 @@
 { config, pkgs, lib, ... }:
 
 let
-  unstable = import <nixos-unstable> {
-    overlays = [
-    ];
-    config = { allowUnfree = true; };
-  };
+
   components=../../Components;
 in {
 
-  nixpkgs.config.allowUnfree = true;
+  # #nixpkgs.config.allowUnfree = true;
   imports=[
     "../../common.nix"
     "${components}/uni.nix"

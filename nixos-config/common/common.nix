@@ -7,21 +7,10 @@
 let
   thisPath = ./.;
   commonPath = builtins.toString (thisPath + "/common.nix");
-  #===Declarative cachix config===
-  /*   imports = [
-    (import (builtins.fetchTarball "https://github.com/jonascarpay/declarative-cachix/archive/a2aead56e21e81e3eda1dc58ac2d5e1dc4bf05d7.tar.gz"))
-    ];
 
-    cachix = [
-    { name = "jmc"; sha256 = "1bk08lvxi41ppvry72y1b9fi7bb6qvsw6bn1ifzsn46s3j0idq0a"; }
-    "iohk"
-    ]; */
-
-  home-man = (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz}/nixos");
 in
 {
 
-  # system.autoUpgrade.channel = "https://nixos.org/channels/nixos-21.11/";
   nix = {
     settings.auto-optimise-store = true;
     nixPath = [
@@ -35,13 +24,7 @@ in
    '';
   };
 
-  imports = [
-    home-man
-    # Include the results of the hardware scan.
-    ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
-  ];
 
-  home-manager.users.eli = import ../../home.nix;
   nix.settings.trusted-users = [ "root" "eli" ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
@@ -283,7 +266,7 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # ====SYSTEM STUFF====
     htop

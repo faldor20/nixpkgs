@@ -7,6 +7,7 @@
 
  {
   imports = [ # Include the results of the hardware scan.
+  ../../common/common.nix
   ./hardware-configuration.nix
   ./drives.nix
   #    ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly

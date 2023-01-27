@@ -2,19 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ unstable,config, pkgs, lib, ... }:
 
 let
-  unstable = import <nixos-unstable> {
-    overlays = [
-    ];
-    config = { allowUnfree = true; };
-  };
 
   components=../../Components;
 in {
 
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
   imports=[
     ../../common.nix
     "${components}/photos.nix"

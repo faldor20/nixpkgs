@@ -9,10 +9,10 @@ in
 
   programs.home-manager.enable = true;
 
-  nixpkgs.config = {
-    virtualisation.docker.enable = true;
-    allowUnfree = true;
-  };
+  # nixpkgs.config = {
+  #   virtualisation.docker.enable = true;
+  #   allowUnfree = true;
+  # };
   imports = [
     ./general/email.nix
     ./programs/fish/fish.nix
@@ -21,15 +21,15 @@ in
     ./programs/git/git.nix
   ];
   #    ./neovim/neovim.nix
-  nixpkgs.overlays = [
-    (self: super: { ffmpeg2 = super.ffmpeg-full.override { libvmaf = true; }; })
+  # nixpkgs.overlays = [
+  #   (self: super: { ffmpeg2 = super.ffmpeg-full.override { libvmaf = true; }; })
+  #   #TODO: find a flakes approved way to do this
+  #   # (import (builtins.fetchTarball {
+  #   #   url =
+  #   #     "https://github.com/nix-community/neovim-nightly-overlay/archive/28de4ebfc0ed628bfdfea83bd505ab6902a5c138.tar.gz";
+  #   # }))
 
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/neovim-nightly-overlay/archive/28de4ebfc0ed628bfdfea83bd505ab6902a5c138.tar.gz";
-    }))
-
-  ];
+  # ];
 
   home.packages = with pkgs; [
 
@@ -130,7 +130,7 @@ in
 
     unstable.vscode
     #vscodeInsiders
-    neovim-nightly
+    #neovim-nightly
     vim
     unstable.helix
     #====WRITING====
@@ -202,10 +202,11 @@ in
         package = unstable.emacsPgtkGcc;
       };
     fish.enable = true;
-    ncmpcpp = {
-      enable = true;
-      mpdMusicDir = "~/Music";
-    };
+    #figure how to use the ~/Music option without breaking purity
+    # ncmpcpp = {
+    #   enable = false;
+    #   mpdMusicDir = ~/Music;
+    # };
 
   };
   gtk = {
@@ -216,11 +217,11 @@ in
     #};
     iconTheme = {
       name = "oomox-gruvbox-dark";
-      package = unstable.gruvbox-dark-icons-gtk;
+      package = pkgs.gruvbox-dark-icons-gtk;
     };
     theme = {
       name = "vimix-dark";
-      package = unstable.vimix-gtk-themes;
+      package = pkgs.vimix-gtk-themes;
     };
     # {
     # name = "Ant-Dracula";
