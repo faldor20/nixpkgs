@@ -71,7 +71,6 @@ in {
     wev
     jmtpfs
     st
-    gnome.networkmanagerapplet
     #partition-manager
     #======Nix Specific======
     nix-tree

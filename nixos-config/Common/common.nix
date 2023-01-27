@@ -35,27 +35,27 @@ in
     NIX_HOST = hostName;
   };
   nix = {
-    autoOptimiseStore = true;
+    settings.auto-optimise-store = true;
     nixPath = [
       "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
       "nixos-config=${commonPath}"
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
- #   package = pkgs.nixFlakes;
- #   extraOptions = ''
- #     experimental-features = nix-command flakes
- #   '';
+   package = pkgs.nixFlakes;
+   extraOptions = ''
+     experimental-features = nix-command flakes
+   '';
   };
 
   imports = [
     home-man
     # Include the results of the hardware scan.
-    ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
+   # ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
     hostConfig
   ];
 
- home-manager.users.eli = import ../../home.nix;
-  nix.trustedUsers = [ "root" "eli" ];
+  #home-manager.users.eli = import ../../home.nix;
+  nix.settings.trusted-users = [ "root" "eli" ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
 
@@ -224,7 +224,6 @@ in
     enable = true;
     extraConfig =
       "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
   };
 
@@ -323,21 +322,21 @@ in
   #docker
   virtualisation.docker.enable = true;
   #======FONTS=======
-  fonts.fonts = with pkgs; [
-    pkgs.emacs-all-the-icons-fonts
-    font-awesome
-    overpass
-    ibm-plex
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code-symbols
-    mplus-outline-fonts
-    dina-font
-    jetbrains-mono
-  ];
+  # fonts.fonts = with pkgs; [
+  #   pkgs.emacs-all-the-icons-fonts
+  #   font-awesome
+  #   overpass
+  #   ibm-plex
+  #   (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  #   noto-fonts
+  #   noto-fonts-cjk
+  #   noto-fonts-emoji
+  #   liberation_ttf
+  #   fira-code-symbols
+  #   mplus-outline-fonts
+  #   dina-font
+  #   jetbrains-mono
+  # ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -380,10 +379,10 @@ HibernateDelaySec=900s
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-  systemd.services.nightoff = {
-    serviceConfig = {
-      ExecStart = "/home/eli/.config/nixpkgs/scripts/nightoff.sh";
-    };
-    wantedBy = [ "default.target" ];
-  };
+  # systemd.services.nightoff = {
+  #   serviceConfig = {
+  #     ExecStart = "/home/eli/.config/nixpkgs/scripts/nightoff.sh";
+  #   };
+  #   wantedBy = [ "default.target" ];
+  # };
 }
