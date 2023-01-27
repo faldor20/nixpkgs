@@ -2,6 +2,7 @@
 ln -s "/home/eli/.config/nixpkgs/config/nvim" ~/.config/nvim
 ln -s "/home/eli/.config/nixpkgs/config/.doom.d" ~/.doom.d
 ln -s "/home/eli/.config/nixpkgs/config/waybar" ~/.config/waybar
+ln -s "/home/eli/.config/nixpkgs/config/helix" ~/.config/helix
 #must make an mpd data directory
 mkdir ~/.mpd
 mkdir ~/.mpd/data
