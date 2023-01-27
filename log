@@ -1,0 +1,15 @@
+1) /home/eli/.config/nixpkgs/nixos-config/Hosts/Desktop
+2) /home/eli/.config/nixpkgs/nixos-config/Hosts/Laptop
+#? Selected Desktop
+ln: failed to create symbolic link '/root/.config/nvim': No such file or directory
+ln: failed to create symbolic link '/root/.doom.d/.doom.d': File exists
+ln: failed to create symbolic link '/root/.config/waybar': No such file or directory
+mkdir: cannot create directory ‘/root/.mpd’: File exists
+mkdir: cannot create directory ‘/root/.mpd/data’: File exists
+mkdir: cannot create directory ‘/root/.mpd/data/playlists’: File exists
+Desktop
+nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/home/eli/.config/nixpkgs/nixos-config/Common/common.nix:/nix/var/nix/profiles/per-user/root/channels
+conf is at /home/eli/.config/nixpkgs/nixos-config/Common/common.nix
+building Nix...
+building the system configuration...
+error: interrupted by the user
