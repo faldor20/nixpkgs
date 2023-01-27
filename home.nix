@@ -1,11 +1,27 @@
-{ unstable,config, pkgs, lib, systemd, ... }:
+{ config, pkgs, lib,systemd, ... }:
 let
+  unstable = import <nixos-unstable> {
+    overlays = [
+      (import ./logseq.nix)
+(import (builtins.fetchTarball {
+       url =
+         "https://github.com/nix-community/emacs-overlay/archive/7a5bce1e455eb52f5bdaff575424f20dec439886.tar.gz";
+     }))
+                 (import ./pkgs/default.nix) ];
+
+    config = { allowUnfree = true; };
+  };
 
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
-  local = ./.;
+  local=./.;
 
-in
-{
+  hostName =  lib.strings.stringAsChars (x: if (x == "\n"||x==" "||x=="\r"||x=="\t") then "" else x) (lib.strings.fileContents (./nixos-config/Host));
+in {
+  #Install instructions:
+  #Pre install
+  #
+  #==emacs overlay:==
+  #need to install cachix and run cachix use mjbach
 
   programs.home-manager.enable = true;
 
@@ -19,6 +35,7 @@ in
     ./sway/sway.nix
     ./git/git.nix
     ./general/email.nix
+    "${local}/Hosts/${hostName}/default.nix"
   ];
   #    ./neovim/neovim.nix
   nixpkgs.overlays = [
@@ -28,7 +45,7 @@ in
       url =
         "https://github.com/nix-community/neovim-nightly-overlay/archive/28de4ebfc0ed628bfdfea83bd505ab6902a5c138.tar.gz";
     }))
-
+     
   ];
 
   home.packages = with pkgs; [
@@ -48,13 +65,13 @@ in
     gnome3.nautilus
 
     cinnamon.nemo
-    # gnomeExtensions.gsconnect
+   # gnomeExtensions.gsconnect
     gsettings-desktop-schemas
     dolphin
     wev
     jmtpfs
     st
-
+    gnome.networkmanagerapplet
     #partition-manager
     #======Nix Specific======
     nix-tree
@@ -65,8 +82,8 @@ in
     sway-contrib.grimshot # allows taking screeenshots within sway
     #pdf
     zathura
-    # mupdf
-    # qpdf
+   # mupdf
+   # qpdf
     evince
 
     #libreoffice
@@ -139,7 +156,8 @@ in
     ghostwriter
     #unstable.obs-studio
     #unstable.logseq
-    unstable.remnote
+    #unstable.remnote
+    #unstable.remnote
     #typora
     #unstable.xournalpp
     #====TOOLS for work:=====
@@ -181,7 +199,7 @@ in
     qgnomeplatform
     qtstyleplugin-kvantum-qt4
     libsForQt5.qtstyleplugin-kvantum
-
+ 
     #pianobooster
     firefox-wayland
     google-chrome
@@ -193,15 +211,13 @@ in
     #lutris
   ];
   # for development in nix:
-  #removed in update to 22.11
-  #services.lorri.enable = true;
+  services.lorri.enable = true;
 
   programs = {
-    emacs =
-      {
-        enable = false;
-        package = unstable.emacsPgtkGcc;
-      };
+      emacs=
+     { enable = false;
+     package=unstable.emacsPgtkGcc;
+   }; 
     fish.enable = true;
     ncmpcpp = {
       enable = true;
@@ -228,7 +244,7 @@ in
     # package = pkgs.ant-dracula-theme;
     # };
   };
-  dconf = {
+  dconf={
     enable = true;
   };
 
@@ -238,16 +254,15 @@ in
     size = 128;
   };
   services = {
-    wlsunset = {
-      enable = true;
-      latitude = "-27.47";
-      longitude = "153.02";
+    wlsunset={
+      enable=true;
+      latitude="-27.47";
+      longitude="153.02";
     };
-#removed in update 22.11
- #   kdeconnect = {
- #     enable = true;
- #     indicator = true;
- #   };
+
+    kdeconnect={
+    enable=true;
+    indicator=true;};
 
     mpd = {
       dataDir = "/home/eli/.mpd/data";
@@ -260,54 +275,53 @@ in
         }
       '';
     };
-   # spotifyd = { enable = true; };
-#    udiskie = {
- #     enable = true;
- #     notify = false;
- #   };
-    emacs = {
-      enable = false;
-      package = unstable.emacsPgtkGcc;
-      client = { enable = true; };
+    spotifyd = { enable = true; };
+    udiskie = {
+      enable = true;
+      notify = false;
+    };
+     emacs={
+     enable=false;
+     package=unstable.emacsPgtkGcc;
+     client={enable=true;};
+     }; 
+  };
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
+  services.network-manager-applet = { enable = true; };
+
+  systemd.user = {
+    services = {
+      notes-syncer = {
+        Unit = { Description = "git syncer for notes and stuff"; };
+        Service = {
+          Type = "simple";
+          ExecStart = builtins.toString(local+"/scripts/Git-Syncers/notes.sh");
+        };
+      };
+    };
+    timers = {
+      notes-syncer = {
+        Unit = { Description = "git syncer Timer"; };
+        Timer = {
+          OnBootSec = "1min";
+          OnUnitActiveSec = "15min";
+          Unit = "notes-syncer";
+        };
+        Install = { WantedBy = [ "timers.target" ]; };
+      };
     };
   };
-  #removed in update 22.11
-#  services.gpg-agent = {
- #   enable = true;
- #   defaultCacheTtl = 1800;
- #   enableSshSupport = true;
- # };
-  #services.network-manager-applet = { enable = true; };
-
-#  systemd.user = {
-#    services = {
-#      notes-syncer = {
-#        Unit = { Description = "git syncer for notes and stuff"; };
-#        Service = {
-#          Type = "simple";
-#          ExecStart = builtins.toString (local + "/scripts/Git-Syncers/notes.sh");
-#        };
-#      };
-#    };
-#    timers = {
-#      notes-syncer = {
-#        Unit = { Description = "git syncer Timer"; };
-#        Timer = {
-#          OnBootSec = "1min";
-#          OnUnitActiveSec = "15min";
-#          Unit = "notes-syncer";
-#        };
-#        Install = { WantedBy = [ "timers.target" ]; };
-#      };
-#    };
-#  };
   home.sessionVariables = {
-    XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
+    XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
     WLR_DRM_NO_MODIFIERS = 1;
-    #   QT_SCALE_FACTOR = 1.25;
-    QT_AUTO_SCREEfSCALE_FACTOR = 1;
-    #    GDK_DPI_SCALE = 1.25;
-    OCL_ICD_VENDORS = "`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
+ #   QT_SCALE_FACTOR = 1.25;
+    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+#    GDK_DPI_SCALE = 1.25;
+    OCL_ICD_VENDORS="`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
     QT_QPA_PLATFORMTHEME = "gnome";
     NIXOS_OZONE_WL = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway

@@ -2,11 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstable, lib, variables, ... }:
+{ config, pkgs, lib, variables, ... }:
 
 let
+  unstable = import <nixos-unstable> {
+    overlays = [
+
+    ];
+    config = { allowUnfree = true; };
+  };
+  hostName =  lib.strings.stringAsChars (x: if (x == "\n"||x==" "||x=="\r"||x=="\t") then "" else x) (lib.strings.fileContents (../Host));
+  nix-hostsPath = ../Hosts;
   thisPath = ./.;
   commonPath = builtins.toString (thisPath + "/common.nix");
+  hostConfig = nix-hostsPath + "/${hostName}/default.nix";
   #===Declarative cachix config===
   /*   imports = [
     (import (builtins.fetchTarball "https://github.com/jonascarpay/declarative-cachix/archive/a2aead56e21e81e3eda1dc58ac2d5e1dc4bf05d7.tar.gz"))
@@ -17,32 +26,36 @@ let
     "iohk"
     ]; */
 
-  home-man = (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz}/nixos");
+home-man=(import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz}/nixos");
 in
 {
 
-  # system.autoUpgrade.channel = "https://nixos.org/channels/nixos-21.11/";
+ # system.autoUpgrade.channel = "https://nixos.org/channels/nixos-21.11/";
+  environment.variables = {
+    NIX_HOST = hostName;
+  };
   nix = {
-    settings.auto-optimise-store = true;
+    autoOptimiseStore = true;
     nixPath = [
       "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
       "nixos-config=${commonPath}"
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
-    #   package = pkgs.nixFlakes;
-    #   extraOptions = ''
-    #     experimental-features = nix-command flakes
-    #   '';
+ #   package = pkgs.nixFlakes;
+ #   extraOptions = ''
+ #     experimental-features = nix-command flakes
+ #   '';
   };
 
   imports = [
     home-man
     # Include the results of the hardware scan.
     ./cachix.nix # this may need to be commented out untill cachx is installed corrrectly
+    hostConfig
   ];
 
-  home-manager.users.eli = import ../../home.nix;
-  nix.settings.trusted-users = [ "root" "eli" ];
+ home-manager.users.eli = import ../../home.nix;
+  nix.trustedUsers = [ "root" "eli" ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
 
@@ -105,9 +118,9 @@ in
 
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Set your time zone.
-  time = {
+  time={
     timeZone = "Australia/Brisbane";
-    hardwareClockInLocalTime = true;
+    hardwareClockInLocalTime=true;
   };
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -125,17 +138,17 @@ in
   # Select internationalisation properties.
   #i18n.defaultLocale = "en_US.UTF-8";
 
-  # console = {
-  #    useXkbConfig=true;
-  # keyMap="colemak";
-  #  };
-  #services.xserver.layout = "us";
-  # services.xserver.xkbVariant = "colemak_dh";
-  # services.xserver = {
-  #   autoRepeatDelay = 200;
-  #   autoRepeatInterval = 25;
-  #   layout = "colemak/colemak";
-  # };
+ # console = {
+ #    useXkbConfig=true;
+    # keyMap="colemak";
+ #  };
+#services.xserver.layout = "us";
+# services.xserver.xkbVariant = "colemak_dh";
+    # services.xserver = {
+    #   autoRepeatDelay = 200;
+    #   autoRepeatInterval = 25;
+    #   layout = "colemak/colemak";
+    # };
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
@@ -173,12 +186,10 @@ in
   #essentially allows autostarting of applications taht use that method
   xdg.autostart.enable = true;
 
-  #===rdp not allowed because of security===
-
   # Remote desktop
-  #services.xrdp.enable = true;
+  services.xrdp.enable = true;
   # change this if install sway
-  #services.xrdp.defaultWindowManager = "sway";
+  services.xrdp.defaultWindowManager = "sway";
   #networking.firewall.allowedTCPPorts = [ 3389 ];
 
   # Configure keymap in X11
@@ -186,23 +197,23 @@ in
   # services.xserver.xkbOptions = "eurosign:e";
   #--This enables caps2esc--
   # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
-  #  services.interception-tools = {
-  #    enable = true;
-  #    plugins = [ pkgs.interception-tools-plugins.caps2esc ];
-  #    udevmonConfig =''
-  #        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc  | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-  #          DEVICE:
-  #            EVENTS:
-  #              EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-  #     '';
+#  services.interception-tools = {
+#    enable = true;
+#    plugins = [ pkgs.interception-tools-plugins.caps2esc ];
+#    udevmonConfig =''
+#        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc  | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+#          DEVICE:
+#            EVENTS:
+#              EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+#     '';
 
-  #      ''
-  #      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-  #      DEVICE:
-  #        EVENTS:
-  #          EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-  #    '';
-  #  };
+#      ''
+#      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+#      DEVICE:
+#        EVENTS:
+#          EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+#    '';
+#  };
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.gutenprint ];
@@ -213,6 +224,7 @@ in
     enable = true;
     extraConfig =
       "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
   };
 
@@ -246,8 +258,8 @@ in
     '';
   };
   # udev rules for connection of vial.
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+ services.udev.extraRules = ''
+   KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
   '';
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -322,7 +334,7 @@ in
     noto-fonts-emoji
     liberation_ttf
     fira-code-symbols
-    mplus-outline-fonts.githubRelease
+    mplus-outline-fonts
     dina-font
     jetbrains-mono
   ];
@@ -335,13 +347,13 @@ in
   # };
 
   services.logind.lidSwitch = "suspend-then-hibernate";
-  services.logind.extraConfig = ''
-    IdleAction=suspend-then-hibernate
-    IdleActionSec=10min
-    	'';
+	services.logind.extraConfig=''
+IdleAction=suspend-then-hibernate
+IdleActionSec=10min
+	'';
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=900s
-  '';
+HibernateDelaySec=900s
+'';
 
   # =========Fixes for linux issues=========
   boot.kernel.sysctl = {

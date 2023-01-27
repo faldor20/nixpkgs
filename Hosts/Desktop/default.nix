@@ -10,21 +10,17 @@ let
     ];
     config = { allowUnfree = true; };
   };
+
   components=../../Components;
 in {
 
   nixpkgs.config.allowUnfree = true;
   imports=[
-    "../../common.nix"
-    "${components}/uni.nix"
-    
+    "${components}/photos.nix"
     "${components}/dev.nix"
+#    "${components}/CAD.nix"
   ];
   home.packages = with pkgs; [
-    brightnessctl
-    wirelesstools # needed for wofi wifi script
-    octaveFull
-
 
   ];
 }

@@ -18,7 +18,7 @@ in
     options =["rw,user,exec,mode=7777,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"];
   };
 
-  networking.hostName = "eli-nixos-yoga"; # Define your hostname.
+  networking.hostName = "eli-nixos"; # Define your hostname.
 
   networking.networkmanager = {
     enable = true;
