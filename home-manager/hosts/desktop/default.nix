@@ -2,20 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ unstable,config, nixpkgs, lib, ... }:
+{ unstable,config, nixpkgs,pkgs, lib, ... }:
 
 let
 
   components=../../Components;
 in {
 
+
+  
   imports=[
-  #  ../../common.nix
-    # "${components}/photos.nix"
-    # "${components}/dev.nix"
-#    "${components}/CAD.nix"
-  ];
-  home.packages = with nixpkgs; [
-    helix
+   ../../common.nix
+    "${components}/photos.nix"
+    "${components}/dev.nix"
+    "${components}/CAD.nix"
   ];
 }

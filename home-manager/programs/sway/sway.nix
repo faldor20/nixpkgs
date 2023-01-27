@@ -8,13 +8,16 @@
     extraConfig= (builtins.readFile ./config);
   
   };
-# home.packages = with pkgs; [
-#      swaylock
-#    waybar
-#    swayidle
-#    wayvnc
-#    wl-clipboard
-#    mako # notification daemon
-#    wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
-# ];
+home.packages = with pkgs; [
+      lxqt.lxqt-policykit
+      swaylock-effects
+      waybar
+      swayidle
+      wayvnc
+      wl-clipboard
+      mako # notification daemon
+      wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
+      libappindicator # needed for tray icons
+      sway-contrib.grimshot #handles screenshots
+];
 }

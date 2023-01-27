@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstable, lib, variables, ... }:
+{ config, inputs,pkgs, lib, variables, ... }:
 
 let
   thisPath = ./.;
@@ -10,6 +10,13 @@ let
 
 in
 {
+
+  nixpkgs={
+    config={
+      allowUnfree=true;
+    };
+
+  };
 
   nix = {
     settings.auto-optimise-store = true;
@@ -32,54 +39,6 @@ in
   services.gvfs.enable = true;
 
 
-
-
-
-
-  # fileSystems."/mnt/bfs1" = {
-  #      device = "//10.141.206.27/Transfers";
-  #      fsType = "cifs";
-  #      options =  ["x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,credentials=/etc/nixos/smb-secrets-snb"];
-  #  };
-  #
-  #  fileSystems."/export/eli" = {
-  #    device = "/home/eli";
-  #    options = [ "bind" ];
-  #  };
-  #  services.nfs.server.enable = true;
-  #  services.nfs.server.exports = ''
-  #    /export         10.41.57.91(rw,fsid=0,no_subtree_check)
-  #    /export/eli  10.41.57.91(rw,nohide,insecure,no_subtree_check)
-  #  '';
-  #
-  #services.samba = {
-  #  enable = true;
-  #package = pkgs.sambaFull;
-  #  securityType = "user";
-  #  extraConfig = ''
-  #    workgroup = WORKGROUP
-  #    server string = smbnix
-  #    netbios name = smbnix
-  #    security = user
-  #    #use sendfile = yes
-  #    #max protocol = smb2
-  #    hosts allow = 10.41.57.  localhost
-  #    hosts deny = 0.0.0.0/0
-  #    guest account = nobody
-  #    map to guest = Never
-  #  '';
-  #  shares = {
-  #    private = {
-  #      path = "/export/eli";
-  #      browseable = "yes";
-  #      "read only" = "no";
-  #      "guest ok" = "no";
-  #      "create mode"="0777";
-  #      "directory mode"="0777";
-  #      "valid users"="@wheel";
-  #    };
-  #  };
-  #};
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -126,12 +85,13 @@ in
   #services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.windowManager.i3 = {
     enable = true;
-    extraPackages = with pkgs; [
-      dmenu #application launcher most people use
-      i3status # gives you the default i3 status bar
-      i3lock #default i3 screen locker
-      i3blocks #if you are planning on using i3blocks over i3status
-    ];
+    # TODO install via home manager
+    # extraPackages = with pkgs; [
+    #   dmenu #application launcher most people use
+    #   i3status # gives you the default i3 status bar
+    #   i3lock #default i3 screen locker
+    #   i3blocks #if you are planning on using i3blocks over i3status
+    # ];
   };
 
   virtualisation.libvirtd.enable = true;
@@ -139,18 +99,6 @@ in
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
-    extraPackages = with pkgs; [
-      lxqt.lxqt-policykit
-      swaylock-effects
-      waybar
-      swayidle
-      wayvnc
-      wl-clipboard
-      mako # notification daemon
-      wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
-      libappindicator # needed for tray icons
-      sway-contrib.grimshot #handles screenshots
-    ];
   };
   #run .desktop files in .config/autostart
   #essentially allows autostarting of applications taht use that method
@@ -277,11 +225,10 @@ in
     wget
     zip
     ranger
-    cachix
+
     #caps2esc
     #==== NIXOS====
     home-manager
-    appimage-run
     nixfmt
     # ====EDITORS====
     vim

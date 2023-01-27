@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ unstable ,config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 
  {
@@ -27,7 +27,7 @@
       #
       boot.kernelPackages = pkgs.linuxPackages_latest;
       boot.initrd.kernelModules = [ "amdgpu" ];
-      hardware.opengl.extraPackages = with unstable; [
+      hardware.opengl.extraPackages = with pkgs; [
         rocm-opencl-icd
         rocm-opencl-runtime
         amdvlk
