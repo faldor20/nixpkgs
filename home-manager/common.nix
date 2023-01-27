@@ -14,11 +14,11 @@ in
     allowUnfree = true;
   };
   imports = [
-    ./fish/fish.nix
-    ./kitty/kitty.nix
-    ./sway/sway.nix
-    ./git/git.nix
     ./general/email.nix
+    ./programs/fish/fish.nix
+    ./programs/kitty/kitty.nix
+    ./programs/sway/sway.nix
+    ./programs/git/git.nix
   ];
   #    ./neovim/neovim.nix
   nixpkgs.overlays = [
@@ -204,7 +204,7 @@ in
     fish.enable = true;
     ncmpcpp = {
       enable = true;
-      mpdMusicDir = ~/Music;
+      mpdMusicDir = "~/Music";
     };
 
   };
