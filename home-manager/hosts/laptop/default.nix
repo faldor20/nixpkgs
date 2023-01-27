@@ -11,8 +11,8 @@ in {
 
   # #nixpkgs.config.allowUnfree = true;
   imports=[
-    "../../common.nix"
-    "${components}/uni.nix"
+    ../../common.nix
+    #"${components}/uni.nix"
     
     "${components}/dev.nix"
   ];

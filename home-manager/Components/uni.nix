@@ -1,5 +1,5 @@
 
-{ config, pkgs, lib, ... }:
+{unstable, config, pkgs, lib, ... }:
 
 let
 

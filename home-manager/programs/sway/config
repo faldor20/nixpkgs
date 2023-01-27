@@ -35,7 +35,7 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu wofi -S drun -I -m -G
-set $wallpaper ~/Downloads/wallpaper.png
+set $wallpaper ~/Downloads/wallpaper.jpg
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)

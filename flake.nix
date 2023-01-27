@@ -87,7 +87,19 @@
             }
           ];
         };
+        "eli@laptop" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs unstable; }; # Pass flake inputs to our config
+          # > Our main home-manager configuration file <
+          modules = [
+            ./home-manager/hosts/laptop/default.nix
+            {
+            }
+          ];
+        };
+
       };
+
 
     };
 }
