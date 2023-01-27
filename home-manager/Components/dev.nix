@@ -33,8 +33,8 @@ in {
 
 
     #sccache
-    #unstable.nim
-    #unstable.nimlsp
+    unstable.nim
+    unstable.nimlsp
 
     #clojure
     #jdk11
@@ -77,8 +77,12 @@ in {
     dotnet-sdk
     unstable.mono
 
+
     openssl.dev
     openssl.out
     openssl
+
+    #=====nix====
+    nil
   ];
 }
