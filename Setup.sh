@@ -8,13 +8,13 @@ run(){
             exit 1
     fi
     #This links the neovim config in here to te neovim config out there
-    ln -s "$SCRIPT_DIR/config/nvim" ~/.config/nvim
-    ln -s "$SCRIPT_DIR/config/.doom.d" ~/.doom.d
-    ln -s "$SCRIPT_DIR/waybar" ~/.config/waybar
+    ln -s "$SCRIPT_DIR/config/nvim" /home/eli/.config/nvim
+    ln -s "$SCRIPT_DIR/config/.doom.d" /home/eli/.config/.doom.d
+    ln -s "$SCRIPT_DIR/waybar" /home/eli/.config/waybar
     #must make an mpd data directory
-    mkdir ~/.mpd
-    mkdir ~/.mpd/data
-    mkdir ~/.mpd/data/playlists
+    mkdir /home/eli/.mpd
+    mkdir /home/eli/.mpd/data
+    mkdir /home/eli/.mpd/data/playlists
 
     if test -f "/etc/nixos/configuration.nix"; then
         sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration-backup.nix

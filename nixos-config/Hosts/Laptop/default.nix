@@ -12,11 +12,11 @@ in
     ./hardware-configuration.nix
   ];
 
-  fileSystems."/mnt/shares/desktop"={
-    device = "192.168.1.2:/share/main";
-    fsType="nfs";
-    options =["rw,user,exec,mode=7777,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"];
-  };
+  #fileSystems."/mnt/shares/desktop"={
+  #  device = "192.168.1.2:/share/main";
+  #  fsType="nfs";
+  #  options =["rw,user,exec,mode=7777,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"];
+  #};
 
   networking.hostName = "eli-nixos"; # Define your hostname.
 
@@ -70,7 +70,7 @@ boot.kernelParams=["i915.enable_fbc=1"];
 
 services.throttled.enable=true;
 services.thinkfan={
-  enable=true;
+  enable=false;
   levels=[
       [0  0   53]
       [1  47  55]
