@@ -44,6 +44,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.plymouth.enable=true;
 
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Set your time zone.
@@ -67,17 +68,8 @@ in
   # Select internationalisation properties.
   #i18n.defaultLocale = "en_US.UTF-8";
 
-  # console = {
-  #    useXkbConfig=true;
-  # keyMap="colemak";
-  #  };
-  #services.xserver.layout = "us";
-  # services.xserver.xkbVariant = "colemak_dh";
-  # services.xserver = {
-  #   autoRepeatDelay = 200;
-  #   autoRepeatInterval = 25;
-  #   layout = "colemak/colemak";
-  # };
+  services.xserver.layout= "us";
+   services.xserver.xkbVariant = "colemak_dh";
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
@@ -115,25 +107,7 @@ in
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
-  #--This enables caps2esc--
-  # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
-  #  services.interception-tools = {
-  #    enable = true;
-  #    plugins = [ pkgs.interception-tools-plugins.caps2esc ];
-  #    udevmonConfig =''
-  #        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc  | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-  #          DEVICE:
-  #            EVENTS:
-  #              EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-  #     '';
-
-  #      ''
-  #      - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
-  #      DEVICE:
-  #        EVENTS:
-  #          EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-  #    '';
-  #  };
+  
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.gutenprint ];
@@ -240,22 +214,7 @@ in
   ];
   #docker
   virtualisation.docker.enable = true;
-  #======FONTS=======
-  # fonts.fonts = with pkgs; [
-  #   pkgs.emacs-all-the-icons-fonts
-  #   font-awesome
-  #   overpass
-  #   ibm-plex
-  #   (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  #   noto-fonts
-  #   noto-fonts-cjk
-  #   noto-fonts-emoji
-  #   liberation_ttf
-  #   fira-code-symbols
-  #   mplus-outline-fonts
-  #   dina-font
-  #   jetbrains-mono
-  # ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -298,6 +257,7 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
+  
   # systemd.services.nightoff = {
   #   serviceConfig = {
   #     ExecStart = "/home/eli/.config/nixpkgs/scripts/nightoff.sh";

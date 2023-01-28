@@ -25,12 +25,11 @@ programs.fish={
     ];
     shellInit =
     "
-    set QT_QPA_PLATFORMTHEME gnome
     set PATH ~/.dotnet/tools $PATH
     set PATH ~/bin $PATH
     set PATH ~/.cargo/bin $PATH
     set PATH ~/Programming/scripts $PATH
-    set QT_QPA_PLATFORM wayland
+   set QT_QPA_PLATFORM wayland
     set GDK_BACKEND wayland
     set XDG_SESSION_TYPE wayland
     set MOZ_ENABLE_WAYLAND 1
