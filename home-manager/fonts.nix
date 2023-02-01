@@ -3,7 +3,7 @@
 fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-     pkgs.emacs-all-the-icons-fonts
+     emacs-all-the-icons-fonts
      font-awesome
      overpass
      ibm-plex
@@ -13,7 +13,6 @@ fonts.fontconfig.enable = true;
      noto-fonts-emoji
      liberation_ttf
      fira-code-symbols
-     mplus-outline-fonts
      dina-font
      jetbrains-mono
   ];

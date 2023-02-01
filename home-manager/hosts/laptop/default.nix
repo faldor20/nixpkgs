@@ -19,7 +19,10 @@ in {
   home.packages = with pkgs; [
     brightnessctl
     wirelesstools # needed for wofi wifi script
+
     octaveFull
+    gnome.gnome-power-manager
+    
 
 
   ];

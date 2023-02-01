@@ -74,7 +74,7 @@ in
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.windowManager.i3 = {
     enable = true;
     # TODO install via home manager
@@ -137,19 +137,6 @@ in
     #media-session.enable = true;
     };
   */
-  services.mpd = {
-    enable = true;
-    dataDir = "/home/eli/.mpd/data";
-    musicDirectory = "/home/eli/Music";
-    user = "eli";
-    extraConfig = ''
-      audio_output {
-      type "pulse" # MPD must use Pulseaudio
-      name "Pulseaudio" # Whatever you want
-      server "127.0.0.1" # MPD must connect to the local sound server
-      }
-    '';
-  };
   # udev rules for connection of vial.
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"

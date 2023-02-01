@@ -241,8 +241,9 @@ home.file.".config/helix/config.toml".source=../config/helix/config.toml;
     #  package = pkgs.noto-fonts;
     #};
     iconTheme = {
-      name = "oomox-gruvbox-dark";
-      package = unstable.gruvbox-dark-icons-gtk;
+      name = "Tela";
+ #     package = (pkgs.tela-icon-theme.override { colorVariants = [ "purple" ]; });
+      package = pkgs.tela-icon-theme;
     };
     theme={
       name="Dracula";
@@ -342,7 +343,7 @@ settings={
   #    };
   #  };
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "gnome";
     QT_STYLE_OVERRIDE = "kvantum";
     GTK_THEME = "Dracula";
     XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";

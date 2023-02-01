@@ -19,7 +19,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A8CE-82D9";
+    { device = "/dev/disk/by-uuid/3797-7AD6";
       fsType = "vfat";
     };
 

@@ -103,7 +103,7 @@ services.thinkfan={
   ];
 };
  services.tlp = {
-      enable = true;
+      enable = false;
       # extraConfig = ''
       settings = {
         # Detailked info can be found https://linrunner.de/tlp/settings/index.html
