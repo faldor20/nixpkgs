@@ -11,6 +11,7 @@
   #];
   programs.neovim = {
     enable = true;
+    package=unstable.neovim-unwrapped;
     extraPackages=[
     unstable.nodePackages.vscode-langservers-extracted
     unstable.nodePackages.typescript-language-server   
