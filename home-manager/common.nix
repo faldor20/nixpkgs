@@ -30,6 +30,7 @@ in
     ./programs/kitty/kitty.nix
     ./programs/sway/sway.nix
     ./programs/git/git.nix
+    ./programs/neovim/neovim.nix
   ];
   #    ./neovim/neovim.nix
   # nixpkgs.overlays = [
@@ -144,7 +145,7 @@ in
     ffmpeg
     # ====EDITORS====
 
-    unstable.vscode
+    unstable.vscode-fhs
     #vscodeInsiders
     #neovim-nightly
     vim
