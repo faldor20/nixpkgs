@@ -15,6 +15,7 @@ in {
     gitkraken
     gitui
     powershell
+    slack
 
     httpie
     git-lfs
@@ -22,9 +23,11 @@ in {
 
     #gcc
     gnumake
+    cmake
 
  #   unstable.swift
     unstable.clang
+    #unstable.platformio
 
 
     #sccache
@@ -64,6 +67,7 @@ in {
     pkg-config
     unstable.rustup
     unstable.rust-analyzer
+    pipenv
 
     #unstable.dotnet-sdk_5
     #unstable.dotnet-sdk_6
@@ -71,6 +75,7 @@ in {
    # buildDotnet
     dotnet-sdk
     unstable.mono
+    omnisharp-roslyn
 
 
     openssl.dev

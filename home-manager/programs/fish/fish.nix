@@ -27,6 +27,7 @@ programs.fish={
     "
     set PATH ~/.dotnet/tools $PATH
     set PATH ~/bin $PATH
+    set PATH ~/.nimble/bin $PATH
     set PATH ~/.cargo/bin $PATH
     set PATH ~/Programming/scripts $PATH
    set QT_QPA_PLATFORM wayland

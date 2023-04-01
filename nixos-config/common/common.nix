@@ -76,7 +76,7 @@ in
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
   services.xserver.windowManager.i3 = {
-    enable = true;
+    enable = false;
     # TODO install via home manager
     # extraPackages = with pkgs; [
     #   dmenu #application launcher most people use
@@ -95,6 +95,14 @@ in
   #run .desktop files in .config/autostart
   #essentially allows autostarting of applications taht use that method
   xdg.autostart.enable = true;
+
+
+
+
+  programs.fuse.userAllowOther = true;
+
+
+  
 
   #===rdp not allowed because of security===
 
@@ -151,6 +159,7 @@ in
     shell = pkgs.fish;
     extraGroups = [
       "dialout"
+      "fuse"
       "libvirtd"
       "wheel"
       "docker"
@@ -172,7 +181,7 @@ in
     users = [ "eli" ];
     keepEnv = true;
     }]; */
-
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   #nixpkgs.config.allowUnfree = true;

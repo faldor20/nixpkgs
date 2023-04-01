@@ -7,13 +7,13 @@ fonts.fontconfig.enable = true;
      font-awesome
      overpass
      ibm-plex
-     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+     #jetbrains-mono
+     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono"]; })
      noto-fonts
      noto-fonts-cjk
      noto-fonts-emoji
      liberation_ttf
      fira-code-symbols
      dina-font
-     jetbrains-mono
   ];
 }

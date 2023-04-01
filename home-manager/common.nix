@@ -41,13 +41,14 @@ in
   #   # }))
 
   # ];
-home.file.".config/helix/config.toml".source=../config/helix/config.toml;
+  xdg.configFile."helix/config.toml".source=../config/helix/config.toml;
 
   home.packages = with pkgs; [
 
     
     gnome.file-roller
     glib
+    fd
     #====system====
     #monitors
     x11_ssh_askpass
@@ -132,9 +133,9 @@ home.file.".config/helix/config.toml".source=../config/helix/config.toml;
     steam-run
     appimage-run
 
-    python3
+    python39
     #unstable.pipenv
-    python38Packages.pip
+    python39Packages.pip
     #unstable.python38Packages.python-language-server
     #unstable.nodejs
     #unstable.nodePackages.pyright
@@ -163,6 +164,7 @@ home.file.".config/helix/config.toml".source=../config/helix/config.toml;
     direnv
     niv
     rnix-lsp
+    nil
     nixpkgs-fmt
     #====Basic software====
     ark
@@ -254,14 +256,14 @@ home.file.".config/helix/config.toml".source=../config/helix/config.toml;
     # package = pkgs.ant-dracula-theme;
     # };
 
-    gtk3.extraConfig = {
-      gtk-cursor-theme-name = "volantes_cursors";
-      gtk-application-prefer-dark-theme = "1";
-    };
-    gtk4.extraConfig = {
-      gtk-cursor-theme-name = "volantes_cursors";
-      gtk-application-prefer-dark-theme = "1";
-    };
+  # gtk3.extraConfig = {
+  #    gtk-cursor-theme-name = "volantes_cursors";
+  #    gtk-application-prefer-dark-theme = "1";
+  #  };
+  #  gtk4.extraConfig = {
+  #    gtk-cursor-theme-name = "volantes_cursors";
+  #    gtk-application-prefer-dark-theme = "1";
+  #  };
   };
 
          dconf = {
@@ -273,11 +275,11 @@ settings={
     };  };
 
 
-  xsession.pointerCursor = {
-    name = "Vanilla-DMZ";
-    package = pkgs.vanilla-dmz;
-    size = 128;
-  };
+ # xsession.pointerCursor = {
+ #   name = "Vanilla-DMZ";
+ #   package = pkgs.vanilla-dmz;
+ #   size = 128;
+ # };
   services = {
     wlsunset = {
       enable = true;
@@ -348,9 +350,9 @@ settings={
     GTK_THEME = "Dracula";
     XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
     WLR_DRM_NO_MODIFIERS = 1;
-    #   QT_SCALE_FACTOR = 1.25;
+       QT_SCALE_FACTOR = 1.25;
     QT_AUTO_SCREEfSCALE_FACTOR = 1;
-    #    GDK_DPI_SCALE = 1.25;
+        GDK_DPI_SCALE = 1.25;
     #TODO: did i need this??
     # OCL_ICD_VENDORS = "`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
    # QT_QPA_PLATFORMTHEME = "gnome";
