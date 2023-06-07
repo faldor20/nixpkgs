@@ -1,4 +1,4 @@
-theme="monokai_pro"
+theme="gruvbox"
 
 [editor]
 line-number = "relative"
@@ -18,6 +18,7 @@ git-ignore=true
 
 
 [keys.normal]
+
 n="move_char_left"
 e="move_line_down"
 i="move_line_up"
@@ -34,6 +35,10 @@ J="move_next_long_word_end"
 
 k="search_next"
 K="search_prev"
+
+'{'="goto_prev_paragraph"
+'}'="goto_next_paragraph"
+
 [keys.normal.g]
 n="goto_line_start"
 o="goto_line_end"
@@ -61,5 +66,33 @@ i="scroll_up"
 e="scroll_down"
 i="scroll_up"
 
+[keys.select]
+
+h="insert_mode"
+H="insert_at_line_start"
+
+l="open_below"
+L="open_above"
 
 
+n  = "extend_char_left"
+e  = "extend_visual_line_down"
+i  = "extend_visual_line_up"
+o  = "extend_char_right"
+
+j = "extend_next_word_end"
+J = "extend_next_long_word_end"
+
+k = "extend_search_next"
+K = "extend_search_prev"
+
+'{'="goto_prev_paragraph"
+'}'="goto_next_paragraph"
+
+[keys.normal.space]
+
+'f'="file_picker_in_current_directory"
+'F'="file_picker"
+[keys.select.space]
+'f'="file_picker_in_current_directory"
+'F'="file_picker"

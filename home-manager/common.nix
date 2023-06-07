@@ -42,11 +42,13 @@ in
   #   # }))
 
   # ];
-  xdg.configFile."helix/config.toml".source=../config/helix/config.toml;
-
+  # xdg.configFile."helix/config.toml".source = "/home/eli/.config/nixpkgs/config/helix/config.toml";
+  home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    ln -s ${"/home/eli/.config/nixpkgs/config/helix/config.toml"} ~/.config/helix/config.toml
+  '';
   home.packages = with pkgs; [
 
-    
+
     gnome.file-roller
     glib
     fd
