@@ -14,6 +14,7 @@ in {
 
     gitkraken
     gitui
+    lazygit
     powershell
     slack
 
@@ -32,7 +33,7 @@ in {
 
     #sccache
     unstable.nim
-    unstable.nimlsp
+    #unstable.nimlsp
 
     #clojure
     #jdk11
@@ -84,5 +85,9 @@ in {
 
     #=====nix====
     nil
+
+
+    #====langServers===
+    unstable.marksman
   ];
 }
