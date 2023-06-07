@@ -200,8 +200,8 @@ in
     qgnomeplatform
     #qtstyleplugin-kvantum-qt4
 
-   #libsForQt5.qtstyleplugins
-   libsForQt5.qtstyleplugin-kvantum
+    #libsForQt5.qtstyleplugins
+    libsForQt5.qtstyleplugin-kvantum
 
     #pianobooster
     firefox-wayland
@@ -216,11 +216,11 @@ in
   # for development in nix:
   #removed in update to 22.11
   #services.lorri.enable = true;
-  qt={
-    enable=true;
+  qt = {
+    enable = true;
     #platformTheme="gnome";
-    style.name="Dracula";
-    
+    style.name = "Dracula";
+
   };
 
   programs = {
@@ -247,42 +247,43 @@ in
     #};
     iconTheme = {
       name = "Tela";
- #     package = (pkgs.tela-icon-theme.override { colorVariants = [ "purple" ]; });
+      #     package = (pkgs.tela-icon-theme.override { colorVariants = [ "purple" ]; });
       package = pkgs.tela-icon-theme;
     };
-    theme={
-      name="Dracula";
-      package=unstable.dracula-theme;
+    theme = {
+      name = "Dracula";
+      package = unstable.dracula-theme;
     };
     # {
     # name = "Ant-Dracula";
     # package = pkgs.ant-dracula-theme;
     # };
 
-  # gtk3.extraConfig = {
-  #    gtk-cursor-theme-name = "volantes_cursors";
-  #    gtk-application-prefer-dark-theme = "1";
-  #  };
-  #  gtk4.extraConfig = {
-  #    gtk-cursor-theme-name = "volantes_cursors";
-  #    gtk-application-prefer-dark-theme = "1";
-  #  };
+    # gtk3.extraConfig = {
+    #    gtk-cursor-theme-name = "volantes_cursors";
+    #    gtk-application-prefer-dark-theme = "1";
+    #  };
+    #  gtk4.extraConfig = {
+    #    gtk-cursor-theme-name = "volantes_cursors";
+    #    gtk-application-prefer-dark-theme = "1";
+    #  };
   };
 
-         dconf = {
+  dconf = {
     enable = true;
-settings={
-"org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
       };
-    };  };
+    };
+  };
 
 
- # xsession.pointerCursor = {
- #   name = "Vanilla-DMZ";
- #   package = pkgs.vanilla-dmz;
- #   size = 128;
- # };
+  # xsession.pointerCursor = {
+  #   name = "Vanilla-DMZ";
+  #   package = pkgs.vanilla-dmz;
+  #   size = 128;
+  # };
   services = {
     wlsunset = {
       enable = true;
@@ -353,12 +354,12 @@ settings={
     GTK_THEME = "Dracula";
     XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
     WLR_DRM_NO_MODIFIERS = 1;
-       QT_SCALE_FACTOR = 1.25;
+    QT_SCALE_FACTOR = 1.25;
     QT_AUTO_SCREEfSCALE_FACTOR = 1;
-        GDK_DPI_SCALE = 1.25;
+    GDK_DPI_SCALE = 1.25;
     #TODO: did i need this??
     # OCL_ICD_VENDORS = "`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
-   # QT_QPA_PLATFORMTHEME = "gnome";
+    # QT_QPA_PLATFORMTHEME = "gnome";
     NIXOS_OZONE_WL = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
   };
