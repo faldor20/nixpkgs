@@ -1,6 +1,6 @@
 {
   description ="NixOS configuration and home-manager configurations for my desktop and laptop";
-  inputs.nixpkgs.url = "nixpkgs/nixos-22.11";
+  inputs.nixpkgs.url = "nixpkgs/nixos-23.05";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
 
@@ -9,7 +9,7 @@
   #   inputs.nixpkgs.follows = "nixpkgs";
   # };
   inputs.home-manager = {
-    url = "github:rycee/home-manager/release-22.11";
+    url = "github:rycee/home-manager/release-23.05";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -60,6 +60,13 @@
           system = "x86_64-linux";
           modules = [
             ./nixos-config/hosts/laptop/default.nix
+          ];
+          specialArgs = { inherit inputs pkgs unstable; };
+        }; 
+		xps13 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./nixos-config/hosts/xps13/default.nix
           ];
           specialArgs = { inherit inputs pkgs unstable; };
         };
