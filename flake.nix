@@ -2,6 +2,10 @@
   description ="NixOS configuration and home-manager configurations for my desktop and laptop";
   inputs.nixpkgs.url = "nixpkgs/nixos-23.05";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+  inputs.helix-editor={
+    url = "github:AlexanderDickie/helix/copilot";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
 
 
   # inputs.nur = {
@@ -14,7 +18,7 @@
   };
 
 
-  outputs = { home-manager, nixpkgs-unstable, nixpkgs, ... }@inputs:
+  outputs = { home-manager, nixpkgs-unstable, nixpkgs, helix-editor,... }@inputs:
     #   { ... }: {
     #     nixpkgs.overlays = [
     #       nur.overlay
@@ -43,14 +47,17 @@
     let
           system = "x86_64-linux";
     #We import the packages to make them useable by home manager and the like and also enable using unfree packages
-    pkgs = import nixpkgs{
-      inherit system;
+    pkgs = import nixpkgs {
+      inherit system ;
       config.allowUnfree=true;
+        #We add this helix overlay to nixpkgs which means we will now use the helix editor from master
+      overlays=[helix-editor.overlays.default];
     };
     unstable = import nixpkgs-unstable{
       inherit system;
       config.allowUnfree=true;
     };
+    
     in
     {
       # NixOS configuration entrypoint
@@ -61,21 +68,21 @@
           modules = [
             ./nixos-config/hosts/laptop/default.nix
           ];
-          specialArgs = { inherit inputs pkgs unstable; };
+          specialArgs = { inherit nixpkgs inputs pkgs unstable; };
         }; 
 		xps13 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./nixos-config/hosts/xps13/default.nix
           ];
-          specialArgs = { inherit inputs pkgs unstable; };
+          specialArgs = { inherit nixpkgs inputs pkgs unstable; };
         };
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./nixos-config/hosts/desktop/default.nix
           ];
-          specialArgs = { inherit inputs pkgs unstable; };
+          specialArgs = { inherit nixpkgs inputs pkgs unstable; };
         };
       };
 

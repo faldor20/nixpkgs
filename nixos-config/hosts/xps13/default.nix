@@ -19,7 +19,7 @@ in
   #  options =["rw,user,exec,mode=7777,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s"];
   #};
 
-  networking.hostName = "eli-nixos-yoga"; # Define your hostname.
+  networking.hostName = "eli-nixos-xps"; # Define your hostname.
 
   networking.networkmanager = {
     enable = true;
@@ -27,7 +27,6 @@ in
   };
   programs.nm-applet.enable = true;
 
-  networking.interfaces.enp0s31f6.useDHCP = false;
 
 
   #--This enables caps2esc--
@@ -46,6 +45,20 @@ in
    console = {
       useXkbConfig=true;
      };
+
+   systemd.services.cpu-affinity={
+      description="Pin touchpad interrupts to CPU2";
+      documentation=[
+        "https://community.frame.work/t/tracking-touchpad-interrupts-battery-usage-issues-idma64-2/13630"
+        ];
+      wantedBy=["basic.target"];
+      serviceConfig={
+        Type="oneshot";
+        RemainAfterExit=true;
+        ExecStart=''/bin/sh -c 'echo 3-3 > /proc/irq/$(grep designware.1 /proc/interrupts | cut -d ":" -f1 | xargs)/smp_affinity_list' '';
+        ExecStop=''/bin/sh -c 'echo "f" > /proc/irq/$(grep designware.1 /proc/interrupts | cut -d ":" -f1 | xargs)/smp_affinity_list' '';
+      };
+    };
 
 
   environment.systemPackages = with pkgs; [
@@ -68,11 +81,34 @@ gnomeExtensions.gsconnect
   #};
   
 
+ boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelParams = [
+    "i915.enable_fbc=1"
+    "i915.enable_guc_loading=1"
+    "i915.enable_guc_submission=1"
+    "i915.enable_guc=2"
+    "i915.enable_rc6=1"
+    "i915.enable_psr=1"
+    # "initcall_blacklist=dw_i2c_init_driver"
 
-  boot.initrd.kernelModules = [ "i915" "thinkpad_acpi" ];
-  #initrd.availableKernelModules=["thinkpad_acpi"];
-#enables framebuffer compression which slightly speeds up intel Igpu
-boot.kernelParams=["i915.enable_fbc=1"];
+    # attempts to fix the interrupts
+    "initcall_blacklist=cnl_pinctrl_driver_init"
+    "intel_lpss_pci"
+    "pci=nocrs"
+    "iwlwifi.power_save=1"
+    "iwlwifi.power_level=1"
+    "iwlwifi.uapsd_disable=0"
+    "iwlmvm.power_scheme=3"
+  ];
+
+# if the tick_sched is using lots of battery try this to fix it
+#   boot.kernelPatches = [ {
+#     name = "xps13";
+#     patch = null;
+#     extraConfig = ''
+# CONFIG_NO_HZ_IDLE=y
+#   '';
+#     } ];
   hardware.cpu.intel.updateMicrocode=true;
   hardware.enableRedistributableFirmware=true;
   hardware.opengl.enable=true;
@@ -83,25 +119,19 @@ boot.kernelParams=["i915.enable_fbc=1"];
     intel-media-driver
   ];
 
+  # attempts to stop constant touchpad interupts
+  boot.blacklistedKernelModules = [ 
+  "psmouse"
+  "i2c_designware"
+   ];
+
+  # Allows for updating firmware via `fwupdmgr`.
+  services.fwupd.enable = true;
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-#stop throttling so damn much:
 
-services.throttled.enable=true;
-services.thinkfan={
-  enable=false;
-  levels=[
-      [0  0   53]
-      [1  47  55]
-      [2  49  57]
-      [3  50  58]
-      [6  52  59]
-      [7  55  68]
-      ["level auto" 60 32767]
-  ];
-};
  services.tlp = {
       enable =true;
       # extraConfig = ''
@@ -112,18 +142,19 @@ services.thinkfan={
         #   bluetooth
         #   wifi – Wireless LAN (Wi-Fi)
         #   wwan – Wireless Wide Area Network (3G/UMTS, 4G/LTE, 5G)
-        # DEVICES_TO_DISABLE_ON_STARTUP="bluetooth wifi"
-
+      DEVICES_TO_DISABLE_ON_STARTUP="bluetooth nfc wwan";
         # When a LAN, Wi-Fi or WWAN connection has been established, the stated radio devices are disabled:
+
+          WIFI_PWR_ON_BAT="on";
         #   bluetooth
         #   wifi – Wireless LAN
         #   wwan – Wireless Wide Area Network (3G/UMTS, 4G/LTE, 5G)
-        # DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan"
+        DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi";
         # DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
         # DEVICES_TO_DISABLE_ON_WWAN_CONNECT="wifi"
 
-        # When a LAN, Wi-Fi, WWAN connection has been disconnected, the stated radio devices are enabled.
-        # DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi wwan"
+        # When a LAN, Wi-Fi, WWAN connection has beeen disconnected, the stated radio devices are enabled.
+        DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi";
         # DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT=""
         # DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
 
@@ -172,7 +203,7 @@ services.thinkfan={
         #  power
         # for tlp-stat Version 1.3 and higher 'tlp-stat -p'
          CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
-         CPU_ENERGY_PERF_POLICY_ON_BAT="balance_power";
+         CPU_ENERGY_PERF_POLICY_ON_BAT="power";
 
         # Set Intel CPU energy/performance policy HWP.EPP. Possible values are
         #   performance
@@ -192,9 +223,11 @@ services.thinkfan={
 
         # Disable CPU “turbo boost” (Intel) or “turbo core” (AMD) feature (0 = disable / 1 = allow).
         CPU_BOOST_ON_AC=1;
-       CPU_BOOST_ON_BAT=1;
+         CPU_BOOST_ON_BAT=0;
 
+      SCHED_POWERSAVE_ON_BAT=1;
 
+NMI_WATCHDOG=0;
         # Set Intel CPU energy/performance policy EPB. Possible values are (in order of increasing power saving):
         #   performance
         #   balance-performance
@@ -210,8 +243,8 @@ services.thinkfan={
         SOUND_POWER_SAVE_ON_BAT=1;
 
         # Controls runtime power management for PCIe devices.
-        # RUNTIME_PM_ON_AC=on;
-        # RUNTIME_PM_ON_BAT=auto;
+        RUNTIME_PM_ON_AC="on";
+        RUNTIME_PM_ON_BAT="auto";
 
         # Exclude PCIe devices assigned to listed drivers from runtime power management. Use tlp-stat -e to lookup the drivers (in parentheses at the end of each output line).
         # RUNTIME_PM_DRIVER_BLACKLIST="mei_me nouveau nvidia pcieport radeon"
@@ -222,7 +255,7 @@ services.thinkfan={
         #    powersave
         #    powersupersave
         # PCIE_ASPM_ON_AC=default;
-        # PCIE_ASPM_ON_BAT=default;
+        PCIE_ASPM_ON_BAT="default";
       #'';
       };
     };

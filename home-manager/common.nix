@@ -13,7 +13,7 @@ in
   home = {
     homeDirectory = "/home/eli";
     username = "eli";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
 
@@ -45,6 +45,7 @@ in
   # xdg.configFile."helix/config.toml".source = "/home/eli/.config/nixpkgs/config/helix/config.toml";
   home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
     ln -s ${"/home/eli/.config/nixpkgs/config/helix/config.toml"} ~/.config/helix/config.toml
+    ln -s ${"/home/eli/.config/nixpkgs/config/lazygit/config.yml"} ~/.config/lazygit/config.yml
   '';
   home.packages = with pkgs; [
 
@@ -52,11 +53,12 @@ in
     gnome.file-roller
     glib
     fd
+    broot
     #====system====
     #monitors
     x11_ssh_askpass
     nmon
-    bpytop
+    btop
 
 
     unzip
@@ -151,13 +153,13 @@ in
     #vscodeInsiders
     #neovim-nightly
     vim
-    unstable.helix
+    helix
     #====WRITING====
-    #unstable.obsidian
+    unstable.obsidian
     ghostwriter
     #unstable.obs-studio
     #unstable.logseq
-    #unstable.remnote
+    unstable.remnote
     #typora
     #unstable.xournalpp
     #====TOOLS for work:=====
@@ -362,6 +364,14 @@ in
     # QT_QPA_PLATFORMTHEME = "gnome";
     NIXOS_OZONE_WL = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
+    EDITOR= "hx";
+    VISUAL= "hx";
+    TERMINAL= "kitty";
   };
 
-}
+ xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/*" = ["Helix.desktop"];
+    };
+  };}

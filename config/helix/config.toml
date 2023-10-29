@@ -17,6 +17,18 @@ hidden = true
 git-ignore=true
 
 
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+
+
+
 [keys.normal]
 
 n="move_char_left"
@@ -38,6 +50,8 @@ K="search_prev"
 
 '{'="goto_prev_paragraph"
 '}'="goto_next_paragraph"
+#COPILOT
+"C-y" = "toggle_copilot_auto"
 
 [keys.normal.g]
 n="goto_line_start"
@@ -56,6 +70,11 @@ o="jump_view_right"
 
 [keys.insert]
 "A-x" = "normal_mode" # Maps Alt-X to enter normal mode
+
+#COPILOT
+"C-e" = "show_or_next_copilot_completion"
+"C-a" = "hide_or_prev_copilot_completion"
+"C-space" = "apply_copilot_completion"
 
 
 [keys.normal.z]
@@ -96,3 +115,8 @@ K = "extend_search_prev"
 [keys.select.space]
 'f'="file_picker_in_current_directory"
 'F'="file_picker"
+
+[editor.lsp]
+copilot-auto = true
+
+

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs,pkgs, lib, variables, ... }:
+{ config, inputs,pkgs, lib, variables,nixpkgs, ... }:
 
 let
   thisPath = ./.;
@@ -19,6 +19,9 @@ in
   };
 
   nix = {
+    registry = {
+      nixpkgs.flake = nixpkgs;
+    };
     settings.auto-optimise-store = true;
     nixPath = [
       "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
@@ -188,7 +191,6 @@ in
   environment.systemPackages = with pkgs; [
     # ====SYSTEM STUFF====
     htop
-    fish
     oil
     kitty
     git
@@ -208,6 +210,8 @@ in
     # FILESYSTEM
     fuse
   ];
+
+  programs.fish.enable=true;
   #docker
   virtualisation.docker.enable = true;
 
@@ -237,6 +241,8 @@ in
 
   # List services that you want to enable:
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  programs.ssh.startAgent = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 

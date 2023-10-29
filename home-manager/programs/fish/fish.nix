@@ -30,13 +30,16 @@ programs.fish={
     set PATH ~/.nimble/bin $PATH
     set PATH ~/.cargo/bin $PATH
     set PATH ~/Programming/scripts $PATH
-   set QT_QPA_PLATFORM wayland
+    set QT_QPA_PLATFORM wayland
     set GDK_BACKEND wayland
     set XDG_SESSION_TYPE wayland
     set MOZ_ENABLE_WAYLAND 1
 
     set NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
-    #source /home/eli/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+    #This checks if we have opam and evals the env if we do. Means we get the autoeval if we do and we can ignore it if we don't
+    if test (which opam)
+        eval (opam env); or true 
+    end
 ";
     #source /home/eli/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 };

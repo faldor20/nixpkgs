@@ -20,7 +20,6 @@ in {
     brightnessctl
     wirelesstools # needed for wofi wifi script
 
-    octaveFull
     gnome.gnome-power-manager
     
 

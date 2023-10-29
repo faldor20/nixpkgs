@@ -1,0 +1,36 @@
+os:
+   edit: 'hx {{filename}}'
+   editInTerminal: true
+
+keybinding:
+  universal:
+    prevItem-alt: 'i'
+    nextItem-alt: 'e'
+    prevBlock-alt: 'n'
+    nextBlock-alt: 'o'
+    scrollLeft: 'N'
+    scrollRight: 'O'
+    nextMatch: '='
+    prevMatch: '-'
+    new: 'k'
+    edit: 'h'
+    openFile: 'H'
+    scrollUpMain-alt1: 'I'
+    scrollDownMain-alt1: 'E'
+    scrollUpMain-alt2: '<c-i>'
+    scrollDownMain-alt2: '<c-e>'
+    undo: 'l'
+    redo: '<c-r>'
+    diffingMenu: 'M'
+    filteringMenu: '<c-f>'
+  files:
+    ignoreFile: 'j'
+  commits:
+    moveDownCommit: '<c-e>'
+    moveUpCommit: '<c-i>'
+    openInBrowser: 'H'
+  branches:
+    viewGitFlowOptions: 'J'
+    createPullRequest: 'h'
+    viewPullRequestOptions: 'H'
+

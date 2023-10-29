@@ -16,7 +16,7 @@ in {
     gitui
     lazygit
     powershell
-    slack
+   
 
     httpie
     git-lfs
@@ -33,7 +33,7 @@ in {
 
     #sccache
     unstable.nim
-    #unstable.nimlsp
+    unstable.nimlsp
 
     #clojure
     #jdk11
@@ -43,6 +43,8 @@ in {
     #chromedriver
 
     #julia-stable
+
+    nodejs_20
 
 
     #=====ocaml=====
@@ -67,14 +69,14 @@ in {
     #
     pkg-config
     unstable.rustup
-    unstable.rust-analyzer
+    #unstable.rust-analyzer
     pipenv
 
     #unstable.dotnet-sdk_5
     #unstable.dotnet-sdk_6
     dotnetPackages.Paket
    # buildDotnet
-    dotnet-sdk
+    unstable.dotnet-sdk_7
     unstable.mono
     omnisharp-roslyn
 
@@ -89,5 +91,8 @@ in {
 
     #====langServers===
     unstable.marksman
-  ];
+    pkgs.nodePackages.svelte-language-server
+    pkgs.nodePackages.typescript-language-server
+    pkgs.nodePackages.vscode-langservers-extracted 
+ ];
 }
