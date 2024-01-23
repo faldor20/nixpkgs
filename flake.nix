@@ -1,6 +1,6 @@
 {
   description ="NixOS configuration and home-manager configurations for my desktop and laptop";
-  inputs.nixpkgs.url = "nixpkgs/nixos-23.05";
+  inputs.nixpkgs.url = "nixpkgs/nixos-23.11";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
   inputs.helix-editor={
     url = "github:helix-editor/helix";
