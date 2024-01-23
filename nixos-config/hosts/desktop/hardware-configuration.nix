@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -14,34 +15,36 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
+    {
+      device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
       fsType = "btrfs";
       options = [ "compress=zstd" "subvol=root" ];
 
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
+    {
+      device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
       fsType = "btrfs";
       options = [ "compress=zstd" "subvol=home" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
+    {
+      device = "/dev/disk/by-uuid/f4762683-0f46-4874-97ff-eb8e6bad1de9";
       fsType = "btrfs";
       options = [ "compress=zstd" "noatime" "subvol=nix" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2475-4A6F";
+    {
+      device = "/dev/disk/by-uuid/2475-4A6F";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a4d6b537-91fb-470d-a722-d5890ac42abc"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/a4d6b537-91fb-470d-a722-d5890ac42abc"; }];
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }
