@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config,unstable, pkgs, lib, ... }:
 
 let
 
@@ -9,6 +9,8 @@ in {
   imports=[
   ];
   home.packages = with pkgs; [
-    kicad
+    # kicad
+    f3d
+    unstable.orca-slicer
   ];
 }

@@ -3,7 +3,7 @@
   inputs.nixpkgs.url = "nixpkgs/nixos-23.05";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
   inputs.helix-editor={
-    url = "github:AlexanderDickie/helix/copilot";
+    url = "github:helix-editor/helix";
     inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -60,6 +60,9 @@
     
     in
     {
+      # this makes `nix shell` commands use the system version of nixpkgs by default
+     nix.registry.nixpkgs.flake = inputs.nixpkgs;
+     nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {

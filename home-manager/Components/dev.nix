@@ -11,6 +11,7 @@ in {
 
   #nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
+    unstable.godot_4
 
     gitkraken
     gitui
@@ -69,7 +70,6 @@ in {
     #
     pkg-config
     unstable.rustup
-    #unstable.rust-analyzer
     pipenv
 
     #unstable.dotnet-sdk_5
@@ -87,12 +87,28 @@ in {
 
     #=====nix====
     nil
+    #====nvim====
+    ripgrep
 
 
     #====langServers===
     unstable.marksman
+    lua-language-server
+    stylua
     pkgs.nodePackages.svelte-language-server
     pkgs.nodePackages.typescript-language-server
+    unstable.nodePackages."@tailwindcss/language-server"
     pkgs.nodePackages.vscode-langservers-extracted 
+    clang-tools
+    unstable.biome
+    # unstable.rust-analyzer
+
+
+    unstable.jetbrains.rust-rover
+
+
+  
+
+
  ];
 }

@@ -15,6 +15,7 @@ in {
     #"${components}/uni.nix"
     
     "${components}/dev.nix"
+    "${components}/CAD.nix"
   ];
   home.packages = with pkgs; [
     brightnessctl

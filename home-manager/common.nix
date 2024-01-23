@@ -66,6 +66,7 @@ in
     sqlite
     htop
     gnome3.nautilus
+    xplr
 
     cinnamon.nemo
     # gnomeExtensions.gsconnect
@@ -125,7 +126,6 @@ in
     #---calenmdar--
     #minetime
     #---email
-    mailspring
     gnome3.geary
 
     aerc

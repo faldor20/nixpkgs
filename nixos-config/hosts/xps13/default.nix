@@ -83,12 +83,14 @@ gnomeExtensions.gsconnect
 
  boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [
-    "i915.enable_fbc=1"
-    "i915.enable_guc_loading=1"
-    "i915.enable_guc_submission=1"
-    "i915.enable_guc=2"
-    "i915.enable_rc6=1"
-    "i915.enable_psr=1"
+
+    # "i915.enable_fbc=1"
+    # "i915.enable_guc_loading=1"
+    # "i915.enable_guc_submission=1"
+    # "i915.enable_guc=2"
+    # "i915.enable_rc6=1"
+    # "i915.enable_psr=1"
+
     # "initcall_blacklist=dw_i2c_init_driver"
 
     # attempts to fix the interrupts

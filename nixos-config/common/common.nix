@@ -132,6 +132,7 @@ in
     package = pkgs.pulseaudioFull;
   };
 
+
   #Enable pipewrie sound
   /*
     security.rtkit.enable = true;
@@ -152,6 +153,22 @@ in
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
   '';
+  services.udev.packages=[
+     (pkgs.writeTextFile {
+        name = "voyger_udev";
+        text = ''
+        # Rules for Oryx web flashing and live training
+        KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+        KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+
+        # Keymapp Flashing rules for the Voyager
+        SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+        '';
+        destination = "/etc/udev/rules.d/50-zsa.rules";
+      })
+  ];
+  
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   #services.xserver.libinput.enable = true;
@@ -266,4 +283,6 @@ in
   #   };
   #   wantedBy = [ "default.target" ];
   # };
+  hardware.keyboard.zsa.enable = true;
+  
 }

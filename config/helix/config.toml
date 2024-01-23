@@ -51,7 +51,7 @@ K="search_prev"
 '{'="goto_prev_paragraph"
 '}'="goto_next_paragraph"
 #COPILOT
-"C-y" = "toggle_copilot_auto"
+#"C-y" = "toggle_copilot_auto"
 
 [keys.normal.g]
 n="goto_line_start"
@@ -72,9 +72,9 @@ o="jump_view_right"
 "A-x" = "normal_mode" # Maps Alt-X to enter normal mode
 
 #COPILOT
-"C-e" = "show_or_next_copilot_completion"
-"C-a" = "hide_or_prev_copilot_completion"
-"C-space" = "apply_copilot_completion"
+#"C-e" = "show_or_next_copilot_completion"
+#"C-a" = "hide_or_prev_copilot_completion"
+#"C-space" = "apply_copilot_completion"
 
 
 [keys.normal.z]
@@ -116,7 +116,7 @@ K = "extend_search_prev"
 'f'="file_picker_in_current_directory"
 'F'="file_picker"
 
-[editor.lsp]
-copilot-auto = true
+#[editor.lsp]
+#copilot-auto = true
 
 
