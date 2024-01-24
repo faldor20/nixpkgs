@@ -1,8 +1,8 @@
  {config, pkgs, ... }:
 let
-  unstable = import <nixos-unstable> {
-    config.allowUnfree = true;
-  };
+  # unstable = import <nixos-unstable> {
+  #   config.allowUnfree = true;
+  # };
   setupName="Laptop";
   ownPath=./. + "/default.nix";
 in

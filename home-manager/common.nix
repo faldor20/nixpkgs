@@ -51,7 +51,9 @@ in
 
 
     gnome.file-roller
-    glib
+    # unstable.glib
+    # unstable.glibc
+    vulkan-tools
     fd
     broot
     #====system====
@@ -99,7 +101,7 @@ in
     #unstable.zoom-us
     slurp
     pandoc
-    catfish
+    xfce.catfish
     ncdu
 
     docker
@@ -155,7 +157,7 @@ in
     vim
     helix
     #====WRITING====
-    unstable.obsidian
+    # unstable.obsidian
     ghostwriter
     #unstable.obs-studio
     #unstable.logseq
@@ -352,7 +354,8 @@ in
   #  };
   home.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "gnome";
-    QT_STYLE_OVERRIDE = "kvantum";
+    #Removed for update to 23.11
+    # QT_STYLE_OVERRIDE = "kvantum";
     GTK_THEME = "Dracula";
     XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
     WLR_DRM_NO_MODIFIERS = 1;

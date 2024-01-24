@@ -1,8 +1,5 @@
- {config, pkgs, ... }:
+ {config, pkgs,unstable,lib, ... }:
 let
-  unstable = import <nixos-unstable> {
-    config.allowUnfree = true;
-  };
   setupName="Laptop";
   ownPath=./. + "/default.nix";
 in
@@ -113,13 +110,28 @@ gnomeExtensions.gsconnect
 #     } ];
   hardware.cpu.intel.updateMicrocode=true;
   hardware.enableRedistributableFirmware=true;
-  hardware.opengl.enable=true;
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiIntel
-    vaapiVdpau
+
+
+  # environment.variables = {
+  #   VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+  # };
+    hardware.opengl={
+    enable=true;
+    # package32 = unstable.pkgsi686Linux.mesa.drivers;
+    # package = unstable.mesa.drivers;
+    extraPackages = with pkgs; [
+      # vaapiIntel
+      # vaapiVdpau
+      # libvdpau-va-gl
+      # intel-media-driver
+
+    (if (lib.versionOlder (lib.versions.majorMinor lib.version) "23.11") then vaapiIntel else intel-vaapi-driver)
     libvdpau-va-gl
-    intel-media-driver
-  ];
+    intel-media-driver    ];
+
+    # driSupport32Bit=true;
+    driSupport=true;
+  };
 
   # attempts to stop constant touchpad interupts
   boot.blacklistedKernelModules = [ 

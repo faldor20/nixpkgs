@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs,pkgs, lib, variables,nixpkgs, ... }:
+{ config, inputs,unstable,pkgs, lib, variables,nixpkgs, ... }:
 
 let
   thisPath = ./.;
@@ -22,7 +22,13 @@ in
     registry = {
       nixpkgs.flake = nixpkgs;
     };
-    settings.auto-optimise-store = true;
+    settings.auto-optimise-store = false;
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
     nixPath = [
       "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
       "nixos-config=${commonPath}"
@@ -79,7 +85,7 @@ in
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
   services.xserver.windowManager.i3 = {
-    enable = false;
+    enable = true;
     # TODO install via home manager
     # extraPackages = with pkgs; [
     #   dmenu #application launcher most people use
@@ -95,6 +101,10 @@ in
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
   };
+
+  #We enable opengl because otherwires sway won't start 
+  # hardware.opengl.enable=true;
+
   #run .desktop files in .config/autostart
   #essentially allows autostarting of applications taht use that method
   xdg.autostart.enable = true;
@@ -226,6 +236,7 @@ in
 
     # FILESYSTEM
     fuse
+    # unstable.glibc
   ];
 
   programs.fish.enable=true;
