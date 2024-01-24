@@ -1,0 +1,125 @@
+[language-server.copilot]
+command = "copilot"
+
+[[grammar]]
+
+name = "ocaml"
+source = { git = "https://github.com/faldor20/tree-sitter-ocaml.git",rev="bf6f15268e5e7ccb489391f7899f3d7142bb8f51", subpath = "ocaml" }
+
+
+[[language]]
+name = "ocaml"
+language-servers = ["ocamllsp", "copilot"]
+
+[language-server.roc-ls]
+command = "roc_ls"
+
+[[language]]
+name = "roc"
+scope = "source.roc"
+injection-regex = "roc"
+file-types = ["roc"]
+shebangs = ["roc"]
+auto-format=true
+roots = []
+comment-token = "#"
+language-servers = ["roc-ls"]
+indent = { tab-width = 2, unit = "  " }
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+[[grammar]]
+
+name = "roc"
+source = { git = "https://github.com/faldor20/tree-sitter-roc.git", rev = "2c985e01fd1eae1e8ce0d52b084a6b555c26048e" }
+[[grammar]]
+
+name = "reasonMl"
+source = { git = "https://github.com/danielo515/nvim-treesitter-reason.git", rev = "f4b91b8daeed0a0ed2604ea663401bf0e97769c0", subpath = "tree-sitter-reason/src" }
+
+[[language]]
+name = "reasonMl"
+scope = "source.reasonMl"
+injection-regex = "reasonMl"
+file-types = ["re"]
+shebangs = ["ocaml", "ocamlrun", "ocamlscript"]
+roots = []
+comment-token = "//"
+language-servers = ["ocamllsp"]
+indent = { tab-width = 2, unit = "  " }
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+
+# ------ tailwindcss ----------
+
+# wiating for next helix version
+
+# tailwind ocmal
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+injection-regex = "html"
+file-types = ["html", "htm", "shtml", "xhtml", "xht", "jsp", "asp", "aspx", "jshtm", "volt", "rhtml"]
+roots = []
+language-servers = [ "vscode-html-language-server","tailwindcss-ls","biome" ]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+[language.formatter]
+command = "biome"
+args = ["format", "--stdin-file-path", "test.html"]
+
+
+[[grammar]]
+name = "html"
+source = { git = "https://github.com/tree-sitter/tree-sitter-html", rev = "29f53d8f4f2335e61bf6418ab8958dac3282077a" }
+
+
+[language-server]
+biome= { command = "biome", args = ["lsp-proxy"] }
+[[language]]
+name = "css"
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls","biome" ]
+
+[language.formatter]
+command = "biome"
+args = ["format", "--stdin-file-path", "test.css"]
+
+
+[[language]]
+name = "json"
+language-servers = [ "vscode-json-language-server","biome" ]
+[language.formatter]
+command = "biome"
+args = ["format", "--stdin-file-path", "test.json"]
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server", "biome"]
+auto-format = true
+[language.formatter]
+command = "biome"
+args = ["format", "--stdin-file-path", "test.js"]
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server", "biome"]
+auto-format = true
+
+[language.formatter]
+command = "biome"
+args = ["format", "--stdin-file-path", "test.ts"]
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "biome"]
+auto-format = true
+[language.formatter]
+command = "biome"
+args = ["format", "--stdin-file-path", "test.tsx"]

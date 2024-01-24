@@ -1,6 +1,7 @@
 os:
    edit: 'hx {{filename}}'
    editInTerminal: true
+#added comment
 
 keybinding:
   universal:
@@ -17,20 +18,26 @@ keybinding:
     openFile: 'H'
     scrollUpMain-alt1: 'I'
     scrollDownMain-alt1: 'E'
-    scrollUpMain-alt2: '<c-i>'
-    scrollDownMain-alt2: '<c-e>'
+    # scrollUpMain-alt2: '<c-i>'
+    # scrollDownMain-alt2: '<c-e>'
     undo: 'l'
     redo: '<c-r>'
     diffingMenu: 'M'
+    copyToClipboard: '<c-y>'
     filteringMenu: '<c-f>'
+
   files:
     ignoreFile: 'j'
   commits:
-    moveDownCommit: '<c-e>'
-    moveUpCommit: '<c-i>'
+    # I can't use c-i for some reason so we are using these instead
+    moveUpCommit: '<c-n>'
+    moveDownCommit: '<c-o>'
+    #we don't really need this and it collides with c-y our normal copy  
+    copyCommitMessageToClipboard: ''
     openInBrowser: 'H'
   branches:
     viewGitFlowOptions: 'J'
     createPullRequest: 'h'
     viewPullRequestOptions: 'H'
+
 

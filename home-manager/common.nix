@@ -43,10 +43,25 @@ in
 
   # ];
   # xdg.configFile."helix/config.toml".source = "/home/eli/.config/nixpkgs/config/helix/config.toml";
-  home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-    ln -s ${"/home/eli/.config/nixpkgs/config/helix/config.toml"} ~/.config/helix/config.toml
-    ln -s ${"/home/eli/.config/nixpkgs/config/lazygit/config.yml"} ~/.config/lazygit/config.yml
-  '';
+  # home.activation.linkMyFiles = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+  #   ln -s ${"/home/eli/.config/nixpkgs/config/lazygit/config.yml"} ~/.config/lazygit/config.yml
+  #   ln -s ${"/home/eli/.config/nixpkgs/config/helix/config.toml"} ~/.config/helix/config.toml
+  # '';
+  home.file={
+    lazygit={
+      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/lazygit/config.yml";
+      target=".config/lazygit/config.yml";
+    };
+    helix={
+      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/config.toml";
+      target=".config/helix/config.toml";
+    };
+    helix-langs={
+      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/languages.toml";
+      target=".config/helix/languages.toml";
+    };
+    
+  };
   home.packages = with pkgs; [
 
 
