@@ -10,7 +10,7 @@ in {
   ];
   home.packages = with pkgs; [
     # kicad
-    f3d
-    unstable.orca-slicer
+    # f3d
+    # unstable.orca-slicer
   ];
 }

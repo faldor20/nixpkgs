@@ -66,8 +66,6 @@ in
 
 
     gnome.file-roller
-    # unstable.glib
-    # unstable.glibc
     vulkan-tools
     fd
     broot
