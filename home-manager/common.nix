@@ -239,8 +239,18 @@ in
     style.name = "Dracula";
 
   };
+  ##Setup gpg
+   programs.gpg.enable = true;
+    services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 34560000;
+    maxCacheTtl = 34560000;
+    pinentryFlavor = "curses";
+    enableScDaemon = true;
+  };
 
   programs = {
+
 
     emacs =
 
