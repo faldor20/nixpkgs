@@ -6,6 +6,7 @@ in
 {
   imports=
   [
+    # ../../common/stylix.nix
     ../../common/common.nix
     ./hardware-configuration.nix
   ];
@@ -120,16 +121,18 @@ gnomeExtensions.gsconnect
     # package32 = unstable.pkgsi686Linux.mesa.drivers;
     # package = unstable.mesa.drivers;
     extraPackages = with pkgs; [
-      # vaapiIntel
-      # vaapiVdpau
-      # libvdpau-va-gl
-      # intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-media-driver
 
-    (if (lib.versionOlder (lib.versions.majorMinor lib.version) "23.11") then vaapiIntel else intel-vaapi-driver)
-    libvdpau-va-gl
-    intel-media-driver    ];
+    # (if (lib.versionOlder (lib.versions.majorMinor lib.version) "23.11") then vaapiIntel else intel-vaapi-driver)
+    # libvdpau-va-gl
+    # intel-media-driver    
 
-    # driSupport32Bit=true;
+    ];
+
+    driSupport32Bit=true;
     driSupport=true;
   };
 
@@ -143,6 +146,11 @@ gnomeExtensions.gsconnect
   services.fwupd.enable = true;
 
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.input={
+  General={
+    UserspaceHID=true;
+    };
+  };
   services.blueman.enable = true;
 
 
@@ -282,4 +290,13 @@ NMI_WATCHDOG=0;
     criticalPowerAction="Hibernate";
   };
 
+  # systemd.services.monitor_scale= {
+  # path=[pkgs.fish pkgs.jq pkgs.sway ];
+
+  #   serviceConfig = {
+  #       ExecStart = "fish /home/eli/.config/nixpkgs/scripts/monitorScale.fish";
+  #       };
+ 
+  #     wantedBy = [ "default.target" ];
+  # };
 }

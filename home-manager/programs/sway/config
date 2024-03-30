@@ -8,21 +8,20 @@
 ## programs to start alngside sway
 #
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec gnome-pomodoro --no-default-window
-exec (gnome-pomodoro)
-exec (sleep 4;gnome-pomodoro --start)
+
+#exec gnome-pomodoro --no-default-window
+#exec (gnome-pomodoro)
+#exec (sleep 4;gnome-pomodoro --start)
+
 # here we mount all the network drives
 #exec mount /mnt/smb/bfs
 #exec mount /mnt/smb/common
 #exec mount /mnt/smb/apps
 #exec mount /mnt/smb/home
-#notification manager
-exec mako
 #
 for_window [app_id="gnome-pomodoro"] floating enable
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
+
 set $mod Mod4
 # Home row direction keys, like vim
 set $left n
@@ -46,11 +45,12 @@ output * bg $wallpaper fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
 output HDMI-A-2 pos 0,0
-output DP-1 pos 0,0 scale 1
-output eDP-1 pos 3840,0 scale 1
-output DP-2 pos 0,0 scale 1
-output DP-3 pos 3840,0 adaptive_sync on, mode 3440x1440@144.000Hz
+output DP-1 pos -3840,0 scale 1
+output eDP-1 pos 0,0 scale 1
+output DP-2 pos 0,0 
+output DP-3 pos -3840,0 scale 1.25  
 
 #used to be 1.25
 ## Idle configuration
@@ -334,7 +334,8 @@ bindsym $mod+Shift+s mode "$mode_screens"
 #
 # Status Bar:
 #
-exec waybar
+#exec waybar
+bar swaybar_command waybar
 # Read `man 5 sway-bar` for more information about this section.
 #bar {
 #    position top

@@ -26,4 +26,15 @@ in {
 
 
   ];
+  systemd.user.services.monitor-scale= {
+      Service={
+        Environment = [
+          "PATH=${lib.makeBinPath (with pkgs; [ fish jq sway ])}"
+        ];
+        ExecStart = "/home/eli/.config/nixpkgs/scripts/monitorScale.fish";
+      };
+      Install={
+          WantedBy = [ "default.target" ];
+      };
+  };
 }

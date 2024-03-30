@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs,unstable,pkgs, lib, variables,nixpkgs, ... }:
+{ config, inputs,unstable,pkgs, lib, variables,nixpkgs,nixpkgs-unstable, ... }:
 
 let
   thisPath = ./.;
@@ -21,6 +21,7 @@ in
   nix = {
     registry = {
       nixpkgs.flake = nixpkgs;
+      nixpkgs-unstable.flake=nixpkgs-unstable;
     };
     settings.auto-optimise-store = false;
     optimise.automatic = true;
@@ -295,12 +296,12 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
   
-  # systemd.services.nightoff = {
-  #   serviceConfig = {
-  #     ExecStart = "/home/eli/.config/nixpkgs/scripts/nightoff.sh";
-  #   };
-  #   wantedBy = [ "default.target" ];
-  # };
+  systemd.services.nightoff = {
+    serviceConfig = {
+      ExecStart = "/home/eli/.config/nixpkgs/scripts/nightoff.sh";
+    };
+    wantedBy = [ "default.target" ];
+  };
   hardware.keyboard.zsa.enable = true;
   
 }

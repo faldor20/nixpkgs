@@ -5,7 +5,7 @@ while true; do
    min=$(date '+%M')
    #1=monday 7=sunday
    #weekday= $(date "+%u")
-        if [ $hour -gt 19 ] # shutdown at 8 oclock
+        if [ $hour -gt 21 ] # shutdown at 10 oclock
         then
             shutdown 0
         fi

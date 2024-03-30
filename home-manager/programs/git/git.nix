@@ -3,7 +3,11 @@
 {
   programs.git={
     enable=true;
-    userName="faldor20";
-    userEmail="eli.jambu@yahoo.com";
+    userName="Eli Dowling";
+    userEmail="eli.jambu@gmail.com";
+    signing={
+      signByDefault=true;
+      key=null;
+    };
   };
 }

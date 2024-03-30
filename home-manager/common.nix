@@ -24,6 +24,7 @@ in
   #   allowUnfree = true;
   # };
   imports = [
+  # ./stylix.nix
     ./fonts.nix
     ./general/email.nix
     ./programs/fish/fish.nix
@@ -60,10 +61,15 @@ in
       source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/languages.toml";
       target=".config/helix/languages.toml";
     };
+    spotify-player={
+      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/spotify-player/app.toml";
+      target=".config/spotify-player/app.toml";
+    };
     
   };
   home.packages = with pkgs; [
 
+    jq
 
     gnome.file-roller
     vulkan-tools
@@ -200,6 +206,7 @@ in
     #--Media---
     vlc
     mpv
+    spotify-player
     #mpd
     pavucontrol
     playerctl
@@ -239,6 +246,7 @@ in
     style.name = "Dracula";
 
   };
+
   ##Setup gpg
    programs.gpg.enable = true;
     services.gpg-agent = {
@@ -247,13 +255,27 @@ in
     maxCacheTtl = 34560000;
     pinentryFlavor = "curses";
     enableScDaemon = true;
+
   };
 
   programs = {
 
+    nnn={
+      enable=true;
+      package=pkgs.nnn.override ({ withNerdIcons = true; });
+      plugins={
+        
+        mappings = {
+          c = "fzcd";
+          f = "finder";
+          v = "imgview";
+        };      
+      };
+    };
+
+
 
     emacs =
-
       {
         enable = false;
         package = unstable.emacsPgtkGcc;
@@ -268,10 +290,6 @@ in
   };
   gtk = {
     enable = true;
-    #font = {
-    #  name = "Noto Sans 10";
-    #  package = pkgs.noto-fonts;
-    #};
     iconTheme = {
       name = "Tela";
       #     package = (pkgs.tela-icon-theme.override { colorVariants = [ "purple" ]; });
@@ -281,19 +299,6 @@ in
       name = "Dracula";
       package = unstable.dracula-theme;
     };
-    # {
-    # name = "Ant-Dracula";
-    # package = pkgs.ant-dracula-theme;
-    # };
-
-    # gtk3.extraConfig = {
-    #    gtk-cursor-theme-name = "volantes_cursors";
-    #    gtk-application-prefer-dark-theme = "1";
-    #  };
-    #  gtk4.extraConfig = {
-    #    gtk-cursor-theme-name = "volantes_cursors";
-    #    gtk-application-prefer-dark-theme = "1";
-    #  };
   };
 
   dconf = {
@@ -381,10 +386,12 @@ in
     # QT_STYLE_OVERRIDE = "kvantum";
     GTK_THEME = "Dracula";
     XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
-    WLR_DRM_NO_MODIFIERS = 1;
-    QT_SCALE_FACTOR = 1.25;
-    QT_AUTO_SCREEfSCALE_FACTOR = 1;
-    GDK_DPI_SCALE = 1.25;
+
+    # WLR_DRM_NO_MODIFIERS = 1;
+    # QT_SCALE_FACTOR = 1.25;
+    # QT_AUTO_SCREEfSCALE_FACTOR = 1;
+    # GDK_DPI_SCALE = 1.25;
+
     #TODO: did i need this??
     # OCL_ICD_VENDORS = "`nix-build '<nixpkgs>' --no-out-link -A rocm-opencl-icd`/etc/OpenCL/vendors/";
     # QT_QPA_PLATFORMTHEME = "gnome";
@@ -400,4 +407,5 @@ in
     defaultApplications = {
       "text/*" = ["Helix.desktop"];
     };
-  };}
+  };
+  }

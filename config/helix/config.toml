@@ -8,6 +8,7 @@ idle-timeout=50
 default-line-ending="lf"
 #true-color=true
 
+copilot-auto-render = true# defaults to true if omitted
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -51,18 +52,25 @@ K="search_prev"
 
 '{'="goto_prev_paragraph"
 '}'="goto_next_paragraph"
-#COPILOT
-#"C-y" = "toggle_copilot_auto"
+G="goto_last_line"
+
+"C-e" = "copilot_toggle_auto_render"
+d="delete_selection_noyank"
+c="change_selection_noyank"
 
 [keys.normal.g]
 n="goto_line_start"
 o="goto_line_end"
+e="move_line_down"
+i="move_line_up"
+
 
 [keys.normal.space.w]
 n="jump_view_left"
 e="jump_view_down"
 i="jump_view_up"
 o="jump_view_right"
+
 [keys.normal.C-w]
 n="jump_view_left"
 e="jump_view_down"
@@ -72,11 +80,8 @@ o="jump_view_right"
 [keys.insert]
 "A-x" = "normal_mode" # Maps Alt-X to enter normal mode
 
-#COPILOT
-#"C-e" = "show_or_next_copilot_completion"
-#"C-a" = "hide_or_prev_copilot_completion"
-#"C-space" = "apply_copilot_completion"
-
+"C-space" = "copilot_apply_completion"  # technically only this mapping is necessary
+#"C-e" = "copilot_show_completion" # show a copilot completion  (if one exists) (only useful if auto-render is false)
 
 [keys.normal.z]
 e="scroll_down"
@@ -109,15 +114,46 @@ K = "extend_search_prev"
 '{'="goto_prev_paragraph"
 '}'="goto_next_paragraph"
 
+G="goto_last_line"
+
+d="delete_selection_noyank"
+c="change_selection_noyank"
+
+[keys.select.space.w]
+n="jump_view_left"
+e="jump_view_down"
+i="jump_view_up"
+o="jump_view_right"
+
+[keys.select.C-w]
+n="jump_view_left"
+e="jump_view_down"
+i="jump_view_up"
+o="jump_view_right"
+
+[keys.select.g]
+n="goto_line_start"
+o="goto_line_end"
+e="move_line_down"
+i="move_line_up"
+
+[keys.select.z]
+e="scroll_down"
+i="scroll_up"
+
+[keys.select.Z]
+e="scroll_down"
+i="scroll_up"
+
+
 [keys.normal.space]
 
 'f'="file_picker_in_current_directory"
 'F'="file_picker"
+
 [keys.select.space]
 'f'="file_picker_in_current_directory"
 'F'="file_picker"
 
-#[editor.lsp]
-#copilot-auto = true
 
 

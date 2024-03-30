@@ -15,9 +15,28 @@ home.packages = with pkgs; [
       swayidle
       wayvnc
       wl-clipboard
-      mako # notification daemon
+      # mako # notification daemon
       wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
       libappindicator # needed for tray icons
       sway-contrib.grimshot #handles screenshots
 ];
+#notification daemon for sway
+services.mako={
+  enable=true;
+  defaultTimeout=8000;
+
+
+  extraConfig=''
+    group-by=app-name
+
+    font=Inconsolata
+    background-color=#282828
+    progress-color=#ebdbb2
+    text-color=#d5c4a1
+
+    border-color=#d65d0e
+    border-size=5
+    border-radius=2
+    '';
+};
 }

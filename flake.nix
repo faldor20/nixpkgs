@@ -1,20 +1,22 @@
 {
   description ="NixOS configuration and home-manager configurations for my desktop and laptop";
-  inputs.nixpkgs.url = "nixpkgs/nixos-23.11";
-  inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-  inputs.helix-editor={
-    url = "github:helix-editor/helix";
-    inputs.nixpkgs.follows = "nixpkgs";
+  inputs={
+    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    helix-editor={
+      url = "github:AlexanderDickie/helix/1de81886505f0deaef257eb4b11df048c09d7573";
+      inputs.nixpkgs.follows = "nixpkgs";
+
+      };
+
+    # inputs.nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    home-manager = {
+      url = "github:rycee/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-
-  # inputs.nur = {
-  #   url = "github:nix-community/NUR";
-  #   inputs.nixpkgs.follows = "nixpkgs";
-  # };
-  inputs.home-manager = {
-    url = "github:rycee/home-manager/release-23.11";
-    inputs.nixpkgs.follows = "nixpkgs";
   };
 
 
@@ -62,7 +64,7 @@
     {
       # this makes `nix shell` commands use the system version of nixpkgs by default
      nix.registry.nixpkgs.flake = inputs.nixpkgs;
-     nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+     nix.registry.unstable.flake = inputs.nixpkgs-unstable;
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
@@ -70,22 +72,23 @@
           system = "x86_64-linux";
           modules = [
             ./nixos-config/hosts/laptop/default.nix
+            # stylix.nixosModules.stylix
           ];
-          specialArgs = { inherit nixpkgs inputs pkgs unstable; };
+          specialArgs = { inherit nixpkgs nixpkgs-unstable inputs pkgs unstable; };
         }; 
-		xps13 = nixpkgs.lib.nixosSystem {
+    		xps13 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./nixos-config/hosts/xps13/default.nix
           ];
-          specialArgs = { inherit nixpkgs inputs pkgs unstable; };
+          specialArgs = { inherit nixpkgs nixpkgs-unstable inputs pkgs unstable; };
         };
         desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./nixos-config/hosts/desktop/default.nix
           ];
-          specialArgs = { inherit nixpkgs inputs pkgs unstable; };
+          specialArgs = { inherit nixpkgs nixpkgs-unstable inputs pkgs unstable; };
         };
       };
 

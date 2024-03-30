@@ -12,7 +12,7 @@ name = "ocaml"
 language-servers = ["ocamllsp", "copilot"]
 
 [language-server.roc-ls]
-command = "roc_ls"
+command = "roc_language_server"
 
 [[language]]
 name = "roc"
@@ -20,11 +20,11 @@ scope = "source.roc"
 injection-regex = "roc"
 file-types = ["roc"]
 shebangs = ["roc"]
-auto-format=true
+auto-format=false
 roots = []
 comment-token = "#"
 language-servers = ["roc-ls"]
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 4, unit = "    " }
 
 [language.auto-pairs]
 '(' = ')'
@@ -123,3 +123,18 @@ auto-format = true
 [language.formatter]
 command = "biome"
 args = ["format", "--stdin-file-path", "test.tsx"]
+
+[[language]]
+name= "nix"
+[language.formatter]
+command = "nixfmt"
+
+# [language-server.gpt]
+# command = "bun"
+# args = ["run","/home/eli/bin/helix-gpt","--handler", "copilot"]
+# [[language]]
+# name="go"
+# language-servers=[
+#   "gopls","gpt"
+# ]
+
