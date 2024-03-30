@@ -56,7 +56,7 @@ output DP-3 pos 3840,0 adaptive_sync on, mode 3440x1440@144.000Hz
 ## Idle configuration
 #  Example configuration:
 
- exec swayidle -w \
+exec swayidle -w \
           timeout 300 'swaylock -f -i  $wallpaper' \
           timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep 'swaylock -f -i $wallpaper'

@@ -5,6 +5,7 @@ line-number = "relative"
 mouse = false
 auto-save=true
 idle-timeout=50
+default-line-ending="lf"
 #true-color=true
 
 [editor.cursor-shape]
