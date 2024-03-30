@@ -238,6 +238,13 @@ in
     fuse
     # unstable.glibc
   ];
+  services.syncthing={
+   enable=true;
+  user="eli";
+  dataDir="/home/eli/Sync";
+   configDir="/home/eli/Sync/.config/Sync";
+
+  };
 
   programs.fish.enable=true;
   #docker
