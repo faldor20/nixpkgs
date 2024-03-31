@@ -136,30 +136,24 @@ in
 
   # Enable sound.
   # sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    extraConfig =
-      "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
-    package = pkgs.pulseaudioFull;
-  };
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   extraConfig =
+  #     "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
+  #   package = pkgs.pulseaudioFull;
+  # };
 
+#pipewire sound
+security.rtkit.enable = true;
+services.pipewire = {
+  enable = true;
+  alsa.enable = true;
+  alsa.support32Bit = true;
+  pulse.enable = true;
+  # If you want to use JACK applications, uncomment this
+  #jack.enable = true;
+};
 
-  #Enable pipewrie sound
-  /*
-    security.rtkit.enable = true;
-    services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-    };
-  */
   # udev rules for connection of vial.
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"

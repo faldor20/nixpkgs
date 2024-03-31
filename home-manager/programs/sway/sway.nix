@@ -19,6 +19,8 @@ home.packages = with pkgs; [
       wofi # Dmenu is the default in the config but i recommend wofi since its wayland native
       libappindicator # needed for tray icons
       sway-contrib.grimshot #handles screenshots
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
 ];
 #notification daemon for sway
 services.mako={

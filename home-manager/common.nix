@@ -208,7 +208,6 @@ in
     mpv
     spotify-player
     #mpd
-    pavucontrol
     playerctl
     #spotify-tui
     # ====communications====
