@@ -57,11 +57,10 @@ indent = { tab-width = 2, unit = "  " }
 '[' = ']'
 '"' = '"'
 
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
+
 # ------ tailwindcss ----------
-
-# wiating for next helix version
-
-# tailwind ocmal
 
 [[language]]
 name = "html"
@@ -72,57 +71,32 @@ roots = []
 language-servers = [ "vscode-html-language-server","tailwindcss-ls","biome" ]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
-[language.formatter]
-command = "biome"
-args = ["format", "--stdin-file-path", "test.html"]
 
-
-[[grammar]]
-name = "html"
-source = { git = "https://github.com/tree-sitter/tree-sitter-html", rev = "29f53d8f4f2335e61bf6418ab8958dac3282077a" }
-
-
-[language-server]
-biome= { command = "biome", args = ["lsp-proxy"] }
-[[language]]
-name = "css"
-language-servers = [ "vscode-css-language-server", "tailwindcss-ls","biome" ]
-
-[language.formatter]
-command = "biome"
-args = ["format", "--stdin-file-path", "test.css"]
-
-
-[[language]]
-name = "json"
-language-servers = [ "vscode-json-language-server","biome" ]
-[language.formatter]
-command = "biome"
-args = ["format", "--stdin-file-path", "test.json"]
 
 [[language]]
 name = "javascript"
-language-servers = ["typescript-language-server", "biome"]
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
 auto-format = true
-[language.formatter]
-command = "biome"
-args = ["format", "--stdin-file-path", "test.js"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "biome"]
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
 auto-format = true
 
-[language.formatter]
-command = "biome"
-args = ["format", "--stdin-file-path", "test.ts"]
 [[language]]
 name = "tsx"
-language-servers = ["typescript-language-server", "biome"]
 auto-format = true
-[language.formatter]
-command = "biome"
-args = ["format", "--stdin-file-path", "test.tsx"]
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
+
+[[language]]
+name = "jsx"
+auto-format = true
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "biome" ]
+
+[[language]]
+name = "json"
+language-servers = [ { name = "vscode-json-language-server", except-features = [ "format" ] }, "biome" ]
 
 [[language]]
 name= "nix"
@@ -138,3 +112,31 @@ command = "nixfmt"
 #   "gopls","gpt"
 # ]
 
+[language-server.phpactor]
+command = "phpactor"
+args = [ "language-server" ]
+
+[[language]]
+name = "php"
+language-servers = [ "phpactor" ]
+
+[language.formatter]
+command = 'pretty-php.phar'
+args = ["-F","format.php"]
+
+[language-server.markdown-oxide]
+command = "markdown-oxide"
+args = [ ]
+
+[[language]]
+name = "markdown"
+language-servers = [ "markdown-oxide" ]
+
+[[language]]
+name = "scheme"
+formatter = { command = "schemat", args = ["/dev/stdin"] }
+auto-format = true
+language-servers = ["steel-language-server"]
+
+[language-server.steel-language-server]
+command = "steel-language-server"

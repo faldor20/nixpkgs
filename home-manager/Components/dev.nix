@@ -11,13 +11,15 @@ in {
 
   #nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    unstable.godot_4
+    gh
+    devenv
+    # unstable.godot_4
 
     gitkraken
+    # jetbrains.phpstorm
     gitui
     lazygit
     powershell
-   
 
     httpie
     git-lfs
@@ -33,8 +35,8 @@ in {
 
 
     #sccache
-    unstable.nim
-    unstable.nimlsp
+    # unstable.nim
+    # unstable.nimlsp
 
     #clojure
     #jdk11
@@ -45,7 +47,7 @@ in {
 
     #julia-stable
 
-    nodejs_20
+    nodejs_22
 
 
     #=====ocaml=====
@@ -74,11 +76,11 @@ in {
 
     #unstable.dotnet-sdk_5
     #unstable.dotnet-sdk_6
-    dotnetPackages.Paket
+    # dotnetPackages.Paket
    # buildDotnet
-    unstable.dotnet-sdk_7
-    unstable.mono
-    omnisharp-roslyn
+    # unstable.dotnet-sdk_8
+    # unstable.mono
+    # omnisharp-roslyn
 
 
     openssl.dev
@@ -95,7 +97,7 @@ in {
     unstable.marksman
     lua-language-server
     stylua
-    pkgs.nodePackages.svelte-language-server
+    unstable.svelte-language-server
     pkgs.nodePackages.typescript-language-server
     unstable.nodePackages."@tailwindcss/language-server"
     pkgs.nodePackages.vscode-langservers-extracted 
@@ -104,7 +106,9 @@ in {
     # unstable.rust-analyzer
 
 
-    unstable.jetbrains.rust-rover
+    # unstable.jetbrains.rust-rover
+    # php
+    # unstable.nodePackages.intelephense
 
 
   

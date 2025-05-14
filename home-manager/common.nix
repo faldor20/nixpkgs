@@ -1,4 +1,12 @@
-{ inputs, unstable, config, pkgs, lib, systemd, ... }:
+{
+  inputs,
+  unstable,
+  config,
+  pkgs,
+  lib,
+  systemd,
+  ...
+}:
 let
 
   aspellD = pkgs.aspellWithDicts (ps: with ps; [ en ]);
@@ -16,7 +24,6 @@ in
     stateVersion = "23.05";
   };
 
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
   # nixpkgs.config = {
@@ -24,7 +31,7 @@ in
   #   allowUnfree = true;
   # };
   imports = [
-  # ./stylix.nix
+    # ./stylix.nix
     ./fonts.nix
     ./general/email.nix
     ./programs/fish/fish.nix
@@ -48,28 +55,57 @@ in
   #   ln -s ${"/home/eli/.config/nixpkgs/config/lazygit/config.yml"} ~/.config/lazygit/config.yml
   #   ln -s ${"/home/eli/.config/nixpkgs/config/helix/config.toml"} ~/.config/helix/config.toml
   # '';
-  home.file={
-    lazygit={
-      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/lazygit/config.yml";
-      target=".config/lazygit/config.yml";
+  #
+
+  # This is for steel support of helix. stolen from here: https://github.com/clo4/nix-dotfiles/blob/main/modules/home/robert.nix
+ home.file.".local/share/steel" = {
+    source = pkgs.helix-cogs;
+    recursive = true;
+  };
+  home.sessionVariables.STEEL_HOME = "$HOME/.local/share/steel";
+  home.sessionVariables.STEEL_LSP_HOME = "$HOME/.local/share/steel/steel-language-server";
+
+    home.file = {
+    lazygit = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/lazygit/config.yml";
+      target = ".config/lazygit/config.yml";
     };
-    helix={
-      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/config.toml";
-      target=".config/helix/config.toml";
+    helix = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/config.toml";
+      target = ".config/helix/config.toml";
     };
-    helix-langs={
-      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/languages.toml";
-      target=".config/helix/languages.toml";
+    wallpaper = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/assets/wallpaper.jpg";
+      target = "Downloads/wallpaper.jpg";
     };
-    spotify-player={
-      source= config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/spotify-player/app.toml";
-      target=".config/spotify-player/app.toml";
+    helix-langs = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/helix/languages.toml";
+      target = ".config/helix/languages.toml";
     };
-    
+    spotify-player = {
+      source = config.lib.file.mkOutOfStoreSymlink "/home/eli/.config/nixpkgs/config/spotify-player/app.toml";
+      target = ".config/spotify-player/app.toml";
+    };
+    ".profile".text = ''
+      export PATH="/home/eli/Programming/scripts:/home/eli/.cargo/bin:/home/eli/bin:/home/eli/.dotnet/tools:$PATH"
+      export EDITOR="hx"
+      export VISUAL="hx"
+      export TERMINAL="kitty"
+    '';
+    # ".config/sway"
   };
   home.packages = with pkgs; [
+    easyeffects
+    just
+    unstable.jujutsu
+    #needed for jujutsu
+    # unstable.watchman
+
+    pavucontrol
 
     jq
+    #for some reason the normal version of wget is from busybox and brakes some things
+    wget
 
     gnome.file-roller
     vulkan-tools
@@ -80,7 +116,6 @@ in
     x11_ssh_askpass
     nmon
     btop
-
 
     unzip
     fortune
@@ -100,10 +135,15 @@ in
     #======Nix Specific======
     nix-tree
     #======spelling=======
-    (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ]))
+    (aspellWithDicts (
+      dicts: with dicts; [
+        en
+        en-computers
+        en-science
+      ]
+    ))
     #====tools:====
     #--screenshot
-    sway-contrib.grimshot # allows taking screeenshots within sway
     #pdf
     zathura
     # mupdf
@@ -118,7 +158,6 @@ in
 
     gnome.gnome-system-monitor
     #unstable.zoom-us
-    slurp
     pandoc
     xfce.catfish
     ncdu
@@ -138,9 +177,7 @@ in
 
     gnome3.dconf-editor
 
-
     unstable.vial
-
 
     #texlive.combined.scheme-small
     #====Organization====
@@ -157,8 +194,13 @@ in
     sshfs
 
     steam-run
-    appimage-run
-
+    (appimage-run.override {
+      extraPkgs =
+        pkgs: with pkgs; [
+          libthai
+          libsecret
+        ];
+    })
     python39
     #unstable.pipenv
     python39Packages.pip
@@ -171,25 +213,28 @@ in
     # ====EDITORS====
 
     unstable.vscode-fhs
+    # zed-editor-new
     #vscodeInsiders
     #neovim-nightly
     vim
     helix
+    helix-cogs
+    steel-pkg
+
     #====WRITING====
-    # unstable.obsidian
+    unstable.obsidian
     ghostwriter
     #unstable.obs-studio
-    #unstable.logseq
+    unstable.logseq
     unstable.remnote
     #typora
     #unstable.xournalpp
     #====TOOLS for work:=====
+    super-productivity
     #remmina
 
     # ====this is for managing nix-shell dependancies:====
-    direnv
     niv
-    rnix-lsp
     nil
     nixpkgs-fmt
     #====Basic software====
@@ -197,9 +242,9 @@ in
 
     feh
     #tixati
-    qbittorrent
-    gnumeric
-    visidata
+    unstable.qbittorrent
+    # gnumeric
+    # visidata
     #qutebrowser
     # mpc_cli
     lastpass-cli
@@ -207,6 +252,7 @@ in
     vlc
     mpv
     spotify-player
+    unstable.psst
     #mpd
     playerctl
     #spotify-tui
@@ -215,8 +261,7 @@ in
     unstable.discord
     #====highly specific utilities====
     #kinlde and ebooks
-    calibre
-
+    # calibre
 
     #fritzing
     #====theming====
@@ -243,49 +288,58 @@ in
     enable = true;
     #platformTheme="gnome";
     style.name = "Dracula";
-
   };
 
   ##Setup gpg
-   programs.gpg.enable = true;
-    services.gpg-agent = {
+  programs.gpg.enable = true;
+  services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 34560000;
     maxCacheTtl = 34560000;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-tty;
     enableScDaemon = true;
-
   };
 
   programs = {
-
-    nnn={
+    direnv = {
+      enable = true;
+      # enableFishIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true; # see note on other shells below
+    };
+    fzf={
       enable=true;
-      package=pkgs.nnn.override ({ withNerdIcons = true; });
-      plugins={
-        
+      enableFishIntegration = true;
+
+    };
+    nnn = {
+      enable = true;
+      package = pkgs.nnn.override ({ withNerdIcons = true; });
+      plugins = {
+
         mappings = {
           c = "fzcd";
           f = "finder";
           v = "imgview";
-        };      
+        };
       };
     };
 
+    emacs = {
+      enable = true;
+      package = unstable.emacs;
+      # client = { enable = true; };
+    };
 
-
-    emacs =
-      {
-        enable = false;
-        package = unstable.emacsPgtkGcc;
-      };
     fish.enable = true;
     #figure how to use the ~/Music option without breaking purity
     # ncmpcpp = {
     #   enable = false;
     #   mpdMusicDir = ~/Music;
     # };
-
   };
   gtk = {
     enable = true;
@@ -308,7 +362,6 @@ in
       };
     };
   };
-
 
   # xsession.pointerCursor = {
   #   name = "Vanilla-DMZ";
@@ -343,11 +396,6 @@ in
     #     enable = true;
     #     notify = false;
     #   };
-    emacs = {
-      enable = false;
-      package = unstable.emacsPgtkGcc;
-      client = { enable = true; };
-    };
   };
   #removed in update 22.11
   #  services.gpg-agent = {
@@ -384,7 +432,7 @@ in
     #Removed for update to 23.11
     # QT_STYLE_OVERRIDE = "kvantum";
     GTK_THEME = "Dracula";
-    XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
+    # XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS";
 
     # WLR_DRM_NO_MODIFIERS = 1;
     # QT_SCALE_FACTOR = 1.25;
@@ -396,15 +444,31 @@ in
     # QT_QPA_PLATFORMTHEME = "gnome";
     NIXOS_OZONE_WL = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = 1; # this fixes java apps in sway
-    EDITOR= "hx";
-    VISUAL= "hx";
-    TERMINAL= "kitty";
+
+    #!!! THESE VARIABLES ARE NOT CORRECTLY INJECTED INTO ALL ENVIROMENTS
+    #   PATH = "~/Programming/scripts:~/.cargo/bin:~/bin:~/.dotnet/tools:$PATH";
+    #   EDITOR = "hx";
+    #   VISUAL = "hx";
+    #   TERMINAL = "kitty";
   };
 
- xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/*" = ["Helix.desktop"];
-    };
-  };
-  }
+  systemd.user.sessionVariables = {
+
+    PATH = "~/Programming/scripts:~/.cargo/bin:~/bin:~/.dotnet/tools:$PATH";
+    EDITOR = "hx";
+    VISUAL = "hx";
+    TERMINAL = "kitty";
+};
+
+    # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [ pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk ];
+  #   configPackages = [ pkgs.sway ];
+  # };
+  # xdg.mimeApps = {
+  #    enable = true;
+  #    defaultApplications = {
+  #      "text/*" = ["Helix.desktop"];
+  #    };
+  #  };
+}

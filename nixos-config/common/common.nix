@@ -2,7 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs,unstable,pkgs, lib, variables,nixpkgs,nixpkgs-unstable, ... }:
+{
+  config,
+  inputs,
+  unstable,
+  pkgs,
+  lib,
+  variables,
+  nixpkgs,
+  nixpkgs-unstable,
+  ...
+}:
 
 let
   thisPath = ./.;
@@ -11,9 +21,10 @@ let
 in
 {
 
-  nixpkgs={
-    config={
-      allowUnfree=true;
+  nixpkgs = {
+    config = {
+
+      allowUnfree = true;
     };
 
   };
@@ -21,7 +32,7 @@ in
   nix = {
     registry = {
       nixpkgs.flake = nixpkgs;
-      nixpkgs-unstable.flake=nixpkgs-unstable;
+      nixpkgs-unstable.flake = nixpkgs-unstable;
     };
     settings.auto-optimise-store = false;
     optimise.automatic = true;
@@ -35,26 +46,27 @@ in
       "nixos-config=${commonPath}"
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
-   package = pkgs.nixFlakes;
-   extraOptions = ''
-     experimental-features = nix-command flakes
-   '';
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
+  imports = [ ./sway.nix ];
 
-
-  nix.settings.trusted-users = [ "root" "eli" ];
+  nix.settings.trusted-users = [
+    "root"
+    "eli"
+  ];
   location.provider = "geoclue2";
   services.geoclue2.enable = true;
 
   services.gvfs.enable = true;
 
-
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-  boot.plymouth.enable=true;
+  boot.plymouth.enable = true;
 
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Set your time zone.
@@ -66,7 +78,10 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.nameservers = [ "185.228.168.9" "1.1.1.1" ];
+  networking.nameservers = [
+    "185.228.168.9"
+    "1.1.1.1"
+  ];
   #systemd.services.systemd-udev-settle.enable = false;
   # systemd.services.NetworkManager-wait-online.enable = false;
   #networking.interfaces.wlp4s0.useDHCP = true;
@@ -78,45 +93,30 @@ in
   # Select internationalisation properties.
   #i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.layout= "us";
-   services.xserver.xkbVariant = "colemak_dh";
+  services.xserver.xkb.layout = "us";
+  services.xserver.xkb.variant = "colemak_dh";
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = false;
-  services.xserver.windowManager.i3 = {
-    enable = true;
-    # TODO install via home manager
-    # extraPackages = with pkgs; [
-    #   dmenu #application launcher most people use
-    #   i3status # gives you the default i3 status bar
-    #   i3lock #default i3 screen locker
-    #   i3blocks #if you are planning on using i3blocks over i3status
-    # ];
-  };
+  # services.xserver.windowManager.i3 = {
+  # enable = true;
+  # TODO install via home manager
+  # extraPackages = with pkgs; [
+  #   dmenu #application launcher most people use
+  #   i3status # gives you the default i3 status bar
+  #   i3lock #default i3 screen locker
+  #   i3blocks #if you are planning on using i3blocks over i3status
+  # ];
+  # };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enableExtensionPack = true;
 
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true; # so that gtk works properly
-  };
-
-  #We enable opengl because otherwires sway won't start 
-  # hardware.opengl.enable=true;
-
-  #run .desktop files in .config/autostart
-  #essentially allows autostarting of applications taht use that method
-  xdg.autostart.enable = true;
-
-
-
-
+  programs.virt-manager.enable = true;
   programs.fuse.userAllowOther = true;
-
-
-  
 
   #===rdp not allowed because of security===
 
@@ -129,7 +129,7 @@ in
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
-  
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.gutenprint ];
@@ -143,37 +143,45 @@ in
   #   package = pkgs.pulseaudioFull;
   # };
 
-#pipewire sound
-security.rtkit.enable = true;
-services.pipewire = {
-  enable = true;
-  alsa.enable = true;
-  alsa.support32Bit = true;
-  pulse.enable = true;
-  # If you want to use JACK applications, uncomment this
-  #jack.enable = true;
-};
+  #pipewire sound
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+  programs.noisetorch.enable = true;
+
+  services.flatpak.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+  libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs ++[
+    
+  ];
+  };
+
 
   # udev rules for connection of vial.
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
   '';
-  services.udev.packages=[
-     (pkgs.writeTextFile {
-        name = "voyger_udev";
-        text = ''
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "voyger_udev";
+      text = ''
         # Rules for Oryx web flashing and live training
         KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
         KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
 
         # Keymapp Flashing rules for the Voyager
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
-        '';
-        destination = "/etc/udev/rules.d/50-zsa.rules";
-      })
+      '';
+      destination = "/etc/udev/rules.d/50-zsa.rules";
+    })
   ];
-  
-
 
   # Enable touchpad support (enabled default in most desktopManager).
   #services.xserver.libinput.enable = true;
@@ -191,6 +199,7 @@ services.pipewire = {
       "video"
       "mpd"
       "networkmanager"
+      "uniput"
     ]; # Enable ‘sudo’ for the user.|Video is for backlight control
   };
   # user.users.mpd={
@@ -201,12 +210,14 @@ services.pipewire = {
   #
   # }
   security.sudo.enable = true;
-  /*   security.doas.enable = true;
+  /*
+    security.doas.enable = true;
     security.doas.extraRules = [{
     users = [ "eli" ];
     keepEnv = true;
-    }]; */
-  
+    }];
+  */
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   #nixpkgs.config.allowUnfree = true;
@@ -223,7 +234,7 @@ services.pipewire = {
     #caps2esc
     #==== NIXOS====
     home-manager
-    nixfmt
+    nixfmt-rfc-style
     # ====EDITORS====
     vim
     neovim
@@ -233,17 +244,28 @@ services.pipewire = {
     fuse
     # unstable.glibc
   ];
-  services.syncthing={
-   enable=true;
-  user="eli";
-  dataDir="/home/eli/Sync";
-   configDir="/home/eli/Sync/.config/Sync";
+  # services.syncthing = {
+  #   enable = true;
+  #   user = "eli";
+  #   dataDir = "/home/eli/Sync";
+  #   configDir = "/home/eli/Sync/.config/Sync";
 
-  };
+  # };
 
-  programs.fish.enable=true;
+  programs.fish.enable = true;
   #docker
   virtualisation.docker.enable = true;
+  # virtualisation.containers.enable = true;
+
+  # virtualisation.podman = {
+  #   enable = true;
+
+  #     # Create a `docker` alias for podman, to use it as a drop-in replacement
+  #     dockerCompat = true;
+
+  #     # Required for containers under podman-compose to be able to talk to each other.
+  #     defaultNetwork.settings.dns_enabled = true;
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -289,7 +311,7 @@ services.pipewire = {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-  
+
   systemd.services.nightoff = {
     serviceConfig = {
       ExecStart = "/home/eli/.config/nixpkgs/scripts/nightoff.sh";
@@ -297,5 +319,15 @@ services.pipewire = {
     wantedBy = [ "default.target" ];
   };
   hardware.keyboard.zsa.enable = true;
-  
+
+  ##for schoolzine:
+
+  networking.extraHosts = ''
+    127.0.0.1 localdev.sportstrackerapp.com
+    54.79.43.233	bptest.schoolzineplus.com
+    127.0.0.1 localdev.schoolzineplus.com
+    127.0.0.1 localdev.schoolzineplus.com
+    eb-test-env-cms.eba-mniupjym.ap-southeast-2.elasticbeanstalk.com blueprintss.schoolzineplus.com
+  '';
+  services.teamviewer.enable = true;
 }

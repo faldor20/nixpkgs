@@ -12,7 +12,7 @@ in {
   # #nixpkgs.config.allowUnfree = true;
   imports=[
     ../../common.nix
-    #"${components}/uni.nix"
+    "${components}/work.nix"
     
     "${components}/dev.nix"
     "${components}/CAD.nix"

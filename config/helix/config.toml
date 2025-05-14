@@ -8,7 +8,7 @@ idle-timeout=50
 default-line-ending="lf"
 #true-color=true
 
-copilot-auto-render = true# defaults to true if omitted
+# copilot-auto-render = true# defaults to true if omitted
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -54,7 +54,6 @@ K="search_prev"
 '}'="goto_next_paragraph"
 G="goto_last_line"
 
-"C-e" = "copilot_toggle_auto_render"
 d="delete_selection_noyank"
 c="change_selection_noyank"
 
@@ -80,7 +79,7 @@ o="jump_view_right"
 [keys.insert]
 "A-x" = "normal_mode" # Maps Alt-X to enter normal mode
 
-"C-space" = "copilot_apply_completion"  # technically only this mapping is necessary
+# "C-space" = "copilot_apply_completion"  # technically only this mapping is necessary
 #"C-e" = "copilot_show_completion" # show a copilot completion  (if one exists) (only useful if auto-render is false)
 
 [keys.normal.z]

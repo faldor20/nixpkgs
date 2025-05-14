@@ -7,7 +7,7 @@ while true; do
    #weekday= $(date "+%u")
         if [ $hour -gt 21 ] # shutdown at 10 oclock
         then
-            shutdown 0
+             systemctl hibernate
         fi
    sleep 600
 done

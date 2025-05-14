@@ -1,10 +1,19 @@
-
-{ unstable, config, pkgs, lib, ... }:
-
+{
+  unstable,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
 
   #nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-	slack
+
+    beekeeper-studio
+    dbeaver-bin
+    unstable.redisinsight
+    nix
+    mysql-client
   ];
 }
